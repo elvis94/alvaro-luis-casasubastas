@@ -6,6 +6,7 @@
 package dao;
 
 import java.sql.*;
+import subastas.Subasta;
 import subastas.Usuario;
 
 /**
@@ -84,6 +85,36 @@ public class SubastasDAO
         } catch (SQLException ex) { }
         return usu;
     }
+
+	public Subasta[] obtenerTodasLasSubastas()
+	{
+		return null;
+	}
+
+	public Subasta[] obtenerSubastasDeUsuario(Usuario u)
+	{
+		return null;
+	}
+
+	public Subasta obtenerSubasta(Object parametro)
+	{
+		return null;
+	}
+
+	public boolean insertarSubasta(Subasta s)
+	{
+		return false;
+	}
+
+	public boolean borrarSubasta(Subasta s)
+	{
+		return false;
+	}
+
+	public boolean actualizarSubasta(Subasta s)
+	{
+		return false;
+	}
 }
 
 
