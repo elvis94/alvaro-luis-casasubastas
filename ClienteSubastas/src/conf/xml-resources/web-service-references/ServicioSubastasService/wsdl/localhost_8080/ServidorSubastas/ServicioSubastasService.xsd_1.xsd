@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.3.1-hudson-417-SNAPSHOT. --><xs:schema xmlns:tns="http://services/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://services/">
+
+<xs:element name="crearCliente" type="tns:crearCliente"></xs:element>
+
+<xs:element name="crearClienteResponse" type="tns:crearClienteResponse"></xs:element>
+
+<xs:element name="misSubastas" type="tns:misSubastas"></xs:element>
+
+<xs:element name="misSubastasResponse" type="tns:misSubastasResponse"></xs:element>
+
+<xs:element name="subastasPublicas" type="tns:subastasPublicas"></xs:element>
+
+<xs:element name="subastasPublicasResponse" type="tns:subastasPublicasResponse"></xs:element>
+
+<xs:complexType name="subastasPublicas">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="subastasPublicasResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:subasta" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="subasta">
+<xs:sequence>
+<xs:element name="categoria" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="fechaCierre" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaPujaActual" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaSalida" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="id" type="xs:int"></xs:element>
+<xs:element name="nombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="precioCompra" type="xs:double"></xs:element>
+<xs:element name="precioSalida" type="xs:double"></xs:element>
+<xs:element name="pujaActual" type="xs:double"></xs:element>
+<xs:element name="pujadorActual" type="tns:usuario" minOccurs="0"></xs:element>
+<xs:element name="subastador" type="tns:usuario" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="usuario">
+<xs:sequence>
+<xs:element name="apellidos" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="clave" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="direccion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="email" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="nombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="pais" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="usuario" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="misSubastas">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="misSubastasResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:subasta" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="crearCliente">
+<xs:sequence>
+<xs:element name="cliente" type="tns:usuario" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="crearClienteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

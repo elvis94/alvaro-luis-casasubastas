@@ -5,6 +5,7 @@
 
 package clientesubastas;
 
+import clientesubastas.acceso.DatosAcceso;
 import com.sun.rave.web.ui.appbase.AbstractSessionBean;
 import javax.faces.FacesException;
 
@@ -35,6 +36,7 @@ public class SessionBean1 extends AbstractSessionBean {
     }
     // </editor-fold>
 
+	private DatosAcceso datosPersonalesSesion;
     /**
      * <p>Construct a new session data bean instance.</p>
      */
@@ -124,4 +126,13 @@ public class SessionBean1 extends AbstractSessionBean {
         return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
+	public DatosAcceso getDatosPersonalesSesion()
+	{
+		return datosPersonalesSesion;
+	}
+
+	public void setDatosPersonalesSesion(DatosAcceso datosPersonalesSesion)
+	{
+		this.datosPersonalesSesion = datosPersonalesSesion;
+	}
 }
