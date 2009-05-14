@@ -6,7 +6,12 @@
 package clientesubastas;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.model.DefaultTableDataProvider;
+import java.util.List;
 import javax.faces.FacesException;
+import javax.xml.ws.WebServiceRef;
+import services.ServicioSubastasService;
+import services.Subasta;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -21,6 +26,8 @@ import javax.faces.FacesException;
  */
 
 public class VerSubastas extends AbstractPageBean {
+	@WebServiceRef(wsdlLocation = "WEB-INF/wsdl/client/ServicioSubastasService/localhost_8080/ServidorSubastas/ServicioSubastasService.wsdl")
+	private ServicioSubastasService service;
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -33,6 +40,7 @@ public class VerSubastas extends AbstractPageBean {
 
     // </editor-fold>
 
+	private List<Subasta> listadoPublico;
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -95,7 +103,22 @@ public class VerSubastas extends AbstractPageBean {
      * this page.</p>
      */
     @Override
-    public void prerender() {
+    public void prerender()
+	{
+
+		try
+		{ // Call Web Service Operation
+			services.ServicioSubastas port = service.getServicioSubastasPort();
+			// TODO process result here
+			java.util.List<services.Subasta> result = port.subastasPublicas();
+			//System.out.println("Result = "+result);
+			setListadoPublico(result);
+		}
+		catch (Exception ex)
+		{
+			// TODO handle custom exceptions here
+		}
+
     }
 
     /**
@@ -139,6 +162,22 @@ public class VerSubastas extends AbstractPageBean {
     {
         return (ApplicationBean1) getBean("ApplicationBean1");
     }
+
+	/**
+	 * @return the listadoPublico
+	 */
+	public List<Subasta> getListadoPublico()
+	{
+		return listadoPublico;
+	}
+
+	/**
+	 * @param listadoPublico the listadoPublico to set
+	 */
+	public void setListadoPublico(List<Subasta> listadoPublico)
+	{
+		this.listadoPublico = listadoPublico;
+	}
     
 }
 
