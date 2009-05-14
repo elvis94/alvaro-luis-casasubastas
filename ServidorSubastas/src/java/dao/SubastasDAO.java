@@ -7,8 +7,7 @@ package dao;
 
 import java.sql.*;
 import java.util.ArrayList;
-import subastas.Subasta;
-import subastas.Usuario;
+import subastas.*;
 
 /**
  *
@@ -61,6 +60,24 @@ public class SubastasDAO
         return resultado;
     }
 
+	public String obtenerPassword(String user)
+	{
+		String pass = "";
+        try {
+            String consulta = "SELECT clave FROM DAD.CLIENTES WHERE USUARIO = '"+user+"'";
+
+            PreparedStatement ps = conexion.prepareStatement(consulta);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next())
+				pass = rs.getString("clave");
+
+            ps.close();
+        } catch (SQLException ex) { }
+
+        return pass;
+	}
+
     public Usuario obtenerUsuario(String user)
     {
         Usuario usu = null;
@@ -72,7 +89,7 @@ public class SubastasDAO
 
             if(rs.next()) {
                 usu = new Usuario();
-                usu.setNombre(rs.getString("usuario"));
+                usu.setUsuario(rs.getString("usuario"));
                 usu.setClave(rs.getString("clave"));
                 usu.setEmail(rs.getString("email"));
                 usu.setNombre(rs.getString("nombre"));
@@ -97,7 +114,7 @@ public class SubastasDAO
             PreparedStatement ps = conexion.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
 
-            if(rs.next()) {
+            while(rs.next()) {
 				Subasta sub = new Subasta();
 				sub.setId(rs.getInt("id"));
 				sub.setNombre(rs.getString("nombre"));
@@ -123,7 +140,7 @@ public class SubastasDAO
             ps.close();
         } catch (SQLException ex) { }
 
-		return (Subasta[])subs.toArray();
+		return (Subasta[])subs.toArray(new Subasta[]{});
 	}
 
 	public Subasta[] obtenerTodasLasSubastasAbiertas()
@@ -135,7 +152,7 @@ public class SubastasDAO
             PreparedStatement ps = conexion.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
 
-            if(rs.next()) {
+            while(rs.next()) {
 				Subasta sub = new Subasta();
 				sub.setId(rs.getInt("id"));
 				sub.setNombre(rs.getString("nombre"));
@@ -161,19 +178,19 @@ public class SubastasDAO
             ps.close();
         } catch (SQLException ex) { }
 
-		return (Subasta[])subs.toArray();
+		return (Subasta[])subs.toArray(new Subasta[]{});
 	}
 
-	public Subasta[] obtenerSubastasDeUsuario(Usuario u)
+	public Subasta[] obtenerSubastasDeUsuario(String u)
 	{
 		ArrayList<Subasta> subs = new ArrayList<Subasta>();
 		try {
-            String consulta = "SELECT * FROM DAD.SUBASTAS WHERE subastador='"+u.getUsuario()+"'";
+            String consulta = "SELECT * FROM DAD.SUBASTAS WHERE subastador='"+u+"'";
 
             PreparedStatement ps = conexion.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
 
-            if(rs.next()) {
+            while(rs.next()) {
 				Subasta sub = new Subasta();
 				sub.setId(rs.getInt("id"));
 				sub.setNombre(rs.getString("nombre"));
@@ -199,7 +216,7 @@ public class SubastasDAO
             ps.close();
         } catch (SQLException ex) { }
 
-		return (Subasta[])subs.toArray();
+		return (Subasta[])subs.toArray(new Subasta[]{});
 	}
 
 	public Subasta obtenerSubasta(int id)

@@ -6,7 +6,6 @@
 package services;
 
 import dao.SubastasDAO;
-import java.sql.*;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -37,21 +36,44 @@ public class ServicioSubastas
         return subastasDAO.insertarUsuario(cliente);
     }
 
-    /**
-     * Web service operation
-     */
-    @WebMethod(operationName = "iniciarSesion")
-    public boolean iniciarSesion(@WebParam(name = "user")
-    String user, @WebParam(name = "password")
-    String password)
-    {
-        //TODO write your implementation code here:
-        Usuario u = subastasDAO.obtenerUsuario(user);
+//	/**
+//	 * Web service operation
+//	 */
+//	@WebMethod(operationName = "crearSubasta")
+//	public boolean crearSubasta(@WebParam(name = "subasta")
+//	Subasta subasta)
+//	{
+//		//TODO write your implementation code here:
+//		return subastasDAO.insertarSubasta(subasta);
+//	}
 
-        if(u == null)
-            return false;
+	private boolean comprobarUsuario(String usuario, String password)
+	{
+		return subastasDAO.obtenerPassword(usuario).equals(password);
+	}
 
-        return password.equals(u.getClave());
-    }
+	/**
+	 * Web service operation
+	 */
+	@WebMethod(operationName = "misSubastas")
+	public subastas.Subasta[] misSubastas(@WebParam(name = "usuario")
+	String usuario, @WebParam(name = "password")
+	String password)
+	{
+		//TODO write your implementation code here:
+		if(comprobarUsuario(usuario, password))
+			return subastasDAO.obtenerSubastasDeUsuario(usuario);
+		else
+			return null;
+	}
 
+	/**
+	 * Web service operation
+	 */
+	@WebMethod(operationName = "subastasPublicas")
+	public subastas.Subasta[] subastasPublicas()
+	{
+		//TODO write your implementation code here:
+		return subastasDAO.obtenerTodasLasSubastasAbiertas();
+	}
 }
