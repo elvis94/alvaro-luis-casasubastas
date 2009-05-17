@@ -12,9 +12,20 @@
                 <webuijsf:head id="head1">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
-                <webuijsf:body id="body1" style="-rave-layout: grid">
+                <webuijsf:body id="body1" style="-rave-layout: grid;">
                     <webuijsf:form id="form1">
-                        <div align="center" style="margin-top: 24px;">
+                        <div>
+                            <jsp:directive.include file="Cabecera.jspf"/>
+                        </div>
+                        <div align="center" style="font-size: 18px">
+                            <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
+                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlIniciarSesion_action}" id="hlIniciarSesion" text="[Iniciar Sesión]"/>
+                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlRegistrarse_action}" id="hlRegistrarse" text="[Registrarse]"/>
+                            </webuijsf:panelGroup>
+                        </div>
+                        <hr/>
+                        <br/>
+                        <div align="center">
                             <webuijsf:table augmentTitle="false" clearSortButton="true" id="table1" paginateButton="true" paginationControls="true"
                                 sortPanelToggleButton="true" title="Listado de subastas públicas" width="888">
                                 <webuijsf:tableRowGroup id="tableRowGroup1" sourceData="#{VerSubastas.listadoPublico}" sourceVar="currentRow">
@@ -39,6 +50,9 @@
                                 </webuijsf:tableRowGroup>
                             </webuijsf:table>
                         </div>
+                        <webuijsf:menu id="menu1" style="position: absolute; left: 264px; top: 120px"/>
+                        <webuijsf:menu id="menu2" style="position: absolute; left: 264px; top: 264px"/>
+                        <webuijsf:menu id="menu3" style="position: absolute; left: 312px; top: 240px"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

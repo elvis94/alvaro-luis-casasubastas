@@ -5,6 +5,10 @@
 
 /* Style rules to make Java Server faces Standarad data tables look better */
 
+body {
+	background-color: #b6c6d6;
+}
+
 .list-header {
   background-color: #eeeeee;
   font-size: larger;

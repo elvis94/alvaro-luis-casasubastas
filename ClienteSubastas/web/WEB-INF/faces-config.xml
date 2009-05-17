@@ -91,6 +91,10 @@
             <from-outcome>mostrarDetalles</from-outcome>
             <to-view-id>/DetallesSubasta.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>registro</from-outcome>
+            <to-view-id>/NuevoCliente.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/DetallesSubasta.jsp</from-view-id>
@@ -99,4 +103,9 @@
             <to-view-id>/DetallesSubasta.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>Cabecera</managed-bean-name>
+        <managed-bean-class>clientesubastas.Cabecera</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
