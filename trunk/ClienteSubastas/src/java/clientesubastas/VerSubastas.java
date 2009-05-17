@@ -6,6 +6,7 @@
 package clientesubastas;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.model.DefaultOptionsList;
 import com.sun.webui.jsf.model.DefaultTableDataProvider;
 import java.util.List;
 import javax.faces.FacesException;
@@ -177,6 +178,20 @@ public class VerSubastas extends AbstractPageBean {
 	public void setListadoPublico(List<Subasta> listadoPublico)
 	{
 		this.listadoPublico = listadoPublico;
+	}
+
+	public String hlIniciarSesion_action()
+	{
+		// TODO: Process the action. Return value is a navigation
+		// case name where null will return to the same page.
+		return null;
+	}
+
+	public String hlRegistrarse_action()
+	{
+		// TODO: Process the action. Return value is a navigation
+		// case name where null will return to the same page.
+		return "registro";
 	}
     
 }
