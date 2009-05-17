@@ -147,7 +147,7 @@ public class SubastasDAO
 	{
 		ArrayList<Subasta> subs = new ArrayList<Subasta>();
 		try {
-            String consulta = "SELECT * FROM DAD.SUBASTAS WHERE fecha_cierre > CURRENT_TIMESTAMP";
+            String consulta = "SELECT * FROM DAD.SUBASTAS WHERE fecha_cierre > CURRENT_TIMESTAMP ORDER BY fecha_cierre";
 
             PreparedStatement ps = conexion.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
