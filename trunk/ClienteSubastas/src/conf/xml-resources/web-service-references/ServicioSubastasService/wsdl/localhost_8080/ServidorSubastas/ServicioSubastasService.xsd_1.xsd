@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.3.1-hudson-417-SNAPSHOT. --><xs:schema xmlns:tns="http://services/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://services/">
 
+<xs:element name="borrarSubasta" type="tns:borrarSubasta"></xs:element>
+
+<xs:element name="borrarSubastaResponse" type="tns:borrarSubastaResponse"></xs:element>
+
+<xs:element name="comprobarCliente" type="tns:comprobarCliente"></xs:element>
+
+<xs:element name="comprobarClienteResponse" type="tns:comprobarClienteResponse"></xs:element>
+
+<xs:element name="consultarSubasta" type="tns:consultarSubasta"></xs:element>
+
+<xs:element name="consultarSubastaResponse" type="tns:consultarSubastaResponse"></xs:element>
+
 <xs:element name="crearCliente" type="tns:crearCliente"></xs:element>
 
 <xs:element name="crearClienteResponse" type="tns:crearClienteResponse"></xs:element>
+
+<xs:element name="crearSubasta" type="tns:crearSubasta"></xs:element>
+
+<xs:element name="crearSubastaResponse" type="tns:crearSubastaResponse"></xs:element>
 
 <xs:element name="misSubastas" type="tns:misSubastas"></xs:element>
 
@@ -52,6 +68,20 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="borrarSubasta">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="id" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="borrarSubastaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="misSubastas">
 <xs:sequence>
 <xs:element name="usuario" type="xs:string" minOccurs="0"></xs:element>
@@ -65,6 +95,31 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="comprobarCliente">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="comprobarClienteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarSubasta">
+<xs:sequence>
+<xs:element name="id" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultarSubastaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:subasta" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="crearCliente">
 <xs:sequence>
 <xs:element name="cliente" type="tns:usuario" minOccurs="0"></xs:element>
@@ -72,6 +127,20 @@
 </xs:complexType>
 
 <xs:complexType name="crearClienteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="crearSubasta">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="password" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="subasta" type="tns:subasta" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="crearSubastaResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"></xs:element>
 </xs:sequence>
