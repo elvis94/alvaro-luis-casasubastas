@@ -102,9 +102,8 @@ public class VerSubastas extends AbstractPageBean {
     @Override
     public void prerender()
 	{
-
+        getRequestBean1().setMensajeAyuda("Utilice la tabla para navegar por las subastas públicas");
         setListadoPublico(ServicioWebSubastas.subastasPublicas());
-
     }
 
     /**
