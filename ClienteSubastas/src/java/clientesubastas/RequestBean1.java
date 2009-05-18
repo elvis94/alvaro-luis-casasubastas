@@ -36,10 +36,14 @@ public class RequestBean1 extends AbstractRequestBean {
     }
     // </editor-fold>
 
+    private String mensajeAyuda;
+    private String titulo;
+
     /**
      * <p>Construct a new request data bean instance.</p>
      */
     public RequestBean1() {
+        titulo = "CASA DE SUBASTAS ONLINE";
     }
 
     /**
@@ -105,6 +109,34 @@ public class RequestBean1 extends AbstractRequestBean {
      */
     protected ApplicationBean1 getApplicationBean1() {
         return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    /**
+     * @return the mensajeAyuda
+     */
+    public String getMensajeAyuda() {
+        return mensajeAyuda;
+    }
+
+    /**
+     * @param mensajeAyuda the mensajeAyuda to set
+     */
+    public void setMensajeAyuda(String mensajeAyuda) {
+        this.mensajeAyuda = mensajeAyuda;
+    }
+
+    /**
+     * @return the titulo
+     */
+    public String getTitulo() {
+        return titulo;
+    }
+
+    /**
+     * @param titulo the titulo to set
+     */
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
 }

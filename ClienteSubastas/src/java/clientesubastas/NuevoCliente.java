@@ -96,6 +96,7 @@ public class NuevoCliente extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        getRequestBean1().setMensajeAyuda("Rellene el formulario con sus datos para darse de alta");
     }
 
     /**
@@ -138,6 +139,17 @@ public class NuevoCliente extends AbstractPageBean {
     protected ApplicationBean1 getApplicationBean1()
     {
         return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    public String hlSubastasPublicas_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "subastasPublicas";
+    }
+
+    public String hlIniciarSesion_action() {
+        // TODO: Replace with your code
+        return null;
     }
     
 }

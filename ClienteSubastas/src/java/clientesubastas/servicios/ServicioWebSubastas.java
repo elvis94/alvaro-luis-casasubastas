@@ -14,7 +14,7 @@ import services.*;
  */
 public class ServicioWebSubastas
 {
-    public static List subastasPublicas()
+    public static List<Subasta> subastasPublicas()
     {
         try { // Call Web Service Operation
             ServicioSubastasService service = new ServicioSubastasService();

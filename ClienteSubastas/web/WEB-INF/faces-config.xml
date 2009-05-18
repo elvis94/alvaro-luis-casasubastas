@@ -108,4 +108,11 @@
         <managed-bean-class>clientesubastas.Cabecera</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/NuevoCliente.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>subastasPublicas</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

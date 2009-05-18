@@ -14,7 +14,18 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
-                        <webuijsf:textField id="textField1" label="Usuario" style="position: absolute; left: 168px; top: 96px"/>
+                        <div>
+                            <jsp:directive.include file="Cabecera.jspf"/>
+                        </div>
+                        <div align="center" style="font-size: 18px">
+                            <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">                            
+                                <webuijsf:hyperlink actionExpression="#{NuevoCliente.hlSubastasPublicas_action}" id="hlSubastasPublicas" text="[Subastas Públicas]"/>
+                                <webuijsf:hyperlink actionExpression="#{NuevoCliente.hlIniciarSesion_action}" id="hlIniciarSesion" text="[Iniciar Sesión]"/>
+                            </webuijsf:panelGroup>
+                        </div>
+                        <hr/>
+                        <br/>
+                        <webuijsf:textField id="textField1" label="Usuario"/>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
