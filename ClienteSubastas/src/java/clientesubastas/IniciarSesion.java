@@ -5,7 +5,6 @@
 
 package clientesubastas;
 
-import com.sun.rave.faces.data.DefaultTableDataModel;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
 
@@ -16,12 +15,12 @@ import javax.faces.FacesException;
  * lifecycle methods and event handlers where you may add behavior
  * to respond to incoming events.</p>
  *
- * @version NuevoCliente.java
- * @version Created on 28-abr-2009, 1:15:34
+ * @version IniciarSesion.java
+ * @version Created on 18-may-2009, 17:28:49
  * @author Louis
  */
 
-public class NuevoCliente extends AbstractPageBean {
+public class IniciarSesion extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -37,7 +36,7 @@ public class NuevoCliente extends AbstractPageBean {
     /**
      * <p>Construct a new Page bean instance.</p>
      */
-    public NuevoCliente() {
+    public IniciarSesion() {
     }
 
     /**
@@ -66,7 +65,7 @@ public class NuevoCliente extends AbstractPageBean {
         try {
             _init();
         } catch (Exception e) {
-            log("NuevoCliente Initialization Failure", e);
+            log("IniciarSesion Initialization Failure", e);
             throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
         }
         
@@ -97,7 +96,7 @@ public class NuevoCliente extends AbstractPageBean {
      */
     @Override
     public void prerender() {
-        getRequestBean1().setMensajeAyuda("Rellene el formulario con sus datos para darse de alta");
+        getRequestBean1().setMensajeAyuda("Introduzca sus datos para acceder al sistema");
     }
 
     /**
@@ -117,18 +116,7 @@ public class NuevoCliente extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected SessionBean1 getSessionBean1()
-    {
-        return (SessionBean1) getBean("SessionBean1");
-    }
-
-    /**
-     * <p>Return a reference to the scoped data bean.</p>
-     *
-     * @return reference to the scoped data bean
-     */
-    protected RequestBean1 getRequestBean1()
-    {
+    protected RequestBean1 getRequestBean1() {
         return (RequestBean1) getBean("RequestBean1");
     }
 
@@ -137,33 +125,27 @@ public class NuevoCliente extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected ApplicationBean1 getApplicationBean1()
-    {
+    protected SessionBean1 getSessionBean1() {
+        return (SessionBean1) getBean("SessionBean1");
+    }
+
+    /**
+     * <p>Return a reference to the scoped data bean.</p>
+     *
+     * @return reference to the scoped data bean
+     */
+    protected ApplicationBean1 getApplicationBean1() {
         return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
     public String hlSubastasPublicas_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-
+        // TODO: Replace with your code
         return "subastasPublicas";
     }
 
-    public String hlIniciarSesion_action() {
+    public String hlRegistrarse_action() {
         // TODO: Replace with your code
-        return "iniciarSesion";
-    }
-
-    public String btBorrar_action() {
-        // TODO: Process the action. Return value is a navigation
-        // LIMPIAR EL FORMULARIO
-        return "limpiar";
-    }
-
-    public String btRegistrar_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
+        return "registro";
     }
     
 }

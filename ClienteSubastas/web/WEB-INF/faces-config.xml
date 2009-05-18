@@ -95,6 +95,10 @@
             <from-outcome>registro</from-outcome>
             <to-view-id>/NuevoCliente.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>iniciarSesion</from-outcome>
+            <to-view-id>/IniciarSesion.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/DetallesSubasta.jsp</from-view-id>
@@ -113,6 +117,30 @@
         <navigation-case>
             <from-outcome>subastasPublicas</from-outcome>
             <to-view-id>/VerSubastas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>iniciarSesion</from-outcome>
+            <to-view-id>/IniciarSesion.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>limpiar</from-outcome>
+            <to-view-id>/NuevoCliente.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>IniciarSesion</managed-bean-name>
+        <managed-bean-class>clientesubastas.IniciarSesion</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/IniciarSesion.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>subastasPublicas</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>registro</from-outcome>
+            <to-view-id>/NuevoCliente.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

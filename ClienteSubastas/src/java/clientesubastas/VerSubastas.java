@@ -168,7 +168,7 @@ public class VerSubastas extends AbstractPageBean {
 	{
 		// TODO: Process the action. Return value is a navigation
 		// case name where null will return to the same page.
-		return null;
+		return "iniciarSesion";
 	}
 
 	public String hlRegistrarse_action()
