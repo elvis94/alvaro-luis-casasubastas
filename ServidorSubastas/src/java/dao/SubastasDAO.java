@@ -302,11 +302,11 @@ public class SubastasDAO
         return resultado;
 	}
 
-	public boolean borrarSubasta(Subasta s)
+	public boolean borrarSubasta(int id)
 	{
 		boolean resultado = false;
 		try {
-			String consulta = "DELETE FROM DAD.SUBASTAS WHERE ID="+s.getId();
+			String consulta = "DELETE FROM DAD.SUBASTAS WHERE ID="+id;
 
             PreparedStatement ps = conexion.prepareStatement(consulta);
             int f = ps.executeUpdate();

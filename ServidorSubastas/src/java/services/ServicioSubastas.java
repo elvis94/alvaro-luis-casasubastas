@@ -9,6 +9,7 @@ import dao.SubastasDAO;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import subastas.Subasta;
 import subastas.Usuario;
 
 /**
@@ -76,4 +77,66 @@ public class ServicioSubastas
 		//TODO write your implementation code here:
 		return subastasDAO.obtenerTodasLasSubastasAbiertas();
 	}
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "comprobarCliente")
+    public boolean comprobarCliente(@WebParam(name = "usuario")
+    String usuario, @WebParam(name = "password")
+    String password) {
+        //TODO write your implementation code here:
+        return comprobarUsuario(usuario, password);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "crearSubasta")
+    public boolean crearSubasta(@WebParam(name = "usuario")
+    String usuario, @WebParam(name = "password")
+    String password, @WebParam(name = "subasta")
+    Subasta subasta) {
+        //TODO write your implementation code here:
+        if(comprobarUsuario(usuario, password)) {
+            // Insertar el usuario
+            Usuario subastador = subastasDAO.obtenerUsuario(usuario);
+            subasta.setSubastador(subastador);
+            // Preparar el objeto de subasta
+			return subastasDAO.insertarSubasta(subasta);
+        } else
+			return false;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "consultarSubasta")
+    public Subasta consultarSubasta(@WebParam(name = "id")
+    int id) {
+        //TODO write your implementation code here:
+        Subasta sub = subastasDAO.obtenerSubasta(id);
+        if(sub != null)
+        {
+            sub.getSubastador().setClave(null);
+            if(sub.getPujadorActual() != null)
+                sub.getPujadorActual().setClave(null);
+        }
+        return sub;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "borrarSubasta")
+    public boolean borrarSubasta(@WebParam(name = "usuario")
+    String usuario, @WebParam(name = "password")
+    String password, @WebParam(name = "id")
+    int id) {
+        //TODO write your implementation code here:
+        if(comprobarUsuario(usuario, password))
+			return subastasDAO.borrarSubasta(id);
+		else
+			return false;
+    }
 }
