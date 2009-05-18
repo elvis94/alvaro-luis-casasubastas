@@ -4,17 +4,17 @@
 <xsd:import namespace="http://services/" schemaLocation="http://localhost:8080/ServidorSubastas/ServicioSubastasService?xsd=1"></xsd:import>
 </xsd:schema>
 </types>
-<message name="misSubastas">
-<part name="parameters" element="tns:misSubastas"></part>
-</message>
-<message name="misSubastasResponse">
-<part name="parameters" element="tns:misSubastasResponse"></part>
-</message>
 <message name="crearCliente">
 <part name="parameters" element="tns:crearCliente"></part>
 </message>
 <message name="crearClienteResponse">
 <part name="parameters" element="tns:crearClienteResponse"></part>
+</message>
+<message name="misSubastas">
+<part name="parameters" element="tns:misSubastas"></part>
+</message>
+<message name="misSubastasResponse">
+<part name="parameters" element="tns:misSubastasResponse"></part>
 </message>
 <message name="subastasPublicas">
 <part name="parameters" element="tns:subastasPublicas"></part>
@@ -22,31 +22,62 @@
 <message name="subastasPublicasResponse">
 <part name="parameters" element="tns:subastasPublicasResponse"></part>
 </message>
+<message name="comprobarCliente">
+<part name="parameters" element="tns:comprobarCliente"></part>
+</message>
+<message name="comprobarClienteResponse">
+<part name="parameters" element="tns:comprobarClienteResponse"></part>
+</message>
+<message name="crearSubasta">
+<part name="parameters" element="tns:crearSubasta"></part>
+</message>
+<message name="crearSubastaResponse">
+<part name="parameters" element="tns:crearSubastaResponse"></part>
+</message>
+<message name="consultarSubasta">
+<part name="parameters" element="tns:consultarSubasta"></part>
+</message>
+<message name="consultarSubastaResponse">
+<part name="parameters" element="tns:consultarSubastaResponse"></part>
+</message>
+<message name="borrarSubasta">
+<part name="parameters" element="tns:borrarSubasta"></part>
+</message>
+<message name="borrarSubastaResponse">
+<part name="parameters" element="tns:borrarSubastaResponse"></part>
+</message>
 <portType name="ServicioSubastas">
-<operation name="misSubastas">
-<input message="tns:misSubastas"></input>
-<output message="tns:misSubastasResponse"></output>
-</operation>
 <operation name="crearCliente">
 <input message="tns:crearCliente"></input>
 <output message="tns:crearClienteResponse"></output>
+</operation>
+<operation name="misSubastas">
+<input message="tns:misSubastas"></input>
+<output message="tns:misSubastasResponse"></output>
 </operation>
 <operation name="subastasPublicas">
 <input message="tns:subastasPublicas"></input>
 <output message="tns:subastasPublicasResponse"></output>
 </operation>
+<operation name="comprobarCliente">
+<input message="tns:comprobarCliente"></input>
+<output message="tns:comprobarClienteResponse"></output>
+</operation>
+<operation name="crearSubasta">
+<input message="tns:crearSubasta"></input>
+<output message="tns:crearSubastaResponse"></output>
+</operation>
+<operation name="consultarSubasta">
+<input message="tns:consultarSubasta"></input>
+<output message="tns:consultarSubastaResponse"></output>
+</operation>
+<operation name="borrarSubasta">
+<input message="tns:borrarSubasta"></input>
+<output message="tns:borrarSubastaResponse"></output>
+</operation>
 </portType>
 <binding name="ServicioSubastasPortBinding" type="tns:ServicioSubastas">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
-<operation name="misSubastas">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
 <operation name="crearCliente">
 <soap:operation soapAction=""></soap:operation>
 <input>
@@ -56,7 +87,52 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
+<operation name="misSubastas">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
 <operation name="subastasPublicas">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="comprobarCliente">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="crearSubasta">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="consultarSubasta">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="borrarSubasta">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>

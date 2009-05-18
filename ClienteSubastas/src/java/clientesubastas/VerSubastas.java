@@ -5,13 +5,10 @@
 
 package clientesubastas;
 
+import clientesubastas.servicios.ServicioWebSubastas;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.webui.jsf.model.DefaultOptionsList;
-import com.sun.webui.jsf.model.DefaultTableDataProvider;
 import java.util.List;
 import javax.faces.FacesException;
-import javax.xml.ws.WebServiceRef;
-import services.ServicioSubastasService;
 import services.Subasta;
 
 /**
@@ -27,8 +24,7 @@ import services.Subasta;
  */
 
 public class VerSubastas extends AbstractPageBean {
-	@WebServiceRef(wsdlLocation = "WEB-INF/wsdl/client/ServicioSubastasService/localhost_8080/ServidorSubastas/ServicioSubastasService.wsdl")
-	private ServicioSubastasService service;
+	
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
     /**
@@ -107,18 +103,7 @@ public class VerSubastas extends AbstractPageBean {
     public void prerender()
 	{
 
-		try
-		{ // Call Web Service Operation
-			services.ServicioSubastas port = service.getServicioSubastasPort();
-			// TODO process result here
-			java.util.List<services.Subasta> result = port.subastasPublicas();
-			//System.out.println("Result = "+result);
-			setListadoPublico(result);
-		}
-		catch (Exception ex)
-		{
-			// TODO handle custom exceptions here
-		}
+        setListadoPublico(ServicioWebSubastas.subastasPublicas());
 
     }
 
