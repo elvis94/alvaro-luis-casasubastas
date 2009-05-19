@@ -9,11 +9,11 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1">
+                <webuijsf:head id="head1" title="Nuevo cliente">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
-                    <webuijsf:form id="form1">
+                    <webuijsf:form id="formularioRegistro">
                         <div>
                             <jsp:directive.include file="Cabecera.jspf"/>
                         </div>
@@ -29,71 +29,79 @@
                             <tbody>
                                 <tr>
                                     <td width="200px">
-                                        <webuijsf:label id="label1" text="Usuario:"/>
+                                        <webuijsf:label for="txtUsuario" id="label1" text="Usuario:"/>
                                     </td>
                                     <td>
                                         <webuijsf:textField columns="40" id="txtUsuario" required="true"/>
+                                        <webuijsf:message for="txtUsuario" id="message2" showDetail="false" showSummary="true"/>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <webuijsf:label id="label2" text="Contraseña:"/>
+                                    <td style="height: 15px">
+                                        <webuijsf:label for="passClave" id="label2" text="Contraseña:"/>
                                     </td>
                                     <td>
                                         <webuijsf:passwordField columns="40" id="passClave" required="true"/>
+                                        <webuijsf:message for="passClave" id="message3" showDetail="false" showSummary="true"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <webuijsf:label id="label3" text="Repita su contraseña:"/>
+                                        <webuijsf:label for="passClaveRepetida" id="label3" text="Repita su contraseña:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:passwordField columns="40" id="passClaveRepetida" required="true"/>
+                                        <webuijsf:passwordField columns="40" id="passClaveRepetida" required="true" validatorExpression="#{NuevoCliente.passClaveRepetida_validate}"/>
+                                        <webuijsf:message for="passClaveRepetida" id="message1" showDetail="false" showSummary="true"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <webuijsf:label id="label4" text="e-mail:"/>
+                                        <webuijsf:label for="txtEmail" id="label4" text="e-mail:"/>
                                     </td>
                                     <td>
                                         <webuijsf:textField columns="100" id="txtEmail" required="true"/>
+                                        <webuijsf:message for="txtEmail" id="message4" showDetail="false" showSummary="true"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <webuijsf:label id="label5" text="Pais:"/>
+                                        <webuijsf:label for="txtPais" id="label5" text="Pais:"/>
                                     </td>
                                     <td>
                                         <webuijsf:textField columns="30" id="txtPais" required="true"/>
+                                        <webuijsf:message for="txtPais" id="message5" showDetail="false" showSummary="true"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <webuijsf:label id="label6" text="Localidad:"/>
+                                        <webuijsf:label for="txtLocalidad" id="label6" text="Localidad:"/>
                                     </td>
                                     <td>
                                         <webuijsf:textField columns="50" id="txtLocalidad" required="true"/>
+                                        <webuijsf:message for="txtLocalidad" id="message6" showDetail="false" showSummary="true"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <webuijsf:label id="label7" text="Calle:"/>
+                                        <webuijsf:label for="txtCalle" id="label7" text="Calle:"/>
                                     </td>
                                     <td>
                                         <webuijsf:textField columns="100" id="txtCalle" required="true"/>
+                                        <webuijsf:message for="txtCalle" id="message7" showDetail="false" showSummary="true"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <webuijsf:label id="label8" text="Nombre:"/>
+                                        <webuijsf:label for="txtNombre" id="label8" text="Nombre:"/>
                                     </td>
                                     <td>
                                         <webuijsf:textField columns="60" id="txtNombre" required="true"/>
+                                        <webuijsf:message for="txtNombre" id="message8" showDetail="false" showSummary="true"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <webuijsf:label id="label9" text="Apellidos"/>
+                                        <webuijsf:label for="txtApellidos" id="label9" text="Apellidos:"/>
                                     </td>
                                     <td>
                                         <webuijsf:textField columns="60" id="txtApellidos"/>
