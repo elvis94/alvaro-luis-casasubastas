@@ -8,6 +8,10 @@ package clientesubastas;
 import com.sun.rave.faces.data.DefaultTableDataModel;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -163,7 +167,15 @@ public class NuevoCliente extends AbstractPageBean {
     public String btRegistrar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        
+        System.out.println("SE HA DESENCADENADO EL EVENTO DEL BOTON");
+        // AQUÍ NO SE LLEGA SI NO SE HAN COMPLETADO CON ÉXITO TODAS LAS
+        //    VALIDACIONES
         return null;
+    }
+
+    public void passClaveRepetida_validate(FacesContext context, UIComponent component, Object value) {
+        throw new ValidatorException(new FacesMessage("Está mal pongas lo que pongas"));
     }
     
 }
