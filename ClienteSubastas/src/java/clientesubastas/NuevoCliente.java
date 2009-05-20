@@ -7,6 +7,9 @@ package clientesubastas;
 
 import com.sun.rave.faces.data.DefaultTableDataModel;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.PasswordField;
+import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -34,6 +37,105 @@ public class NuevoCliente extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+    }
+    private TextField txtUsuario = new TextField();
+
+    public TextField getTxtUsuario() {
+        return txtUsuario;
+    }
+
+    public void setTxtUsuario(TextField tf) {
+        this.txtUsuario = tf;
+    }
+    private PasswordField passClave = new PasswordField();
+
+    public PasswordField getPassClave() {
+        return passClave;
+    }
+
+    public void setPassClave(PasswordField pf) {
+        this.passClave = pf;
+    }
+    private PasswordField passClaveRepetida = new PasswordField();
+
+    public PasswordField getPassClaveRepetida() {
+        return passClaveRepetida;
+    }
+
+    public void setPassClaveRepetida(PasswordField pf) {
+        this.passClaveRepetida = pf;
+    }
+    private TextField txtEmail = new TextField();
+
+    public TextField getTxtEmail() {
+        return txtEmail;
+    }
+
+    public void setTxtEmail(TextField tf) {
+        this.txtEmail = tf;
+    }
+    private TextField txtPais = new TextField();
+
+    public TextField getTxtPais() {
+        return txtPais;
+    }
+
+    public void setTxtPais(TextField tf) {
+        this.txtPais = tf;
+    }
+    private TextField txtLocalidad = new TextField();
+
+    public TextField getTxtLocalidad() {
+        return txtLocalidad;
+    }
+
+    public void setTxtLocalidad(TextField tf) {
+        this.txtLocalidad = tf;
+    }
+    private TextField txtCalle = new TextField();
+
+    public TextField getTxtCalle() {
+        return txtCalle;
+    }
+
+    public void setTxtCalle(TextField tf) {
+        this.txtCalle = tf;
+    }
+    private TextField txtNombre = new TextField();
+
+    public TextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(TextField tf) {
+        this.txtNombre = tf;
+    }
+    private TextField txtApellidos = new TextField();
+
+    public TextField getTxtApellidos() {
+        return txtApellidos;
+    }
+
+    public void setTxtApellidos(TextField tf) {
+        this.txtApellidos = tf;
+    }
+    private Button btRegistrar = new Button();
+
+    public Button getBtRegistrar() {
+        return btRegistrar;
+    }
+
+    public void setBtRegistrar(Button b) {
+        this.btRegistrar = b;
+    }
+    private Button btBorrar = new Button();
+
+    public Button getBtBorrar() {
+        return btBorrar;
+    }
+
+    public void setBtBorrar(Button b) {
+        this.btBorrar = b;
     }
 
     // </editor-fold>
@@ -161,6 +263,16 @@ public class NuevoCliente extends AbstractPageBean {
     public String btBorrar_action() {
         // TODO: Process the action. Return value is a navigation
         // LIMPIAR EL FORMULARIO
+        txtUsuario.resetValue();
+        passClave.resetValue();
+        passClaveRepetida.resetValue();
+        txtEmail.resetValue();
+        txtPais.resetValue();
+        txtLocalidad.resetValue();
+        txtCalle.resetValue();
+        txtNombre.resetValue();
+        txtApellidos.resetValue();
+
         return "limpiar";
     }
 
@@ -176,6 +288,14 @@ public class NuevoCliente extends AbstractPageBean {
 
     public void passClaveRepetida_validate(FacesContext context, UIComponent component, Object value) {
         throw new ValidatorException(new FacesMessage("Está mal pongas lo que pongas"));
+    }
+
+    public void txtEmail_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if(!s.matches("\\w+((-\\w+)|(\\.\\w+)|(\\_\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z]{2,5}"))
+            throw new ValidatorException(new FacesMessage
+                    ("No es una dirección de correo válida."));
+
     }
     
 }
