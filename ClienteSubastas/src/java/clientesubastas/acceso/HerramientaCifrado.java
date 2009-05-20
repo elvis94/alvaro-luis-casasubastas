@@ -5,16 +5,21 @@
 
 package clientesubastas.acceso;
 
+import java.security.MessageDigest;
+
 /**
  *
- * @author Louis
+ * @author 
  */
 public class HerramientaCifrado
 {
     public static String cifrar(String stringParaCifrar)
     {
-        // Implementar el código de cifrado
-        //   de momento, no se cifra nada...
-        return stringParaCifrar;
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            return new String(md.digest(stringParaCifrar.getBytes()));
+        } catch (Exception ex) {
+            return "";
+        }
     }
 }
