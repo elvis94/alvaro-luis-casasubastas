@@ -105,6 +105,24 @@ public class SubastasDAO
         return usu;
     }
 
+    public boolean isUsuario(String user)
+    {
+        boolean isInserted = true;
+        try {
+            String consulta = "SELECT COUNT(usuario) AS total FROM DAD.CLIENTES WHERE USUARIO = '"+user+"'";
+
+            PreparedStatement ps = conexion.prepareStatement(consulta);
+            ResultSet rs = ps.executeQuery();
+
+            rs.next();
+            isInserted = rs.getInt("total") > 0? true:false;
+
+            ps.close();
+        } catch (SQLException ex) { }
+
+        return isInserted;
+    }
+
 	public Subasta[] obtenerTodasLasSubastas()
 	{
 		ArrayList<Subasta> subs = new ArrayList<Subasta>();

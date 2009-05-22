@@ -139,4 +139,14 @@ public class ServicioSubastas
 		else
 			return false;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "isUsuarioInserted")
+    public Boolean isUsuarioInserted(@WebParam(name = "Usuario")
+    String Usuario) {
+        if(Usuario==null || Usuario.isEmpty()) return false;
+        else return subastasDAO.isUsuario(Usuario);
+    }
 }
