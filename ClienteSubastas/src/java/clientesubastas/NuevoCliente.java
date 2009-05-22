@@ -10,7 +10,9 @@ import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.Button;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.PasswordField;
+import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextField;
+import com.sun.webui.jsf.model.Option;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
@@ -27,7 +29,7 @@ import javax.faces.validator.ValidatorException;
  *
  * @version NuevoCliente.java
  * @version Created on 28-abr-2009, 1:15:34
- * @author Louis
+ * @author 
  */
 
 public class NuevoCliente extends AbstractPageBean {
@@ -139,9 +141,17 @@ public class NuevoCliente extends AbstractPageBean {
     public void setListPais(DropDown dd) {
         this.listPais = dd;
     }
+    private StaticText outText = new StaticText();
+
+    public StaticText getOutText() {
+        return outText;
+    }
+
+    public void setOutText(StaticText st) {
+        this.outText = st;
+    }
 
     // </editor-fold>
-
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -167,7 +177,7 @@ public class NuevoCliente extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
-        
+
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
         // *Note* - this logic should NOT be modified
@@ -175,13 +185,13 @@ public class NuevoCliente extends AbstractPageBean {
             _init();
         } catch (Exception e) {
             log("NuevoCliente Initialization Failure", e);
-            throw e instanceof FacesException ? (FacesException) e: new FacesException(e);
+            throw e instanceof FacesException ? (FacesException) e : new FacesException(e);
         }
-        
-        // </editor-fold>
-        // Perform application initialization that must complete
-        // *after* managed components are initialized
-        // TODO - add your own initialization code here
+
+    // </editor-fold>
+    // Perform application initialization that must complete
+    // *after* managed components are initialized
+    // TODO - add your own initialization code here
     }
 
     /**
@@ -206,6 +216,7 @@ public class NuevoCliente extends AbstractPageBean {
     @Override
     public void prerender() {
         getRequestBean1().setMensajeAyuda("Rellene el formulario con sus datos para darse de alta");
+        //listPais.
     }
 
     /**
@@ -225,8 +236,7 @@ public class NuevoCliente extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected SessionBean1 getSessionBean1()
-    {
+    protected SessionBean1 getSessionBean1() {
         return (SessionBean1) getBean("SessionBean1");
     }
 
@@ -235,8 +245,7 @@ public class NuevoCliente extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected RequestBean1 getRequestBean1()
-    {
+    protected RequestBean1 getRequestBean1() {
         return (RequestBean1) getBean("RequestBean1");
     }
 
@@ -245,8 +254,7 @@ public class NuevoCliente extends AbstractPageBean {
      *
      * @return reference to the scoped data bean
      */
-    protected ApplicationBean1 getApplicationBean1()
-    {
+    protected ApplicationBean1 getApplicationBean1() {
         return (ApplicationBean1) getBean("ApplicationBean1");
     }
 
@@ -263,8 +271,93 @@ public class NuevoCliente extends AbstractPageBean {
     }
 
     public String btBorrar_action() {
-        // TODO: Process the action. Return value is a navigation
-        // LIMPIAR EL FORMULARIO
+
+        limpiarCampos();
+        return "limpiar";
+    }
+
+    public String btRegistrar_action() {
+        clientesubastas.servicios.ServicioWebSubastas.nuevoUsuario(
+                (String) txtUsuario.getText(),
+                clientesubastas.acceso.HerramientaCifrado.cifrar((String) passClave.getText()),
+                (String) txtEmail.getText(),
+                (String) txtNombre.getText(),
+                (String) txtApellidos.getText(),
+                (String) txtCalle.getText(),
+                (String) txtLocalidad.getText(),
+                (String)(listPais.getValue()));
+
+
+
+        outText.setText("Usuario registrado");
+
+        limpiarCampos();
+
+        return "Usuario creado";
+    }
+
+    public void passClaveRepetida_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (!s.equals((String) passClave.getLocalValue())) {
+            throw new ValidatorException(new FacesMessage("Las contraseñas deben coincidir"));
+        }
+    }
+
+    public void txtEmail_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (!s.matches("\\w+((-[A-Za-z0-9]+)|(\\.[A-Za-z0-9]+)|(\\_[A-Za-z0-9]+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z]{2,5}")) {
+            throw new ValidatorException(new FacesMessage("No es una dirección de correo válida."));
+        }
+
+    }
+
+    public void txtUsuario_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (s.length() < 4 || !s.matches("\\w+\\s*\\w+")) {
+            throw new ValidatorException(new FacesMessage("Usuario no válidos"));
+        }
+
+        if(clientesubastas.servicios.ServicioWebSubastas.usuarioUsado(s))
+            throw new ValidatorException(new FacesMessage("Usuario ya registrado, elija otro por favor"));
+    }
+
+    public void passClave_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (s.length() < 8) {
+            throw new ValidatorException(new FacesMessage("La contraseña tiene que ser de al menos 8 caracteres"));
+        }
+    }
+
+    public void txtLocalidad_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (s.length() < 4 || !s.matches("\\w+\\s*\\w+")) {
+            throw new ValidatorException(new FacesMessage("Localidad incorrecta"));
+        }
+    }
+
+    public void txtCalle_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (s.length() < 8) {
+            throw new ValidatorException(new FacesMessage("Calle no válida"));
+        }
+    }
+
+    public void txtNombre_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (s.length() < 4 || !s.matches("\\w+")) {
+            throw new ValidatorException(new FacesMessage("Nombre inválido"));
+        }
+    }
+
+    public void txtApellidos_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (!s.matches("\\w+\\s*\\w+")) {
+            throw new ValidatorException(new FacesMessage("Apellidos no válidos"));
+        }
+    }
+
+    private void limpiarCampos()
+    {
         txtUsuario.resetValue();
         passClave.resetValue();
         passClaveRepetida.resetValue();
@@ -274,31 +367,6 @@ public class NuevoCliente extends AbstractPageBean {
         txtCalle.resetValue();
         txtNombre.resetValue();
         txtApellidos.resetValue();
-
-        return "limpiar";
     }
-
-    public String btRegistrar_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        
-        System.out.println("SE HA DESENCADENADO EL EVENTO DEL BOTON");
-        // AQUÍ NO SE LLEGA SI NO SE HAN COMPLETADO CON ÉXITO TODAS LAS
-        //    VALIDACIONES
-        return null;
-    }
-
-    public void passClaveRepetida_validate(FacesContext context, UIComponent component, Object value) {
-        throw new ValidatorException(new FacesMessage("Está mal pongas lo que pongas"));
-    }
-
-    public void txtEmail_validate(FacesContext context, UIComponent component, Object value) {
-        String s = String.valueOf(value);
-        if(!s.matches("\\w+((-\\w+)|(\\.\\w+)|(\\_\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z]{2,5}"))
-            throw new ValidatorException(new FacesMessage
-                    ("No es una dirección de correo válida."));
-
-    }
-    
 }
 
