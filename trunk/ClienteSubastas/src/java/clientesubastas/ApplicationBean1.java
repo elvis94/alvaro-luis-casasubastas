@@ -6,6 +6,7 @@
 package clientesubastas;
 
 import com.sun.rave.web.ui.appbase.AbstractApplicationBean;
+import com.sun.webui.jsf.model.Option;
 import javax.faces.FacesException;
 
 /**
@@ -38,7 +39,10 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     /**
      * <p>Construct a new application data bean instance.</p>
      */
+    private Option[] paises;
+
     public ApplicationBean1() {
+        inicializarPaises();
     }
 
     /**
@@ -102,5 +106,64 @@ public class ApplicationBean1 extends AbstractApplicationBean {
     @Override
     public String getLocaleCharacterEncoding() {
         return super.getLocaleCharacterEncoding();
+    }
+
+    private void inicializarPaises()
+    {
+        paises= new Option[]{new Option("España"),
+new Option("Afghanistán"), new Option("Albania"), new Option("Alemania"),new Option("Argeria"),
+new Option("Andorra"), new Option("Angola"), new Option("Antigua y Barbuda"), new Option("Argentina"),
+new Option("Armenia"), new Option("Australia"), new Option("Austria"), new Option("Azerbaiyán"),
+new Option("Bahamas"), new Option("Bahréin"), new Option("Bangladesh"), new Option("Barbados"),
+new Option("Bélgica"), new Option("Belice"), new Option("Benín"),
+new Option("Bolivia"), new Option("Bosnia y Hercegovina"),
+new Option("Brasil"), new Option("Brunei"), new Option("Bulgaria"),
+new Option("Canadá"), new Option("Chile"), new Option("China"), new Option("Colombia"), new Option("Costa Rica"),
+new Option("Croacia"), new Option("Cuba"), new Option("Denmark"), new Option("Ecuador"), new Option("Egipto"), 
+new Option("Eslovaquia"), new Option("Eslovenia"), new Option("El Salvador"), new Option("Estados Unidos"),
+new Option("Estonia"), new Option("Etiopía"), new Option("Filipinas"), new Option("Finlandia"),
+new Option("Francia"),new Option("Gambia"), new Option("Georgia"), new Option("Ghana"),
+new Option("Greece"), new Option("Greenland"), new Option("Grenada"), new Option("Guatemala"),
+new Option("Guinea"), new Option("Haití"), new Option("Holanda"), new Option("Honduras"),
+new Option("Hong Kong"), new Option("Hungría"), new Option("India"),
+new Option("Indonesia"), new Option("Irán"), new Option("Iraq"), new Option("Ireland"),
+new Option("Israel"), new Option("Islandia"), new Option("Italia"), new Option("Jamaica"), new Option("Japón"),
+new Option("Jordania"), new Option("Kazakhstán"), new Option("Kenya"),
+new Option("Korea"), new Option("Korea"), new Option("Kuwait"), new Option("Kyrgyzstan"),
+new Option("Libia"), new Option("Liechtenstein"), new Option("Lituania"), new Option("Luxemburgo"),
+new Option("Macedonia"), new Option("Madagascar"), new Option("Malawi"), new Option("Malasia"),
+new Option("Malí"), new Option("Malta"), new Option("Marruecos"), new Option("Mauritania"), new Option("México"),
+new Option("Micronesia"), new Option("Mongolia"), new Option("Mónaco"),
+new Option("Mozambique"), new Option("Namibia"), new Option("Nepal"),
+new Option("Nicaragua"), new Option("Niger"), new Option("Nigeria"), new Option("Noruega"),
+new Option("Nueva Zelanda"), new Option("Omán"), new Option("Otro"), new Option("Pakistán"),
+new Option("Panamá"), new Option("Paraguay"), new Option("Perú"),
+new Option("Polonia"), new Option("Portugal"), new Option("Qatar"), new Option("Reino Unido"),
+new Option("Rumania"), new Option("Rusia"), new Option("Rwanda"), new Option("Samoa"),
+new Option("San Marino"), new Option("Senegal"),
+new Option("Serbia y Montenegro"), new Option("Seychelles"), new Option("Sierra Leone"),
+new Option("Singapúr"),  new Option("Somalia"), new Option("Sri Lanka"), new Option("Sudáfrica"),
+new Option("Sudan"), new Option("Suecia"), new Option("Suiza"), new Option("Syria"),
+new Option("Taiwan"), new Option("Tajikistán"),
+new Option("Tanzania"), new Option("Thailandia"), new Option("Trinidad y Tobago"),
+new Option("Turkia"), new Option("Uganda"), new Option("Ukrania"),
+new Option("Uruguay"), new Option("Uzbekistán"), new Option("Venezuela"), new Option("Vietnam"),
+new Option("Yemen"), new Option("Zambia"), new Option("Zimbagüe")
+        };
+        
+    }
+
+    /**
+     * @return the paises
+     */
+    public Option[] getPaises() {
+        return paises;
+    }
+
+    /**
+     * @param paises the paises to set
+     */
+    public void setPaises(Option[] paises) {
+        this.paises = paises;
     }
 }
