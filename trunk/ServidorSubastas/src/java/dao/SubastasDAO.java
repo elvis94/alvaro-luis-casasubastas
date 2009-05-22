@@ -47,7 +47,7 @@ public class SubastasDAO
             String consulta = "INSERT INTO DAD.CLIENTES (USUARIO, CLAVE, EMAIL, NOMBRE, APELLIDOS, DIRECCION, CIUDAD, PAIS) VALUES ('"+
             	u.getUsuario()+"', '"+u.getClave()+"', '"+
                 u.getEmail()+"', '"+u.getNombre()+"', '"+
-                u.getApellidos()+"', '"+u.getDireccion()+
+                u.getApellidos()+"', '"+u.getDireccion()+"', '"+
                 u.getCiudad()+"', '"+u.getPais()+"')";
 
             PreparedStatement ps = conexion.prepareStatement(consulta);
