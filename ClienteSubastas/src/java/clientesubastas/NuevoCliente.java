@@ -8,8 +8,10 @@ package clientesubastas;
 import com.sun.rave.faces.data.DefaultTableDataModel;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.PasswordField;
 import com.sun.webui.jsf.component.TextField;
+import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -74,15 +76,6 @@ public class NuevoCliente extends AbstractPageBean {
     public void setTxtEmail(TextField tf) {
         this.txtEmail = tf;
     }
-    private TextField txtPais = new TextField();
-
-    public TextField getTxtPais() {
-        return txtPais;
-    }
-
-    public void setTxtPais(TextField tf) {
-        this.txtPais = tf;
-    }
     private TextField txtLocalidad = new TextField();
 
     public TextField getTxtLocalidad() {
@@ -136,6 +129,15 @@ public class NuevoCliente extends AbstractPageBean {
 
     public void setBtBorrar(Button b) {
         this.btBorrar = b;
+    }
+    private DropDown listPais = new DropDown();
+
+    public DropDown getListPais() {
+        return listPais;
+    }
+
+    public void setListPais(DropDown dd) {
+        this.listPais = dd;
     }
 
     // </editor-fold>
@@ -267,7 +269,7 @@ public class NuevoCliente extends AbstractPageBean {
         passClave.resetValue();
         passClaveRepetida.resetValue();
         txtEmail.resetValue();
-        txtPais.resetValue();
+        listPais.resetValue();
         txtLocalidad.resetValue();
         txtCalle.resetValue();
         txtNombre.resetValue();
