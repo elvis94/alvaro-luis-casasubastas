@@ -7,6 +7,7 @@ package clientesubastas;
 
 import clientesubastas.servicios.ServicioWebSubastas;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.Hyperlink;
 import java.util.List;
 import javax.faces.FacesException;
 import services.Subasta;
@@ -38,6 +39,51 @@ public class VerSubastas extends AbstractPageBean {
     // </editor-fold>
 
 	private List<Subasta> listadoPublico;
+    private Hyperlink hlIniciarSesion = new Hyperlink();
+
+    public Hyperlink getHlIniciarSesion() {
+        return hlIniciarSesion;
+    }
+
+    public void setHlIniciarSesion(Hyperlink h) {
+        this.hlIniciarSesion = h;
+    }
+    private Hyperlink hlRegistrarse = new Hyperlink();
+
+    public Hyperlink getHlRegistrarse() {
+        return hlRegistrarse;
+    }
+
+    public void setHlRegistrarse(Hyperlink h) {
+        this.hlRegistrarse = h;
+    }
+    private Hyperlink hlMisSubastas = new Hyperlink();
+
+    public Hyperlink getHlMisSubastas() {
+        return hlMisSubastas;
+    }
+
+    public void setHlMisSubastas(Hyperlink h) {
+        this.hlMisSubastas = h;
+    }
+    private Hyperlink hlNuevaSubasta = new Hyperlink();
+
+    public Hyperlink getHlNuevaSubasta() {
+        return hlNuevaSubasta;
+    }
+
+    public void setHlNuevaSubasta(Hyperlink h) {
+        this.hlNuevaSubasta = h;
+    }
+    private Hyperlink hlCerrarSesion = new Hyperlink();
+
+    public Hyperlink getHlCerrarSesion() {
+        return hlCerrarSesion;
+    }
+
+    public void setHlCerrarSesion(Hyperlink h) {
+        this.hlCerrarSesion = h;
+    }
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -104,6 +150,15 @@ public class VerSubastas extends AbstractPageBean {
 	{
         getRequestBean1().setMensajeAyuda("Utilice la tabla para navegar por las subastas públicas");
         //setListadoPublico(ServicioWebSubastas.subastasPublicas());
+        if(getSessionBean1().getDatosPersonalesSesion() != null) {
+            hlIniciarSesion.setVisible(false);
+            hlRegistrarse.setVisible(false);
+        }
+        else {
+            hlMisSubastas.setVisible(false);
+            hlNuevaSubasta.setVisible(false);
+            hlCerrarSesion.setVisible(false);
+        }
     }
 
     /**
@@ -177,6 +232,29 @@ public class VerSubastas extends AbstractPageBean {
 		// case name where null will return to the same page.
 		return "registro";
 	}
+
+    public String hlCerrarSesion_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        getSessionBean1().setDatosPersonalesSesion(null);
+        
+        hlIniciarSesion.setVisible(true);
+        hlRegistrarse.setVisible(true);
+
+        return null;
+    }
+
+    public String hlMisSubastas_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String hlNuevaSubasta_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
     
 }
 

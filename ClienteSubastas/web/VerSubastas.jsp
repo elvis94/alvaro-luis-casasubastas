@@ -9,7 +9,7 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1">
+                <webuijsf:head id="head1" title="Subastas públicas">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid;">
@@ -19,8 +19,16 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlIniciarSesion_action}" id="hlIniciarSesion" text="[Iniciar Sesión]"/>
-                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlRegistrarse_action}" id="hlRegistrarse" text="[Registrarse]"/>
+                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlIniciarSesion_action}" binding="#{VerSubastas.hlIniciarSesion}"
+                                    id="hlIniciarSesion" text="[Iniciar Sesión]"/>
+                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlRegistrarse_action}" binding="#{VerSubastas.hlRegistrarse}"
+                                    id="hlRegistrarse" text="[Registrarse]"/>
+                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlMisSubastas_action}" binding="#{VerSubastas.hlMisSubastas}"
+                                    id="hlMisSubastas" text="[Mis Subastas]"/>
+                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlNuevaSubasta_action}" binding="#{VerSubastas.hlNuevaSubasta}"
+                                    id="hlNuevaSubasta" text="[Nueva Subasta]"/>
+                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlCerrarSesion_action}" binding="#{VerSubastas.hlCerrarSesion}"
+                                    id="hlCerrarSesion" text="[Cerrar Sesión]"/>
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>

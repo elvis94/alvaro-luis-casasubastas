@@ -14,10 +14,10 @@ import services.*;
 public class ServicioWebSubastas {
 
     public static List<Subasta> subastasPublicas() {
-        try { // Call Web Service Operation
+        try {
             ServicioSubastasService service = new ServicioSubastasService();
             ServicioSubastas port = service.getServicioSubastasPort();
-            // TODO process result here
+
             List<Subasta> result = port.subastasPublicas();
             return result;
         } catch (Exception ex) {
@@ -45,7 +45,7 @@ public class ServicioWebSubastas {
 
     public static boolean nuevoUsuario(Usuario user) {
 
-        try { // Call Web Service Operation
+        try {
             ServicioSubastasService service = new services.ServicioSubastasService();
             ServicioSubastas port = service.getServicioSubastasPort();
 
@@ -59,17 +59,34 @@ public class ServicioWebSubastas {
 
     public static boolean usuarioUsado(String usuario)
     {
-        boolean isInserted=true;
+        boolean isInserted = true;
+
         try {
             services.ServicioSubastasService service = new services.ServicioSubastasService();
             services.ServicioSubastas port = service.getServicioSubastasPort();
 
             isInserted = port.isUsuarioInserted(usuario);
-
+            
         } catch (Exception ex) {
             // TODO handle custom exceptions here
         }
 
         return isInserted;
+    }
+
+    public static boolean comprobarCliente(String usuario, String password)
+    {
+        boolean resultado = false;
+
+        try {
+            services.ServicioSubastasService service = new services.ServicioSubastasService();
+            services.ServicioSubastas port = service.getServicioSubastasPort();
+
+            resultado = port.comprobarCliente(usuario, password);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
+
+        return resultado;
     }
 }

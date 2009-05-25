@@ -20,6 +20,10 @@
 
 <xs:element name="crearSubastaResponse" type="tns:crearSubastaResponse"></xs:element>
 
+<xs:element name="isUsuarioInserted" type="tns:isUsuarioInserted"></xs:element>
+
+<xs:element name="isUsuarioInsertedResponse" type="tns:isUsuarioInsertedResponse"></xs:element>
+
 <xs:element name="misSubastas" type="tns:misSubastas"></xs:element>
 
 <xs:element name="misSubastasResponse" type="tns:misSubastasResponse"></xs:element>
@@ -79,6 +83,18 @@
 <xs:complexType name="borrarSubastaResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="isUsuarioInserted">
+<xs:sequence>
+<xs:element name="Usuario" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="isUsuarioInsertedResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"></xs:element>
 </xs:sequence>
 </xs:complexType>
 

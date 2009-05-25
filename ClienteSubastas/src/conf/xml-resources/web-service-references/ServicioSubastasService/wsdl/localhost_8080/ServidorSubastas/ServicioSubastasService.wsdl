@@ -4,6 +4,12 @@
 <xsd:import namespace="http://services/" schemaLocation="http://localhost:8080/ServidorSubastas/ServicioSubastasService?xsd=1"></xsd:import>
 </xsd:schema>
 </types>
+<message name="subastasPublicas">
+<part name="parameters" element="tns:subastasPublicas"></part>
+</message>
+<message name="subastasPublicasResponse">
+<part name="parameters" element="tns:subastasPublicasResponse"></part>
+</message>
 <message name="crearCliente">
 <part name="parameters" element="tns:crearCliente"></part>
 </message>
@@ -15,12 +21,6 @@
 </message>
 <message name="misSubastasResponse">
 <part name="parameters" element="tns:misSubastasResponse"></part>
-</message>
-<message name="subastasPublicas">
-<part name="parameters" element="tns:subastasPublicas"></part>
-</message>
-<message name="subastasPublicasResponse">
-<part name="parameters" element="tns:subastasPublicasResponse"></part>
 </message>
 <message name="comprobarCliente">
 <part name="parameters" element="tns:comprobarCliente"></part>
@@ -46,7 +46,17 @@
 <message name="borrarSubastaResponse">
 <part name="parameters" element="tns:borrarSubastaResponse"></part>
 </message>
+<message name="isUsuarioInserted">
+<part name="parameters" element="tns:isUsuarioInserted"></part>
+</message>
+<message name="isUsuarioInsertedResponse">
+<part name="parameters" element="tns:isUsuarioInsertedResponse"></part>
+</message>
 <portType name="ServicioSubastas">
+<operation name="subastasPublicas">
+<input message="tns:subastasPublicas"></input>
+<output message="tns:subastasPublicasResponse"></output>
+</operation>
 <operation name="crearCliente">
 <input message="tns:crearCliente"></input>
 <output message="tns:crearClienteResponse"></output>
@@ -54,10 +64,6 @@
 <operation name="misSubastas">
 <input message="tns:misSubastas"></input>
 <output message="tns:misSubastasResponse"></output>
-</operation>
-<operation name="subastasPublicas">
-<input message="tns:subastasPublicas"></input>
-<output message="tns:subastasPublicasResponse"></output>
 </operation>
 <operation name="comprobarCliente">
 <input message="tns:comprobarCliente"></input>
@@ -75,9 +81,22 @@
 <input message="tns:borrarSubasta"></input>
 <output message="tns:borrarSubastaResponse"></output>
 </operation>
+<operation name="isUsuarioInserted">
+<input message="tns:isUsuarioInserted"></input>
+<output message="tns:isUsuarioInsertedResponse"></output>
+</operation>
 </portType>
 <binding name="ServicioSubastasPortBinding" type="tns:ServicioSubastas">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+<operation name="subastasPublicas">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
 <operation name="crearCliente">
 <soap:operation soapAction=""></soap:operation>
 <input>
@@ -88,15 +107,6 @@
 </output>
 </operation>
 <operation name="misSubastas">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
-<operation name="subastasPublicas">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -133,6 +143,15 @@
 </output>
 </operation>
 <operation name="borrarSubasta">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="isUsuarioInserted">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
