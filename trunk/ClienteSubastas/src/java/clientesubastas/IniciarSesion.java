@@ -5,8 +5,17 @@
 
 package clientesubastas;
 
+import clientesubastas.acceso.DatosAcceso;
+import clientesubastas.acceso.HerramientaCifrado;
+import clientesubastas.servicios.ServicioWebSubastas;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.PasswordField;
+import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -33,10 +42,30 @@ public class IniciarSesion extends AbstractPageBean {
 
     // </editor-fold>
 
+    private DatosAcceso datosPersonalesFormularios;
+    private TextField txtUsuario = new TextField();
+
+    public TextField getTxtUsuario() {
+        return txtUsuario;
+    }
+
+    public void setTxtUsuario(TextField tf) {
+        this.txtUsuario = tf;
+    }
+    private PasswordField passClave = new PasswordField();
+
+    public PasswordField getPassClave() {
+        return passClave;
+    }
+
+    public void setPassClave(PasswordField pf) {
+        this.passClave = pf;
+    }
     /**
      * <p>Construct a new Page bean instance.</p>
      */
     public IniciarSesion() {
+        datosPersonalesFormularios = new DatosAcceso();
     }
 
     /**
@@ -146,6 +175,33 @@ public class IniciarSesion extends AbstractPageBean {
     public String hlRegistrarse_action() {
         // TODO: Replace with your code
         return "registro";
+    }
+
+    public void txtUsuario_validate(FacesContext fc, UIComponent uic, Object o) {
+        String s = String.valueOf(o);
+
+        if(!clientesubastas.servicios.ServicioWebSubastas.usuarioUsado(s))
+            throw new ValidatorException(new FacesMessage("El usuario especificado no existe"));
+    }
+
+    public String btLogin_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        datosPersonalesFormularios.setUsuario((String)txtUsuario.getText());
+        datosPersonalesFormularios.setPassword(
+                HerramientaCifrado.cifrar((String)passClave.getText()) );
+
+        boolean esValido = ServicioWebSubastas.comprobarCliente(
+                datosPersonalesFormularios.getUsuario(),
+                datosPersonalesFormularios.getPassword());
+
+        if(!esValido) {
+            return null;
+        }
+        else {
+            getSessionBean1().setDatosPersonalesSesion(datosPersonalesFormularios);
+            return "sesionIniciada";
+        }
     }
     
 }

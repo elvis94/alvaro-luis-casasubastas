@@ -108,7 +108,7 @@ public class ApplicationBean1 extends AbstractApplicationBean {
         return super.getLocaleCharacterEncoding();
     }
 
-    //<editor-fold defaultstate="collapsed" desc="Crear los paises">
+    // <editor-fold defaultstate="collapsed" desc="Crear los paises">
     private void inicializarPaises()
     {
         paises= new Option[]{new Option("España"),
@@ -153,6 +153,7 @@ new Option("Yemen"), new Option("Zambia"), new Option("Zimbagüe")
         };
         
     }
+    // </editor-fold>
 
     /**
      * @return the paises

@@ -293,7 +293,7 @@ public class NuevoCliente extends AbstractPageBean {
 
         limpiarCampos();
 
-        return "Usuario creado";
+        return null;
     }
 
     public void passClaveRepetida_validate(FacesContext context, UIComponent component, Object value) {

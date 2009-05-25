@@ -126,6 +126,10 @@
             <from-outcome>limpiar</from-outcome>
             <to-view-id>/NuevoCliente.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>limpiar</from-outcome>
+            <to-view-id>/NuevoCliente.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>IniciarSesion</managed-bean-name>
@@ -141,6 +145,10 @@
         <navigation-case>
             <from-outcome>registro</from-outcome>
             <to-view-id>/NuevoCliente.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sesionIniciada</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

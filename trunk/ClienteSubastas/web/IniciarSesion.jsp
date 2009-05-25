@@ -9,7 +9,7 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1">
+                <webuijsf:head id="head1" title="Iniciar sesión">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
@@ -25,7 +25,35 @@
                         </div>
                         <hr/>
                         <br/>
-                        COSAS
+                        <table border="0" cellpadding="1" cellspacing="10" style="margin-left: auto; margin-right: auto">
+                            <tbody>
+                                <tr></tr>
+                                <tr></tr>
+                                <tr>
+                                    <td width="125px">
+                                        <webuijsf:label for="txtUsuario" id="label1" text="Usuario:"/>
+                                    </td>
+                                    <td>
+                                        <webuijsf:textField binding="#{IniciarSesion.txtUsuario}" columns="40" id="txtUsuario" required="true" validatorExpression="#{IniciarSesion.txtUsuario_validate}"/>
+                                        <webuijsf:message for="txtUsuario" id="message2" showDetail="false" showSummary="true"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 15px">
+                                        <webuijsf:label for="passClave" id="label2" text="Contraseña:"/>
+                                    </td>
+                                    <td>
+                                        <webuijsf:passwordField binding="#{IniciarSesion.passClave}" columns="40" id="passClave" required="true"/>
+                                        <webuijsf:message for="passClave" id="message3" showDetail="false" showSummary="true"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center">
+                                        <webuijsf:button actionExpression="#{IniciarSesion.btLogin_action}" id="btLogin" primary="true" text="Iniciar sesión..."/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>
