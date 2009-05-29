@@ -4,7 +4,6 @@
     Created on : 28-abr-2009, 1:15:58
     Author     : Louis
 -->
-
 <jsp:root version="2.1" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:webuijsf="http://www.sun.com/webui/webuijsf">
     <jsp:directive.page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"/>
     <f:view>
@@ -15,6 +14,49 @@
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
+                        <div>
+                            <jsp:directive.include file="Cabecera.jspf"/>
+                        </div>
+                        <div align="center" style="font-size: 18px">
+                            <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
+                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlMisSubastas_action}" binding="#{VerSubastas.hlMisSubastas}"
+                                    id="hlMisSubastas" text="[Mis Subastas]"/>
+                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlNuevaSubasta_action}" binding="#{VerSubastas.hlNuevaSubasta}"
+                                    id="hlNuevaSubasta" text="[Nueva Subasta]"/>
+                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlCerrarSesion_action}" binding="#{VerSubastas.hlCerrarSesion}"
+                                    id="hlCerrarSesion" text="[Cerrar Sesión]"/>
+                            </webuijsf:panelGroup>
+                        </div>
+                        <hr/>
+                        <br/>
+                        <div align="center">
+                            <webuijsf:table augmentTitle="false" clearSortButton="true" id="table1" paginateButton="true" paginationControls="true"
+                                sortPanelToggleButton="true" title="Mis subastas" width="762">
+                                <webuijsf:tableRowGroup id="tableRowGroup1" sourceData="#{MisSubastas.listadoMisSubastas}" sourceVar="currentRow">
+                                    <webuijsf:tableColumn headerText="nombre" id="tableColumn1" sort="nombre">
+                                        <webuijsf:hyperlink actionExpression="#{MisSubastas.hyperlink1_action}" id="hyperlink1" text="#{currentRow.value['nombre']}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="categoria" id="tableColumn2" sort="categoria">
+                                        <webuijsf:staticText id="staticText1" text="#{currentRow.value['categoria']}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="fechaCierre" id="tableColumn4" sort="fechaCierre">
+                                        <webuijsf:staticText id="staticText3" text="#{currentRow.value['fechaCierre']}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="pujaActual" id="tableColumn5" sort="pujaActual">
+                                        <webuijsf:staticText id="staticText4" text="#{currentRow.value['pujaActual']}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="pujadorActual" id="tableColumn6" sort="pujadorActual">
+                                        <webuijsf:staticText id="staticText5" text="#{currentRow.value['pujadorActual'].usuario}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn id="tableColumn7">
+                                        <webuijsf:button actionExpression="#{MisSubastas.button1_action}" id="button1" text="Borrar"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn id="tableColumn8">
+                                        <webuijsf:button actionExpression="#{MisSubastas.button2_action}" id="button2" text="Modificar"/>
+                                    </webuijsf:tableColumn>
+                                </webuijsf:tableRowGroup>
+                            </webuijsf:table>
+                        </div>
                     </webuijsf:form>
                 </webuijsf:body>
             </webuijsf:html>

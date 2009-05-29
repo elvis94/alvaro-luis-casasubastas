@@ -48,6 +48,20 @@
         <managed-bean-class>clientesubastas.VerSubastas</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/IniciarSesion.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
     <navigation-rule>
         <from-view-id>/Portal.jsp</from-view-id>
         <navigation-case>
@@ -57,6 +71,10 @@
         <navigation-case>
             <from-outcome>iniciarSesion</from-outcome>
             <to-view-id>/MisSubastas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>subastasPublicas</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
@@ -98,6 +116,10 @@
         <navigation-case>
             <from-outcome>iniciarSesion</from-outcome>
             <to-view-id>/IniciarSesion.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>misSubastas</from-outcome>
+            <to-view-id>/MisSubastas.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -148,6 +170,13 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>sesionIniciada</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/MisSubastas.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>subastasPublicas</from-outcome>
             <to-view-id>/VerSubastas.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>

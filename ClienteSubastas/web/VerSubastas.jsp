@@ -44,7 +44,7 @@
                                         <webuijsf:staticText id="staticText2" text="#{currentRow.value['subastador'].usuario}"/>
                                     </webuijsf:tableColumn>
                                     <webuijsf:tableColumn headerText="nombre" id="tableColumn3" sort="nombre">
-                                        <webuijsf:staticText id="staticText3" text="#{currentRow.value['nombre']}"/>
+                                        <webuijsf:hyperlink actionExpression="#{VerSubastas.hyperlink1_action}" id="hyperlink1" text="#{currentRow.value['nombre']}"/>
                                     </webuijsf:tableColumn>
                                     <webuijsf:tableColumn headerText="categoria" id="tableColumn4" sort="categoria">
                                         <webuijsf:staticText id="staticText4" text="#{currentRow.value['categoria']}"/>

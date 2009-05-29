@@ -5,8 +5,12 @@
 
 package clientesubastas;
 
+import clientesubastas.acceso.DatosAcceso;
+import clientesubastas.servicios.ServicioWebSubastas;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import java.util.List;
 import javax.faces.FacesException;
+import services.Subasta;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -33,6 +37,8 @@ public class MisSubastas extends AbstractPageBean {
 
     // </editor-fold>
 
+    private List<Subasta> listadoMisSubastas;
+    private List<Subasta> listadoMisPujas;
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -95,7 +101,12 @@ public class MisSubastas extends AbstractPageBean {
      * this page.</p>
      */
     @Override
-    public void prerender() {
+    public void prerender()
+    {
+        getRequestBean1().setMensajeAyuda("Utilice la tabla para navegar por sus subastas");
+        DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
+        setListadoMisSubastas(ServicioWebSubastas.subastasMias(da.getUsuario(), da.getPassword()));
+        setListadoMisPujas(null);
     }
 
     /**
@@ -138,6 +149,68 @@ public class MisSubastas extends AbstractPageBean {
     protected ApplicationBean1 getApplicationBean1()
     {
         return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    /**
+     * @return the listadoMisSubastas
+     */
+    public List<Subasta> getListadoMisSubastas() {
+        return listadoMisSubastas;
+    }
+
+    /**
+     * @param listadoMisSubastas the listadoMisSubastas to set
+     */
+    public void setListadoMisSubastas(List<Subasta> listadoMisSubastas) {
+        this.listadoMisSubastas = listadoMisSubastas;
+    }
+
+    /**
+     * @return the listadoMisPujas
+     */
+    public List<Subasta> getListadoMisPujas() {
+        return listadoMisPujas;
+    }
+
+    /**
+     * @param listadoMisPujas the listadoMisPujas to set
+     */
+    public void setListadoMisPujas(List<Subasta> listadoMisPujas) {
+        this.listadoMisPujas = listadoMisPujas;
+    }
+
+    public String hlCerrarSesion_action() {
+        // TODO: Replace with your code
+        getSessionBean1().setDatosPersonalesSesion(null);
+        return "subastasPublicas";
+    }
+
+    public String hlMisSubastas_action() {
+        // TODO: Replace with your code
+        return null;
+    }
+
+    public String hlNuevaSubasta_action() {
+        // TODO: Replace with your code
+        return null;
+    }
+
+    public String hyperlink1_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String button1_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String button2_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
     }
     
 }

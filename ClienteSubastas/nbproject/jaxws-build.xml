@@ -21,7 +21,7 @@
         </condition>
     </target>
     <target name="wsimport-client-ServicioSubastasService" depends="wsimport-init,wsimport-client-check-ServicioSubastasService" unless="wsimport-client-ServicioSubastasService.notRequired">
-        <wsimport sourcedestdir="${build.generated.dir}/wsimport/client" destdir="${build.generated.dir}/wsimport/binaries" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ServicioSubastasService/wsdl/localhost_8080/ServidorSubastas/ServicioSubastasService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:8080/ServidorSubastas/ServicioSubastasService?wsdl" xnocompile="true"/>
+        <wsimport sourcedestdir="${build.generated.dir}/wsimport/client" destdir="${build.generated.dir}/wsimport/binaries" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ServicioSubastasService/wsdl/localhost_10707/ServidorSubastas/ServicioSubastasService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://localhost:10707/ServidorSubastas/ServicioSubastasService?wsdl" xnocompile="true"/>
     </target>
     <target name="wsimport-client-clean-ServicioSubastasService" depends="-init-project">
         <delete dir="${build.generated.dir}/wsimport/client/services"/>

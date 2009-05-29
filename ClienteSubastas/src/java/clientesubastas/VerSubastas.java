@@ -149,7 +149,7 @@ public class VerSubastas extends AbstractPageBean {
     public void prerender()
 	{
         getRequestBean1().setMensajeAyuda("Utilice la tabla para navegar por las subastas públicas");
-        //setListadoPublico(ServicioWebSubastas.subastasPublicas());
+        setListadoPublico(ServicioWebSubastas.subastasPublicas());
         if(getSessionBean1().getDatosPersonalesSesion() != null) {
             hlIniciarSesion.setVisible(false);
             hlRegistrarse.setVisible(false);
@@ -247,10 +247,16 @@ public class VerSubastas extends AbstractPageBean {
     public String hlMisSubastas_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return null;
+        return "misSubastas";
     }
 
     public String hlNuevaSubasta_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
+    }
+
+    public String hyperlink1_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
         return null;

@@ -277,7 +277,8 @@ public class NuevoCliente extends AbstractPageBean {
     }
 
     public String btRegistrar_action() {
-        clientesubastas.servicios.ServicioWebSubastas.nuevoUsuario(
+        boolean res;
+        res = clientesubastas.servicios.ServicioWebSubastas.nuevoUsuario(
                 (String) txtUsuario.getText(),
                 clientesubastas.acceso.HerramientaCifrado.cifrar((String) passClave.getText()),
                 (String) txtEmail.getText(),
@@ -289,7 +290,7 @@ public class NuevoCliente extends AbstractPageBean {
 
 
 
-        outText.setText("Usuario registrado");
+        outText.setText(res?"Usuario registrado":"Error en el servidor");
 
         limpiarCampos();
 

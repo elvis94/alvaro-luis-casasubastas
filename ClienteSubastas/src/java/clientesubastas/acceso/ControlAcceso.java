@@ -5,6 +5,10 @@
 
 package clientesubastas.acceso;
 
+import clientesubastas.SessionBean1;
+import java.util.Map;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
@@ -16,12 +20,34 @@ import javax.faces.event.PhaseListener;
 public class ControlAcceso implements PhaseListener
 {
 
+    private static final String USER_LOGIN_OUTCOME = "login";
+    private static final String USER_HOME_OUTCOME = "home";
+    
 	public void afterPhase(PhaseEvent event)
 	{
 		// Comprobar si el usuario ha iniciado la sesión y actuar en consecuencia
+        FacesContext context = event.getFacesContext();
 
-		// si ha iniciado -> acceder a todo menos login y registro
-		// no ha iniciado -> sólo acceder a listapublica, login y registro
+        if(sesionIniciada(context))
+        {
+            // si ha iniciado -> acceder a todo menos login y registro
+            if(navegandoPublicas(context))
+            {
+                context.responseComplete();
+                context.getApplication().getNavigationHandler().
+                        handleNavigation(context, null, USER_HOME_OUTCOME);
+            }
+        }
+        else
+        {
+            // no ha iniciado -> sólo acceder a listapublica, login y registro
+            if (navegandoPrivadas(context))
+            {
+                context.responseComplete();
+                context.getApplication().getNavigationHandler().
+                        handleNavigation(context, null, USER_LOGIN_OUTCOME);
+            }
+        }
 	}
 
 	public void beforePhase(PhaseEvent event) { }
@@ -33,4 +59,33 @@ public class ControlAcceso implements PhaseListener
 	}
 	// </editor-fold>
 
+    private boolean sesionIniciada(FacesContext context)
+    {
+        ExternalContext extContext = context.getExternalContext();
+        Map<String,Object> mapa = extContext.getSessionMap();
+
+        SessionBean1 sb1 = (SessionBean1) mapa.get("SessionBean1");
+        /*//sb1.getDatosPersonalesSesion().getUsuario();
+        String s = "";
+        if(sb1.getDatosPersonalesSesion() != null) s = sb1.getDatosPersonalesSesion().getUsuario();
+        System.out.println("Sesion iniciada con "+s);*/
+
+        return sb1.getDatosPersonalesSesion() != null;
+    }
+
+    private boolean navegandoPublicas(FacesContext context) {
+        ExternalContext extContext = context.getExternalContext();
+        String path = extContext.getRequestPathInfo();
+        boolean condicion;
+        condicion = "/NuevoCliente.jsp".equals(path) || "/IniciarSesion.jsp".equals(path);
+        return condicion;
+    }
+
+    private boolean navegandoPrivadas(FacesContext context) {
+        ExternalContext extContext = context.getExternalContext();
+        String path = extContext.getRequestPathInfo();
+        boolean condicion;
+        condicion = "/NuevoCliente.jsp".equals(path) || "/IniciarSesion.jsp".equals(path);
+        return !condicion;
+    }
 }
