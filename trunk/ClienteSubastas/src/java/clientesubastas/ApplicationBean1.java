@@ -44,6 +44,7 @@ public class ApplicationBean1 extends AbstractApplicationBean {
 
     public ApplicationBean1() {
         inicializarPaises();
+        inicializarCategorias();
     }
 
     /**
