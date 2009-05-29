@@ -6,7 +6,16 @@
 package clientesubastas;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.Calendar;
+import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.TextArea;
+import com.sun.webui.jsf.component.TextField;
+import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -29,6 +38,15 @@ public class ModificarSubasta extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+    }
+    private TextArea txtDescripcion = new TextArea();
+
+    public TextArea getTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public void setTxtDescripcion(TextArea ta) {
+        this.txtDescripcion = ta;
     }
 
     // </editor-fold>
@@ -138,6 +156,18 @@ public class ModificarSubasta extends AbstractPageBean {
     protected ApplicationBean1 getApplicationBean1()
     {
         return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    public void txtDescripcion_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (s.length() < 10 || !s.matches("\\w+\\s*\\w+")) {
+            throw new ValidatorException(new FacesMessage("Descripción no válida"));
+        }
+    }
+
+    public String bModificar_action() {
+        
+        return null;
     }
     
 }

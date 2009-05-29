@@ -35,7 +35,7 @@
                                         <webuijsf:label id="label1" text="Nombre del artículo:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:textField id="txtNombre" readOnly="true" style="margin-left: 10px"/>
+                                        <webuijsf:staticText id="txtNombre"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -45,7 +45,8 @@
                                         <webuijsf:label id="label6" labelLevel="3" style="font-size: 10px; font-style: italic" text="Se permite código html"/>
                                     </td>
                                     <td>
-                                        <webuijsf:textArea columns="33" id="txtDescripcion" required="true" rows="4" style="margin-left: 10px"/>
+                                        <webuijsf:textArea binding="#{ModificarSubasta.txtDescripcion}" columns="33" id="txtDescripcion" required="true"
+                                            rows="4" validatorExpression="#{ModificarSubasta.txtDescripcion_validate}"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -53,7 +54,7 @@
                                         <webuijsf:label id="label3" text="Categoría:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:dropDown id="txtCategoria" items="#{ApplicationBean1.categorias}" style="margin-left: 10px"/>
+                                        <webuijsf:dropDown id="dropDown1" items="#{ApplicationBean1.categorias}"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,7 +62,7 @@
                                         <webuijsf:label id="label4" text="Precio inicial:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:textField id="txtPrecio" readOnly="true" style="margin-left: 10px"/>
+                                        <webuijsf:staticText id="txtPrecio"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,12 +70,13 @@
                                         <webuijsf:label id="label5" text="Fecha de vencimiento:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:calendar autoComplete="true" autoValidate="true" dateFormatPattern="dd/MM/yyyy" id="txtFecha" readOnly="true"/>
+                                        <webuijsf:staticText id="txtFecha"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" style="height: 45px; text-align: center">
-                                        <webuijsf:button id="bModificar" primary="true" style="font-size: 11px; height: 23px; margin-right: 5px" text="Modificar subasta"/>
+                                        <webuijsf:button actionExpression="#{ModificarSubasta.bModificar_action}" id="bModificar" primary="true"
+                                            style="font-size: 11px; height: 23px; margin-right: 5px" text="Modificar subasta"/>
                                     </td>
                                 </tr>
                             </tbody>
