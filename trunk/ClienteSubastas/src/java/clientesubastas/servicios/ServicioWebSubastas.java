@@ -13,17 +13,34 @@ import services.*;
  */
 public class ServicioWebSubastas {
 
-    public static List<Subasta> subastasPublicas() {
-        try {
-            ServicioSubastasService service = new ServicioSubastasService();
-            ServicioSubastas port = service.getServicioSubastasPort();
-
-            List<Subasta> result = port.subastasPublicas();
+    public static List<Subasta> subastasPublicas()
+    {
+        try { // Call Web Service Operation
+            services.ServicioSubastasService service = new services.ServicioSubastasService();
+            services.ServicioSubastas port = service.getServicioSubastasPort();
+            // TODO process result here
+            List<services.Subasta> result = port.subastasPublicas();
+            System.out.println(result.size()+" ELEMENTOS");
             return result;
         } catch (Exception ex) {
             // TODO handle custom exceptions here
             return null;
         }
+    }
+
+    public static List<Subasta> subastasMias(String usuario, String password)
+    {
+        try { // Call Web Service Operation
+            services.ServicioSubastasService service = new services.ServicioSubastasService();
+            services.ServicioSubastas port = service.getServicioSubastasPort();
+            // TODO process result here
+            java.util.List<services.Subasta> result = port.misSubastas(usuario, password);
+            return result;
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+            return null;
+        }
+
     }
 
     public static boolean nuevoUsuario(String usuario, String pass,
@@ -66,7 +83,7 @@ public class ServicioWebSubastas {
             services.ServicioSubastas port = service.getServicioSubastasPort();
 
             isInserted = port.isUsuarioInserted(usuario);
-            
+
         } catch (Exception ex) {
             // TODO handle custom exceptions here
         }

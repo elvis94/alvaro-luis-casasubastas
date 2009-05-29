@@ -3,4 +3,6 @@
     <system systemId="http://localhost:8080/ServidorSubastas/ServicioSubastasService?WSDL" uri="src/conf/xml-resources/web-service-references/ServicioSubastasService/wsdl/localhost_8080/ServidorSubastas/ServicioSubastasService.wsdl"/>
     <system systemId="http://localhost:8080/ServidorSubastas/ServicioSubastasService?wsdl" uri="src/conf/xml-resources/web-service-references/ServicioSubastasService/wsdl/localhost_8080/ServidorSubastas/ServicioSubastasService.wsdl"/>
     <system systemId="http://localhost:8080/ServidorSubastas/ServicioSubastasService?xsd=1" uri="src/conf/xml-resources/web-service-references/ServicioSubastasService/wsdl/localhost_8080/ServidorSubastas/ServicioSubastasService.xsd_1.xsd"/>
+    <system systemId="http://localhost:10707/ServidorSubastas/ServicioSubastasService?wsdl" uri="src/conf/xml-resources/web-service-references/ServicioSubastasService/wsdl/localhost_10707/ServidorSubastas/ServicioSubastasService.wsdl"/>
+    <system systemId="http://localhost:10707/ServidorSubastas/ServicioSubastasService?xsd=1" uri="src/conf/xml-resources/web-service-references/ServicioSubastasService/wsdl/localhost_10707/ServidorSubastas/ServicioSubastasService.xsd_1.xsd"/>
 </catalog>
