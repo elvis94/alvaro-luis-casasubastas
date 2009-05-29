@@ -52,6 +52,11 @@
                                         <webuijsf:button actionExpression="#{IniciarSesion.btLogin_action}" id="btLogin" primary="true" text="Iniciar sesión..."/>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2" style="height: 45px; text-align: center">
+                                        <webuijsf:staticText binding="#{IniciarSesion.outText}" id="outText" style="color: #000066; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: bold"/>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </webuijsf:form>

@@ -10,6 +10,7 @@ import clientesubastas.acceso.HerramientaCifrado;
 import clientesubastas.servicios.ServicioWebSubastas;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.PasswordField;
+import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
@@ -60,6 +61,15 @@ public class IniciarSesion extends AbstractPageBean {
 
     public void setPassClave(PasswordField pf) {
         this.passClave = pf;
+    }
+    private StaticText outText = new StaticText();
+
+    public StaticText getOutText() {
+        return outText;
+    }
+
+    public void setOutText(StaticText st) {
+        this.outText = st;
     }
     /**
      * <p>Construct a new Page bean instance.</p>
@@ -196,6 +206,7 @@ public class IniciarSesion extends AbstractPageBean {
                 datosPersonalesFormularios.getPassword());
 
         if(!esValido) {
+            outText.setText("Log-in incorrecto");
             return null;
         }
         else {
