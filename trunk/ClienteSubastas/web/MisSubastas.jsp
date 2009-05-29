@@ -19,12 +19,9 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlMisSubastas_action}" binding="#{VerSubastas.hlMisSubastas}"
-                                    id="hlMisSubastas" text="[Mis Subastas]"/>
-                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlNuevaSubasta_action}" binding="#{VerSubastas.hlNuevaSubasta}"
-                                    id="hlNuevaSubasta" text="[Nueva Subasta]"/>
-                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlCerrarSesion_action}" binding="#{VerSubastas.hlCerrarSesion}"
-                                    id="hlCerrarSesion" text="[Cerrar Sesión]"/>
+                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlSubastasPublicas_action}" id="hlSubastasPublicas" text="[Subastas Públicas]"/>
+                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlNuevaSubasta_action}" id="hlNuevaSubasta" text="[Nueva Subasta]"/>
+                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlCerrarSesion_action}" id="hlCerrarSesion" text="[Cerrar Sesión]"/>
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>
@@ -32,7 +29,7 @@
                         <div align="center">
                             <webuijsf:table augmentTitle="false" clearSortButton="true" id="table1" paginateButton="true" paginationControls="true"
                                 sortPanelToggleButton="true" title="Mis subastas" width="762">
-                                <webuijsf:tableRowGroup id="tableRowGroup1" sourceData="#{MisSubastas.listadoMisSubastas}" sourceVar="currentRow">
+                                <webuijsf:tableRowGroup id="tableRowGroup1" rows="6" sourceData="#{MisSubastas.listadoMisSubastas}" sourceVar="currentRow">
                                     <webuijsf:tableColumn headerText="nombre" id="tableColumn1" sort="nombre">
                                         <webuijsf:hyperlink actionExpression="#{MisSubastas.hyperlink1_action}" id="hyperlink1" text="#{currentRow.value['nombre']}"/>
                                     </webuijsf:tableColumn>
@@ -48,11 +45,33 @@
                                     <webuijsf:tableColumn headerText="pujadorActual" id="tableColumn6" sort="pujadorActual">
                                         <webuijsf:staticText id="staticText5" text="#{currentRow.value['pujadorActual'].usuario}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn id="tableColumn7">
-                                        <webuijsf:button actionExpression="#{MisSubastas.button1_action}" id="button1" text="Borrar"/>
+                                    <webuijsf:tableColumn align="center" id="tableColumn7" valign="middle">
+                                        <webuijsf:button id="button1" text="Borrar"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn id="tableColumn8">
-                                        <webuijsf:button actionExpression="#{MisSubastas.button2_action}" id="button2" text="Modificar"/>
+                                    <webuijsf:tableColumn align="center" id="tableColumn8" valign="middle">
+                                        <webuijsf:button id="button2" text="Modificar"/>
+                                    </webuijsf:tableColumn>
+                                </webuijsf:tableRowGroup>
+                            </webuijsf:table>
+                        </div>
+                        <br/>
+                        <div align="center">
+                            <webuijsf:table augmentTitle="false" id="table2" paginateButton="true" paginationControls="true" title="Subastas que lidero" width="508">
+                                <webuijsf:tableRowGroup id="tableRowGroup1" rows="6" sourceData="#{MisSubastas.listadoMisSubastas}" sourceVar="currentRow">
+                                    <webuijsf:tableColumn headerText="nombre" id="tableColumn1" sort="nombre">
+                                        <webuijsf:hyperlink actionExpression="#{MisSubastas.hyperlink1_action}" id="hyperlink1" text="#{currentRow.value['nombre']}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="categoria" id="tableColumn2" sort="categoria">
+                                        <webuijsf:staticText id="staticText1" text="#{currentRow.value['categoria']}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="fechaCierre" id="tableColumn4" sort="fechaCierre">
+                                        <webuijsf:staticText id="staticText3" text="#{currentRow.value['fechaCierre']}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="pujaActual" id="tableColumn5" sort="pujaActual">
+                                        <webuijsf:staticText id="staticText4" text="#{currentRow.value['pujaActual']}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="pujadorActual" id="tableColumn6" sort="pujadorActual">
+                                        <webuijsf:staticText id="staticText5" text="#{currentRow.value['pujadorActual'].usuario}"/>
                                     </webuijsf:tableColumn>
                                 </webuijsf:tableRowGroup>
                             </webuijsf:table>
