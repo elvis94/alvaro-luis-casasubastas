@@ -253,13 +253,19 @@ public class VerSubastas extends AbstractPageBean {
     public String hlNuevaSubasta_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        return null;
+        return "nuevaSubasta";
     }
 
     public String hyperlink1_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        System.out.println("SE HA LLEGADO A EJECUTAR");
         return null;
+    }
+
+    public String hlDetalles_action() {
+        System.out.println("SE HA LLEGADO A EJECUTAR");
+        return "detalles";
     }
     
 }
