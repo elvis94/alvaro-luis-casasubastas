@@ -5,11 +5,13 @@
 
 package clientesubastas.acceso;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Louis
  */
-public class DatosAcceso
+public class DatosAcceso implements Serializable
 {
 	private String usuario;
 	private String password;
