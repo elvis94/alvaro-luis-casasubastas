@@ -4,12 +4,14 @@
  */
 package clientesubastas.servicios;
 
+import clientesubastas.SessionBean1;
+import java.util.Date;
 import java.util.List;
 import services.*;
 
 /**
  *
- * @author Louis
+ * @author 
  */
 public class ServicioWebSubastas {
 
@@ -105,5 +107,36 @@ public class ServicioWebSubastas {
         }
 
         return resultado;
+    }
+
+    public static boolean crearSubasta(String nombre, String descripcion,
+            String categoria, double precio, Date fechaInicio, String usuario,
+            String password)
+    {
+        Subasta s=new Subasta();
+        s.setNombre(nombre);
+        s.setDescripcion(descripcion);
+        s.setCategoria(categoria);
+        s.setPrecioSalida(precio);
+        s.setFechaSalida(clientesubastas.acceso.UtilidadesFechas.dateToXMLGregorian(fechaInicio));
+        
+        return crearSubasta(s, usuario, password);
+    }
+
+    public static boolean crearSubasta(Subasta s, String usuario, String password)
+    {
+        boolean result=false;
+
+        try { 
+            services.ServicioSubastasService service = new services.ServicioSubastasService();
+            services.ServicioSubastas port = service.getServicioSubastasPort();
+
+            result = port.crearSubasta(usuario, password, s);
+            
+        } catch (Exception ex) {
+            result =false;
+        }
+
+        return result;
     }
 }
