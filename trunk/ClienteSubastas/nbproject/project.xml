@@ -9,7 +9,7 @@
                 <dependency dependsOn="wsimport-client-generate" target="-pre-pre-compile"/>
             </extension>
         </buildExtensions>
-        <creator-data xmlns="http://www.sun.com/creator/ns" jsf.current.theme="woodstock-theme-default" jsf.pagebean.package="clientesubastas" jsf.project.libraries.dir="lib" jsf.project.version="4.0" jsf.startPage="VerSubastas.jsp"/>
+        <creator-data xmlns="http://www.sun.com/creator/ns" jsf.current.theme="woodstock-theme-default" jsf.pagebean.package="clientesubastas" jsf.project.libraries.dir="lib" jsf.project.version="4.0" jsf.startPage="PageDiscordia.jsp"/>
         <data xmlns="http://www.netbeans.org/ns/web-project/3">
             <name>ClienteSubastas</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
