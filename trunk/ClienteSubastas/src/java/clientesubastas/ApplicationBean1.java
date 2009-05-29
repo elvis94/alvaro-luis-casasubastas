@@ -40,6 +40,7 @@ public class ApplicationBean1 extends AbstractApplicationBean {
      * <p>Construct a new application data bean instance.</p>
      */
     private Option[] paises;
+    private Option[] categorias;
 
     public ApplicationBean1() {
         inicializarPaises();
@@ -155,6 +156,12 @@ new Option("Yemen"), new Option("Zambia"), new Option("Zimbagüe")
     }
     // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Crear categorías">
+    private void inicializarCategorias()
+    {
+        setCategorias(new Option[]{new Option("General"), new Option("Libros"), new Option("Música"), new Option("Películas"), new Option("Software")});
+    }
+
     /**
      * @return the paises
      */
@@ -167,5 +174,19 @@ new Option("Yemen"), new Option("Zambia"), new Option("Zimbagüe")
      */
     public void setPaises(Option[] paises) {
         this.paises = paises;
+    }
+
+    /**
+     * @return the categorias
+     */
+    public Option[] getCategorias() {
+        return categorias;
+    }
+
+    /**
+     * @param categorias the categorias to set
+     */
+    public void setCategorias(Option[] categorias) {
+        this.categorias = categorias;
     }
 }
