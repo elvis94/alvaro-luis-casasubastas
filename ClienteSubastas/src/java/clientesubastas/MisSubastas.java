@@ -185,9 +185,9 @@ public class MisSubastas extends AbstractPageBean {
         return "subastasPublicas";
     }
 
-    public String hlMisSubastas_action() {
+    public String hlSubastasPublicas_action() {
         // TODO: Replace with your code
-        return null;
+        return "subastasPublicas";
     }
 
     public String hlNuevaSubasta_action() {
