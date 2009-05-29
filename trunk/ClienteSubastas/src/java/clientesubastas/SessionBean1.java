@@ -6,6 +6,7 @@
 package clientesubastas;
 
 import clientesubastas.acceso.DatosAcceso;
+import clientesubastas.acceso.HerramientaCifrado;
 import com.sun.rave.web.ui.appbase.AbstractSessionBean;
 import javax.faces.FacesException;
 
@@ -42,6 +43,9 @@ public class SessionBean1 extends AbstractSessionBean {
      */
     public SessionBean1() {
         datosPersonalesSesion = null;
+        // borrar
+        datosPersonalesSesion = new DatosAcceso("louis",
+                HerramientaCifrado.cifrar("contraseña"));
     }
 
     /**
