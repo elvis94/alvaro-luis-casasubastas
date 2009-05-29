@@ -5,8 +5,21 @@
 
 package clientesubastas;
 
+import clientesubastas.acceso.DatosAcceso;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.Calendar;
+import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.StaticText;
+import com.sun.webui.jsf.component.TextArea;
+import com.sun.webui.jsf.component.TextField;
+import com.sun.webui.jsf.model.SingleSelectOptionsList;
+import java.util.Date;
 import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -29,6 +42,78 @@ public class NuevaSubasta extends AbstractPageBean {
      * here is subject to being replaced.</p>
      */
     private void _init() throws Exception {
+    }
+    private TextField txtNombre = new TextField();
+
+    public TextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(TextField tf) {
+        this.txtNombre = tf;
+    }
+    private DropDown txtCategoria = new DropDown();
+
+    public DropDown getTxtCategoria() {
+        return txtCategoria;
+    }
+
+    public void setTxtCategoria(DropDown dd) {
+        this.txtCategoria = dd;
+    }
+    private TextField txtPrecio = new TextField();
+
+    public TextField getTxtPrecio() {
+        return txtPrecio;
+    }
+
+    public void setTxtPrecio(TextField tf) {
+        this.txtPrecio = tf;
+    }
+    private Calendar txtFecha = new Calendar();
+
+    public Calendar getTxtFecha() {
+        return txtFecha;
+    }
+
+    public void setTxtFecha(Calendar c) {
+        this.txtFecha = c;
+    }
+    private StaticText outText = new StaticText();
+
+    public StaticText getOutText() {
+        return outText;
+    }
+
+    public void setOutText(StaticText st) {
+        this.outText = st;
+    }
+    private Button bCrear = new Button();
+
+    public Button getBCrear() {
+        return bCrear;
+    }
+
+    public void setBCrear(Button b) {
+        this.bCrear = b;
+    }
+    private Button bBorrar = new Button();
+
+    public Button getBBorrar() {
+        return bBorrar;
+    }
+
+    public void setBBorrar(Button b) {
+        this.bBorrar = b;
+    }
+    private TextArea txtDescripcion = new TextArea();
+
+    public TextArea getTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public void setTxtDescripcion(TextArea ta) {
+        this.txtDescripcion = ta;
     }
 
     // </editor-fold>
@@ -96,6 +181,11 @@ public class NuevaSubasta extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        getRequestBean1().setMensajeAyuda("Aquí puede definir un artículo para subastarlo");
+        txtFecha.setMinDate(new Date(System.currentTimeMillis()+86400000));
+        txtFecha.setMaxDate(new Date(System.currentTimeMillis()+1296000000));
+        txtFecha.setSelectedDate(txtFecha.getMinDate());
+        txtFecha.setValue(txtFecha.getMinDate());
     }
 
     /**
@@ -138,6 +228,50 @@ public class NuevaSubasta extends AbstractPageBean {
     protected ApplicationBean1 getApplicationBean1()
     {
         return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    public String bCrear_action() {
+        DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
+        clientesubastas.servicios.ServicioWebSubastas.crearSubasta(
+                (String)txtNombre.getText(),
+                (String)txtDescripcion.getText(),
+                (String)txtCategoria.getValue(),
+                Double.parseDouble((String)txtPrecio.getText()),
+                txtFecha.getSelectedDate(),
+                da.getUsuario(), da.getPassword());
+        return null;
+    }
+
+    public String bBorrar_action() {
+        txtNombre.resetValue();
+        txtDescripcion.resetValue();
+        txtCategoria.resetValue();
+        txtPrecio.resetValue();
+        txtFecha.resetValue();
+        txtFecha.setValue(txtFecha.getMinDate());
+        txtFecha.setSelectedDate(txtFecha.getMinDate());
+        return null;
+    }
+
+    public void txtNombre_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (s.length() < 4 || !s.matches("\\w+")) {
+            throw new ValidatorException(new FacesMessage("Nombre inválido"));
+        }
+    }
+
+    public void txtDescripcion_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (s.length() < 10 || !s.matches("\\w+\\s*\\w+")) {
+            throw new ValidatorException(new FacesMessage("Descripción no válida"));
+        }
+    }
+
+    public void txtPrecio_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        if (s.length() < 1 || !s.matches("\\d+\\.?\\d*")) {
+            throw new ValidatorException(new FacesMessage("Precio inválido"));
+        }
     }
     
 }
