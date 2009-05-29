@@ -35,12 +35,12 @@
                                         <webuijsf:label id="label1" text="Nombre del artículo:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:textField id="txtNombre" readOnly="true" required="true" style="margin-left: 10px"/>
+                                        <webuijsf:textField id="txtNombre" readOnly="true" style="margin-left: 10px"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="height: 45px">
-                                        <webuijsf:label id="label2" text="Descripción:"/>
+                                        <webuijsf:label for="txtDescripcion" id="label2" text="Descripción:"/>
                                         <br/>
                                         <webuijsf:label id="label6" labelLevel="3" style="font-size: 10px; font-style: italic" text="Se permite código html"/>
                                     </td>
@@ -61,7 +61,7 @@
                                         <webuijsf:label id="label4" text="Precio inicial:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:textField id="txtPrecio" readOnly="true" required="true" style="margin-left: 10px"/>
+                                        <webuijsf:textField id="txtPrecio" readOnly="true" style="margin-left: 10px"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,7 +69,7 @@
                                         <webuijsf:label id="label5" text="Fecha de vencimiento:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:calendar autoComplete="true" autoValidate="true" dateFormatPattern="dd/MM/yyyy" id="txtFecha" readOnly="true" required="true"/>
+                                        <webuijsf:calendar autoComplete="true" autoValidate="true" dateFormatPattern="dd/MM/yyyy" id="txtFecha" readOnly="true"/>
                                     </td>
                                 </tr>
                                 <tr>
