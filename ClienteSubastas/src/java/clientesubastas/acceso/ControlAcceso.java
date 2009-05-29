@@ -26,9 +26,9 @@ public class ControlAcceso implements PhaseListener
 	public void afterPhase(PhaseEvent event)
 	{
 		// Comprobar si el usuario ha iniciado la sesión y actuar en consecuencia
-        FacesContext context = event.getFacesContext();
+        /*FacesContext context = event.getFacesContext();
 
-        if(sesionIniciada(context))
+        if((context!=null) && sesionIniciada(context))
         {
             // si ha iniciado -> acceder a todo menos login y registro
             if(navegandoPublicas(context))
@@ -47,7 +47,7 @@ public class ControlAcceso implements PhaseListener
                 context.getApplication().getNavigationHandler().
                         handleNavigation(context, null, USER_LOGIN_OUTCOME);
             }
-        }
+        }*/
 	}
 
 	public void beforePhase(PhaseEvent event) { }
@@ -70,6 +70,7 @@ public class ControlAcceso implements PhaseListener
         if(sb1.getDatosPersonalesSesion() != null) s = sb1.getDatosPersonalesSesion().getUsuario();
         System.out.println("Sesion iniciada con "+s);*/
 
+        if(sb1 == null) return false;
         return sb1.getDatosPersonalesSesion() != null;
     }
 
@@ -85,7 +86,8 @@ public class ControlAcceso implements PhaseListener
         ExternalContext extContext = context.getExternalContext();
         String path = extContext.getRequestPathInfo();
         boolean condicion;
-        condicion = "/NuevoCliente.jsp".equals(path) || "/IniciarSesion.jsp".equals(path);
+        condicion = "/VerSubastas.jsp".equals(path) ||
+                "/NuevoCliente.jsp".equals(path) || "/IniciarSesion.jsp".equals(path);
         return !condicion;
     }
 }
