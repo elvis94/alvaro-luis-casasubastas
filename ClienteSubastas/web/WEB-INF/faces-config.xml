@@ -7,11 +7,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
 
-	<lifecycle>
-		<phase-listener>
-			clientesubastas.acceso.ControlAcceso
-		</phase-listener>
-	</lifecycle>
+	
 
     <managed-bean>
         <managed-bean-name>SessionBean1</managed-bean-name>
@@ -100,6 +96,22 @@
             <from-outcome>nuevaSubasta</from-outcome>
             <to-view-id>/NuevaSubasta.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>detallesSubasta</from-outcome>
+            <to-view-id>/DetallesSubasta.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevaSubasta</from-outcome>
+            <to-view-id>/NuevaSubasta.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>detalles</from-outcome>
+            <to-view-id>/NuevaSubasta.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevaSubasta</from-outcome>
+            <to-view-id>/NuevaSubasta.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>ModificarSubasta</managed-bean-name>
@@ -128,6 +140,10 @@
         <navigation-case>
             <from-outcome>misSubastas</from-outcome>
             <to-view-id>/MisSubastas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>detallesSubasta</from-outcome>
+            <to-view-id>/DetallesSubasta.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -188,4 +204,9 @@
             <to-view-id>/VerSubastas.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>PageDiscordia</managed-bean-name>
+        <managed-bean-class>clientesubastas.PageDiscordia</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>
