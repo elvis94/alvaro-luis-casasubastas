@@ -22,7 +22,7 @@ public class ServicioWebSubastas {
             services.ServicioSubastas port = service.getServicioSubastasPort();
             // TODO process result here
             List<services.Subasta> result = port.subastasPublicas();
-            System.out.println(result.size()+" ELEMENTOS");
+            //System.out.println(result.size()+" ELEMENTOS");
             return result;
         } catch (Exception ex) {
             // TODO handle custom exceptions here
