@@ -9,7 +9,7 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1">
+                <webuijsf:head id="head1" title="Mis Subastas">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
@@ -31,7 +31,7 @@
                                 sortPanelToggleButton="true" title="Mis subastas" width="762">
                                 <webuijsf:tableRowGroup id="tableRowGroup1" rows="6" sourceData="#{MisSubastas.listadoMisSubastas}" sourceVar="currentRow">
                                     <webuijsf:tableColumn headerText="nombre" id="tableColumn1" sort="nombre">
-                                        <webuijsf:hyperlink actionExpression="#{MisSubastas.hyperlink1_action}" id="hyperlink1" text="#{currentRow.value['nombre']}"/>
+                                        <webuijsf:hyperlink actionExpression="#{MisSubastas.hlDetalles_action}" id="hlDetalles" text="#{currentRow.value['nombre']}"/>
                                     </webuijsf:tableColumn>
                                     <webuijsf:tableColumn headerText="categoria" id="tableColumn2" sort="categoria">
                                         <webuijsf:staticText id="staticText1" text="#{currentRow.value['categoria']}"/>
@@ -45,11 +45,9 @@
                                     <webuijsf:tableColumn headerText="pujadorActual" id="tableColumn6" sort="pujadorActual">
                                         <webuijsf:staticText id="staticText5" text="#{currentRow.value['pujadorActual'].usuario}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn align="center" id="tableColumn7" valign="middle">
-                                        <webuijsf:button id="button1" text="Borrar"/>
-                                    </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn align="center" id="tableColumn8" valign="middle">
-                                        <webuijsf:button id="button2" text="Modificar"/>
+                                    <webuijsf:tableColumn headerText="Acciones" align="center" id="tableColumn7" valign="middle">
+                                        <webuijsf:button id="borrar" text="Borrar" actionExpression="#{MisSubastas.borrar_action}" />
+                                        <webuijsf:button id="modificar" text="Modificar" actionExpression="#{MisSubastas.modificar_action}" />
                                     </webuijsf:tableColumn>
                                 </webuijsf:tableRowGroup>
                             </webuijsf:table>

@@ -7,6 +7,7 @@ package clientesubastas;
 
 import clientesubastas.acceso.DatosAcceso;
 import clientesubastas.servicios.ServicioWebSubastas;
+import com.sun.data.provider.RowKey;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import java.util.List;
 import javax.faces.FacesException;
@@ -182,34 +183,63 @@ public class MisSubastas extends AbstractPageBean {
     public String hlCerrarSesion_action() {
         // TODO: Replace with your code
         getSessionBean1().setDatosPersonalesSesion(null);
+        System.out.println("SE HA LLEGADO A EJECUTAR");
         return "subastasPublicas";
     }
 
     public String hlSubastasPublicas_action() {
         // TODO: Replace with your code
+        System.out.println("SE HA LLEGADO A EJECUTAR");
         return "subastasPublicas";
     }
 
     public String hlNuevaSubasta_action() {
         // TODO: Replace with your code
-        return null;
+        System.out.println("SE HA LLEGADO A EJECUTAR");
+        return "nuevaSubasta";
+    }
+
+    public String hlDetalles_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        System.out.println("SE HA LLEGADO A EJECUTAR");
+        return "subastasPublicas";
+    }
+
+    public String borrar_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        System.out.println("SE HA LLEGADO A EJECUTAR");
+        RowKey rk = (RowKey) getValue("#{currentRow.tableRow}");
+
+        if(rk != null) {
+            //System.out.println( rk.getRowId() );
+
+            /*List l = getSessionBean1().getSubastas();
+            if(l.size()>0) {
+                int idx = 0;
+                idx = Integer.parseInt(rk.getRowId());
+                l.remove(idx);
+            }*/
+
+            
+        }
+        Object o = getValue("#{currentRow}");
+        System.out.println(o.getClass());
+
+        return "subastasPublicas";
+
+    }
+
+    public String modificar_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        System.out.println("SE HA LLEGADO A EJECUTAR");
+        return "subastasPublicas";
     }
 
     public String hyperlink1_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
-    }
-
-    public String button1_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return null;
-    }
-
-    public String button2_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
+        // TODO: Replace with your code
         return null;
     }
     
