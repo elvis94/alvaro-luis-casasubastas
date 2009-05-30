@@ -6,13 +6,9 @@
 package clientesubastas;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
-import com.sun.webui.jsf.component.Calendar;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextArea;
-import com.sun.webui.jsf.component.TextField;
-import com.sun.webui.jsf.model.Option;
-import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -158,7 +154,7 @@ public class ModificarSubasta extends AbstractPageBean {
         if(subastaElegida != null)
         {
             txtNombre.setText((String)subastaElegida.getNombre());
-            txtPrecio.setText((String)((Double)subastaElegida.getPujaActual()).toString());
+            txtPrecio.setText((String)((Double)subastaElegida.getPrecioSalida()).toString());
             txtFecha.setText((String)subastaElegida.getFechaCierre().toString());
             txtDescripcion.setText((String)subastaElegida.getDescripcion());
 
