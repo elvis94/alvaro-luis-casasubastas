@@ -54,7 +54,7 @@
                                         <webuijsf:label id="label3" text="Categoría:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:dropDown id="dropDown1" items="#{ApplicationBean1.categorias}"/>
+                                        <webuijsf:dropDown binding="#{ModificarSubasta.txtCategoria}" id="txtCategoria" items="#{ApplicationBean1.categorias}"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -62,7 +62,7 @@
                                         <webuijsf:label id="label4" text="Precio inicial:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:staticText id="txtPrecio"/>
+                                        <webuijsf:staticText binding="#{ModificarSubasta.txtPrecio}" id="txtPrecio"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -70,7 +70,7 @@
                                         <webuijsf:label id="label5" text="Fecha de vencimiento:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:staticText id="txtFecha"/>
+                                        <webuijsf:staticText binding="#{ModificarSubasta.txtFecha}" id="txtFecha"/>
                                     </td>
                                 </tr>
                                 <tr>
