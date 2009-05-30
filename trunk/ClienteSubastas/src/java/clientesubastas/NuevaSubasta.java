@@ -183,10 +183,10 @@ public class NuevaSubasta extends AbstractPageBean {
     @Override
     public void prerender() {
         getRequestBean1().setMensajeAyuda("Aquí puede definir un artículo para subastarlo");
-        txtFecha.setMinDate(new Date(System.currentTimeMillis()+86400000));
+        txtFecha.setMinDate(new Date(System.currentTimeMillis()));
         txtFecha.setMaxDate(new Date(System.currentTimeMillis()+1296000000));
-        txtFecha.setSelectedDate(txtFecha.getMinDate());
-        txtFecha.setValue(txtFecha.getMinDate());
+        txtFecha.setSelectedDate(new Date(System.currentTimeMillis()+86400000));
+        txtFecha.setValue(new Date(System.currentTimeMillis()+86400000));
     }
 
     /**
@@ -263,7 +263,7 @@ public class NuevaSubasta extends AbstractPageBean {
 
     public void txtDescripcion_validate(FacesContext context, UIComponent component, Object value) {
         String s = String.valueOf(value);
-        if (s.length() < 10 || !s.matches("\\w+\\s*\\w+")) {
+        if (s.length() < 10) {
             throw new ValidatorException(new FacesMessage("Descripción no válida"));
         }
     }

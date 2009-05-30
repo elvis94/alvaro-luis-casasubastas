@@ -7,8 +7,10 @@ package clientesubastas;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.HiddenField;
 import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextArea;
+import com.sun.webui.jsf.model.Option;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -50,7 +52,7 @@ public class ModificarSubasta extends AbstractPageBean {
 
     // </editor-fold>
 
-    private Subasta subastaElegida = null;
+    private Subasta subastaElegida=null;
     private StaticText txtNombre = new StaticText();
 
     public StaticText getTxtNombre() {
@@ -86,6 +88,15 @@ public class ModificarSubasta extends AbstractPageBean {
 
     public void setTxtFecha(StaticText st) {
         this.txtFecha = st;
+    }
+    private StaticText txtPuja = new StaticText();
+
+    public StaticText getTxtPuja() {
+        return txtPuja;
+    }
+
+    public void setTxtPuja(StaticText st) {
+        this.txtPuja = st;
     }
     /**
      * <p>Construct a new Page bean instance.</p>
@@ -154,19 +165,11 @@ public class ModificarSubasta extends AbstractPageBean {
         if(subastaElegida != null)
         {
             txtNombre.setText((String)subastaElegida.getNombre());
-            txtPrecio.setText((String)((Double)subastaElegida.getPrecioSalida()).toString());
+            txtPrecio.setText((String)((Double)subastaElegida.getPrecioSalida()).toString()+" €");
+            txtPuja.setText((String)((Double)subastaElegida.getPujaActual()).toString()+" €");
             txtFecha.setText((String)subastaElegida.getFechaCierre().toString());
             txtDescripcion.setText((String)subastaElegida.getDescripcion());
-
-            /*Option[] o=(Option[])txtCategoria.getItems();
-            for (Option opt : o)
-            {
-                if(opt.getLabel().equals(subastaElegida.getCategoria()))
-                {
-                    txtCategoria.setValue(opt.getLabel());
-                    txtCategoria.setSelected(opt);
-                }
-            }*/
+            getSessionBean1().setSubastaModificable(subastaElegida);
         }
     }
 
@@ -214,17 +217,20 @@ public class ModificarSubasta extends AbstractPageBean {
 
     public void txtDescripcion_validate(FacesContext context, UIComponent component, Object value) {
         String s = String.valueOf(value);
-        if (s.length() < 10 || !s.matches("\\w+\\s*\\w+")) {
+        if (s.length() < 10) {
             throw new ValidatorException(new FacesMessage("Descripción no válida"));
         }
     }
 
     public String bModificar_action() {
+        subastaElegida=getSessionBean1().getSubastaModificable();
         if(subastaElegida!=null)
         {
             subastaElegida.setDescripcion((String)txtDescripcion.getText());
             subastaElegida.setCategoria((String)txtCategoria.getValue());
             clientesubastas.servicios.ServicioWebSubastas.actualizarSubasta(subastaElegida);
+            getSessionBean1().setSubastaModificable(null);
+            subastaElegida=null;
             return "misSubastas";
         }
         return null;
