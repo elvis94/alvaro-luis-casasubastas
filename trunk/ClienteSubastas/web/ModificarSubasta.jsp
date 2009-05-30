@@ -27,6 +27,9 @@
                         </div>
                         <hr/>
                         <br/>
+                        <div align="center">
+                            <webuijsf:messageGroup id="messageGroup1" style="margin-left: auto; margin-right: auto"/>
+                        </div>
                         <br/>
                         <table border="0" cellpadding="1" cellspacing="10" style="margin-left: auto; margin-right: auto">
                             <tbody>
@@ -63,6 +66,14 @@
                                     </td>
                                     <td>
                                         <webuijsf:staticText binding="#{ModificarSubasta.txtPrecio}" id="txtPrecio"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <webuijsf:label id="label7" text="Puja actual:"/>
+                                    </td>
+                                    <td>
+                                        <webuijsf:staticText binding="#{ModificarSubasta.txtPuja}" id="txtPuja"/>
                                     </td>
                                 </tr>
                                 <tr>
