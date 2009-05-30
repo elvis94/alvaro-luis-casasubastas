@@ -9,6 +9,7 @@ import clientesubastas.acceso.DatosAcceso;
 import clientesubastas.acceso.HerramientaCifrado;
 import com.sun.rave.web.ui.appbase.AbstractSessionBean;
 import javax.faces.FacesException;
+import services.*;
 
 /**
  * <p>Session scope data bean for your application.  Create properties
@@ -38,13 +39,14 @@ public class SessionBean1 extends AbstractSessionBean {
     // </editor-fold>
 
 	private DatosAcceso datosPersonalesSesion;
+    private Subasta subastaModificable;
     /**
      * <p>Construct a new session data bean instance.</p>
      */
     public SessionBean1() {
         datosPersonalesSesion = null;
         // borrar
-        datosPersonalesSesion = new DatosAcceso("louis",
+        datosPersonalesSesion = new DatosAcceso("Juas",
                 HerramientaCifrado.cifrar("contraseña"));
     }
 
@@ -140,4 +142,18 @@ public class SessionBean1 extends AbstractSessionBean {
 	{
 		this.datosPersonalesSesion = datosPersonalesSesion;
 	}
+
+    /**
+     * @return the subastaModifcable
+     */
+    public Subasta getSubastaModificable() {
+        return subastaModificable;
+    }
+
+    /**
+     * @param subastaModifcable the subastaModifcable to set
+     */
+    public void setSubastaModificable(Subasta subastaModificable) {
+        this.subastaModificable = subastaModificable;
+    }
 }
