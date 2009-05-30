@@ -199,6 +199,27 @@ public class ModificarSubasta extends AbstractPageBean {
     public void setSubastaElegida(Subasta subastaElegida) {
         this.subastaElegida = subastaElegida;
     }
+
+    public String hlSubastasPublicas_action() {
+        // TODO: Replace with your code
+        return "subastasPublicas";
+    }
+
+    public String hlMisSubastas_action() {
+        // TODO: Replace with your code
+        return "misSubastas";
+    }
+
+    public String hlNuevaSubasta_action() {
+        // TODO: Replace with your code
+        return "nuevaSubasta";
+    }
+
+    public String hlCerrarSesion_action() {
+        // TODO: Replace with your code
+        getSessionBean1().setDatosPersonalesSesion(null);
+        return "subastasPublicas";
+    }
     
 }
 

@@ -225,4 +225,38 @@
         <managed-bean-class>clientesubastas.PageDiscordia</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>/NuevaSubasta.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>subastasPublicas</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>misSubastas</from-outcome>
+            <to-view-id>/MisSubastas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>subastasPublicas</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/ModificarSubasta.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>subastasPublicas</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>misSubastas</from-outcome>
+            <to-view-id>/MisSubastas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevaSubasta</from-outcome>
+            <to-view-id>/NuevaSubasta.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>subastasPublicas</from-outcome>
+            <to-view-id>/VerSubastas.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
