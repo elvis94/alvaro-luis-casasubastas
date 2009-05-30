@@ -30,7 +30,18 @@
                         <webuijsf:staticText id="txtNombre" style="position: absolute; left: 72px; top: 216px" text="NOMBRE"/>
                         <webuijsf:staticText id="txtID" style="left: 120px; top: 216px; position: absolute" text="(ID)"/>
                         <webuijsf:staticText id="txtCategoria" style="left: 168px; top: 216px; position: absolute" text="CATEGORIA"/>
-                        <webuijsf:staticText id="txtFechaCreacion" style="left: 72px; top: 264px; position: absolute"/>
+                        <webuijsf:staticText id="txtFechaCreacion" style="left: 72px; top: 288px; position: absolute" text="FECHA CREACION"/>
+                        <webuijsf:staticText id="txtSubastador" style="left: 72px; top: 264px; position: absolute" text="SUBASTADOR"/>
+                        <webuijsf:staticText id="txtFechaCierre" style="left: 72px; top: 312px; position: absolute" text="FECHA CIERRE"/>
+                        <webuijsf:staticText id="txtPrecioSalida" style="left: 72px; top: 336px; position: absolute" text="PRECIO SALIDA"/>
+                        <webuijsf:staticText id="txtPujaActual" style="position: absolute; left: 384px; top: 264px" text="PUJA ACTUAL"/>
+                        <webuijsf:staticText id="txtPujadorActual" style="left: 480px; top: 264px; position: absolute" text="PUJADOR ACTUAL"/>
+                        <webuijsf:staticText id="txtFechaPujaActual" style="left: 384px; top: 288px; position: absolute" text="FECHA PUJA ACTUAL"/>
+                        <webuijsf:textField id="textField1" style="left: 384px; top: 312px; position: absolute"/>
+                        <webuijsf:button id="btPujar" primary="true"
+                            style="font-size: 14px; font-weight: bold; height: 24px; left: 527px; top: 312px; position: absolute; width: 72px" text="Pujar!"/>
+                        <webuijsf:staticText id="txtPrecioCompra" style="left: 384px; top: 360px; position: absolute" text="PRECIO COMPRA"/>
+                        <webuijsf:button id="button1" style="font-size: 14px; height: 24px; left: 383px; top: 384px; position: absolute" text="Comprar ahora"/>
                         <br/>
                     </webuijsf:form>
                 </webuijsf:body>
