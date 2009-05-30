@@ -72,7 +72,7 @@
                                         <webuijsf:label for="txtFecha" id="label5" text="Fecha de vencimiento:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:calendar autoComplete="true" autoValidate="true" binding="#{NuevaSubasta.txtFecha}"
+                                        <webuijsf:calendar autoValidate="true" binding="#{NuevaSubasta.txtFecha}"
                                             dateFormatPattern="dd/MM/yyyy" id="txtFecha" required="true"/>
                                     </td>
                                 </tr>
