@@ -240,7 +240,7 @@ public class NuevaSubasta extends AbstractPageBean {
                 Double.parseDouble((String)txtPrecio.getText()),
                 txtFecha.getSelectedDate(),
                 da.getUsuario(), da.getPassword());
-        return null;
+        return "misSubastas";
     }
 
     public String bBorrar_action() {
