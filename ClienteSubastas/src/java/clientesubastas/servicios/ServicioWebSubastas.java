@@ -6,6 +6,7 @@ package clientesubastas.servicios;
 
 import clientesubastas.SessionBean1;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import services.*;
 
@@ -132,7 +133,11 @@ public class ServicioWebSubastas {
         s.setDescripcion(descripcion);
         s.setCategoria(categoria);
         s.setPrecioSalida(precio);
-        s.setFechaSalida(clientesubastas.acceso.UtilidadesFechas.dateToXMLGregorian(fechaInicio));
+        s.setFechaPujaActual(null);
+        s.setPujaActual(0);
+        s.setPujadorActual(null);
+        s.setFechaSalida(clientesubastas.acceso.UtilidadesFechas.dateToXMLGregorian(new Date()));
+        s.setFechaCierre(clientesubastas.acceso.UtilidadesFechas.dateToXMLGregorian(fechaInicio));
         
         return crearSubasta(s, usuario, password);
     }
