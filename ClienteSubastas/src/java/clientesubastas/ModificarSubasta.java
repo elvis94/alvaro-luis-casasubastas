@@ -17,6 +17,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.swing.text.html.Option;
 import services.Subasta;
 
 /**
@@ -62,6 +63,33 @@ public class ModificarSubasta extends AbstractPageBean {
 
     public void setTxtNombre(StaticText st) {
         this.txtNombre = st;
+    }
+    private DropDown txtCategoria = new DropDown();
+
+    public DropDown getTxtCategoria() {
+        return txtCategoria;
+    }
+
+    public void setTxtCategoria(DropDown dd) {
+        this.txtCategoria = dd;
+    }
+    private StaticText txtPrecio = new StaticText();
+
+    public StaticText getTxtPrecio() {
+        return txtPrecio;
+    }
+
+    public void setTxtPrecio(StaticText st) {
+        this.txtPrecio = st;
+    }
+    private StaticText txtFecha = new StaticText();
+
+    public StaticText getTxtFecha() {
+        return txtFecha;
+    }
+
+    public void setTxtFecha(StaticText st) {
+        this.txtFecha = st;
     }
     /**
      * <p>Construct a new Page bean instance.</p>
@@ -126,9 +154,23 @@ public class ModificarSubasta extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        getRequestBean1().setMensajeAyuda("Aquí podrá modificar la descripción de su artículo");
         if(subastaElegida != null)
         {
-            txtNombre.setText(subastaElegida.getNombre());
+            txtNombre.setText((String)subastaElegida.getNombre());
+            txtPrecio.setText((String)((Double)subastaElegida.getPujaActual()).toString());
+            txtFecha.setText((String)subastaElegida.getFechaCierre().toString());
+            txtDescripcion.setText((String)subastaElegida.getDescripcion());
+
+            Option[] o=(Option[])txtCategoria.getItems();
+            for (Option opt : o)
+            {
+                if(opt.getLabel().equals(subastaElegida.getCategoria()))
+                {
+                    txtCategoria.setValue(opt.getLabel());
+                    txtCategoria.setSelected(opt);
+                }
+            }
         }
     }
 
@@ -182,7 +224,13 @@ public class ModificarSubasta extends AbstractPageBean {
     }
 
     public String bModificar_action() {
-        
+        if(subastaElegida!=null)
+        {
+            subastaElegida.setDescripcion((String)txtDescripcion.getText());
+            subastaElegida.setCategoria((String)txtCategoria.getValue());
+            clientesubastas.servicios.ServicioWebSubastas.actualizarSubasta(subastaElegida);
+            return "misSubastas";
+        }
         return null;
     }
 
