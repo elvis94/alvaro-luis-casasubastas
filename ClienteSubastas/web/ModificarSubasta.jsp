@@ -19,10 +19,10 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:hyperlink actionExpression="#{ModificarSubasta.hlSubastasPublicas_action}" id="hlSubastasPublicas" text="[Subastas Públicas]"/>
-                                <webuijsf:hyperlink actionExpression="#{ModificarSubasta.hlMisSubastas_action}" id="hlMisSubastas" text="[Mis Subastas]"/>
-                                <webuijsf:hyperlink actionExpression="#{ModificarSubasta.hlNuevaSubasta_action}" id="hlNuevaSubasta" text="[Nueva Subasta]"/>
-                                <webuijsf:hyperlink actionExpression="#{ModificarSubasta.hlCerrarSesion_action}" id="hlCerrarSesion" text="[Cerrar Sesión]"/>
+                                <webuijsf:hyperlink actionExpression="#{ModificarSubasta.hlSubastasPublicas_action}" id="hlSubastasPublicas" immediate="true" text="[Subastas Públicas]"/>
+                                <webuijsf:hyperlink actionExpression="#{ModificarSubasta.hlMisSubastas_action}" id="hlMisSubastas" immediate="true" text="[Mis Subastas]"/>
+                                <webuijsf:hyperlink actionExpression="#{ModificarSubasta.hlNuevaSubasta_action}" id="hlNuevaSubasta" immediate="true" text="[Nueva Subasta]"/>
+                                <webuijsf:hyperlink actionExpression="#{ModificarSubasta.hlCerrarSesion_action}" id="hlCerrarSesion" immediate="true" text="[Cerrar Sesión]"/>
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>
