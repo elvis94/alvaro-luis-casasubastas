@@ -96,6 +96,7 @@ public class DetallesSubasta extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        getRequestBean1().setMensajeAyuda("En esta página puede ver los detalles de la subasta seleccionada y pujar por ella");
     }
 
     /**
@@ -138,6 +139,30 @@ public class DetallesSubasta extends AbstractPageBean {
     protected ApplicationBean1 getApplicationBean1()
     {
         return (ApplicationBean1) getBean("ApplicationBean1");
+    }
+
+    public String imghlSubPublicas_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "subastasPublicas";
+    }
+
+    public String imghlMisSubastas_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "misSubastas";
+    }
+
+    public String imghlNuevaSubasta_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "nuevaSubasta";
+    }
+
+    public String imghlCerrarSesion_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return "cerrarSesion";
     }
     
 }

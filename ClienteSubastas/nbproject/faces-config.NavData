@@ -2,12 +2,12 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="NuevaSubasta.jsp" x="462" y="523" zoom="false"/>
-        <Node id="DetallesSubasta.jsp" x="-11" y="441" zoom="false"/>
-        <Node id="ModificarSubasta.jsp" x="168" y="570" zoom="false"/>
-        <Node id="NuevoCliente.jsp" x="404" y="20" zoom="true"/>
+        <Node id="NuevaSubasta.jsp" x="462" y="523" zoom="true"/>
+        <Node id="ModificarSubasta.jsp" x="770" y="93" zoom="true"/>
+        <Node id="DetallesSubasta.jsp" x="34" y="434" zoom="false"/>
         <Node id="IniciarSesion.jsp" x="-4" y="-32" zoom="true"/>
-        <Node id="Portal.jsp" x="512" y="232" zoom="true"/>
+        <Node id="NuevoCliente.jsp" x="328" y="-38" zoom="true"/>
+        <Node id="Portal.jsp" x="638" y="-18" zoom="true"/>
         <Node id="VerSubastas.jsp" x="-12" y="201" zoom="true"/>
         <Node id="MisSubastas.jsp" x="270" y="225" zoom="true"/>
     </Scope>
