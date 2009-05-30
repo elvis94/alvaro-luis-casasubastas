@@ -14,7 +14,7 @@ import subastas.Usuario;
 
 /**
  *
- * @author Louis
+ * @author
  */
 @WebService()
 public class ServicioSubastas
@@ -37,16 +37,16 @@ public class ServicioSubastas
         return subastasDAO.insertarUsuario(cliente);
     }
 
-//	/**
-//	 * Web service operation
-//	 */
-//	@WebMethod(operationName = "crearSubasta")
-//	public boolean crearSubasta(@WebParam(name = "subasta")
-//	Subasta subasta)
-//	{
-//		//TODO write your implementation code here:
-//		return subastasDAO.insertarSubasta(subasta);
-//	}
+	/**
+	 * Web service operation
+	 */
+	@WebMethod(operationName = "actualizarSubasta")
+	public boolean actualizarSubasta(@WebParam(name = "subasta")
+	Subasta subasta)
+	{
+		//TODO write your implementation code here:
+		return subastasDAO.actualizarSubasta(subasta);
+	}
 
 	private boolean comprobarUsuario(String usuario, String password)
 	{
