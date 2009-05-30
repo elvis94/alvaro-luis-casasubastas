@@ -11,13 +11,13 @@ import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextArea;
 import com.sun.webui.jsf.component.TextField;
+import com.sun.webui.jsf.model.Option;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import javax.swing.text.html.Option;
 import services.Subasta;
 
 /**
@@ -162,7 +162,7 @@ public class ModificarSubasta extends AbstractPageBean {
             txtFecha.setText((String)subastaElegida.getFechaCierre().toString());
             txtDescripcion.setText((String)subastaElegida.getDescripcion());
 
-            Option[] o=(Option[])txtCategoria.getItems();
+            /*Option[] o=(Option[])txtCategoria.getItems();
             for (Option opt : o)
             {
                 if(opt.getLabel().equals(subastaElegida.getCategoria()))
@@ -170,7 +170,7 @@ public class ModificarSubasta extends AbstractPageBean {
                     txtCategoria.setValue(opt.getLabel());
                     txtCategoria.setSelected(opt);
                 }
-            }
+            }*/
         }
     }
 
