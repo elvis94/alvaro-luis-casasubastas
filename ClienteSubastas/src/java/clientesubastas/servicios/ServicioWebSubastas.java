@@ -6,7 +6,6 @@ package clientesubastas.servicios;
 
 import clientesubastas.SessionBean1;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import services.*;
 
@@ -16,18 +15,18 @@ import services.*;
  */
 public class ServicioWebSubastas {
 
-    // VARIABLE ESTÁTICA
+    private static services.ServicioSubastas port=null;
 
     static {
-        // INICIALIZAR LA VARIABLE ESTÁTICA
+        if(port==null){
+            services.ServicioSubastasService service = new services.ServicioSubastasService();
+            port = service.getServicioSubastasPort();
+        }
     }
 
     public static List<Subasta> subastasPublicas()
     {
         try { // Call Web Service Operation
-            services.ServicioSubastasService service = new services.ServicioSubastasService();
-            services.ServicioSubastas port = service.getServicioSubastasPort();
-            // TODO process result here
             List<services.Subasta> result = port.subastasPublicas();
             //System.out.println(result.size()+" ELEMENTOS");
             return result;
@@ -40,9 +39,6 @@ public class ServicioWebSubastas {
     public static List<Subasta> subastasMias(String usuario, String password)
     {
         try { // Call Web Service Operation
-            services.ServicioSubastasService service = new services.ServicioSubastasService();
-            services.ServicioSubastas port = service.getServicioSubastasPort();
-            // TODO process result here
             java.util.List<services.Subasta> result = port.misSubastas(usuario, password);
             return result;
         } catch (Exception ex) {
@@ -72,9 +68,6 @@ public class ServicioWebSubastas {
     public static boolean nuevoUsuario(Usuario user) {
 
         try {
-            ServicioSubastasService service = new services.ServicioSubastasService();
-            ServicioSubastas port = service.getServicioSubastasPort();
-
             return port.crearCliente(user);
 
         } catch (Exception ex) {
@@ -88,9 +81,6 @@ public class ServicioWebSubastas {
         boolean isInserted = true;
 
         try {
-            services.ServicioSubastasService service = new services.ServicioSubastasService();
-            services.ServicioSubastas port = service.getServicioSubastasPort();
-
             isInserted = port.isUsuarioInserted(usuario);
 
         } catch (Exception ex) {
@@ -105,9 +95,6 @@ public class ServicioWebSubastas {
         boolean resultado = false;
 
         try {
-            services.ServicioSubastasService service = new services.ServicioSubastasService();
-            services.ServicioSubastas port = service.getServicioSubastasPort();
-
             resultado = port.comprobarCliente(usuario, password);
         } catch (Exception ex) {
             // TODO handle custom exceptions here
@@ -120,9 +107,6 @@ public class ServicioWebSubastas {
     {
         boolean result = false;
         try { // Call Web Service Operation
-            services.ServicioSubastasService service = new services.ServicioSubastasService();
-            services.ServicioSubastas port = service.getServicioSubastasPort();
-            // TODO process result here
             result = port.borrarSubasta(usuario, password, id);
         } catch (Exception ex) {
             // TODO handle custom exceptions here
@@ -153,9 +137,6 @@ public class ServicioWebSubastas {
         boolean result=false;
 
         try { 
-            services.ServicioSubastasService service = new services.ServicioSubastasService();
-            services.ServicioSubastas port = service.getServicioSubastasPort();
-
             result = port.crearSubasta(usuario, password, s);
             
         } catch (Exception ex) {
@@ -169,8 +150,6 @@ public class ServicioWebSubastas {
     {
         boolean resultado=false;
         try {
-            services.ServicioSubastasService service = new services.ServicioSubastasService();
-            services.ServicioSubastas port = service.getServicioSubastasPort();
             resultado = port.actualizarSubasta(s);
 
         } catch (Exception ex) {
