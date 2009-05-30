@@ -273,6 +273,12 @@ public class SubastasDAO
 		return sub;
 	}
 
+    public boolean insertarSubasta(Subasta s, String subastador)
+    {
+        s.setSubastador(obtenerUsuario(subastador));
+        return insertarSubasta(s);
+    }
+
 	public boolean insertarSubasta(Subasta s)
 	{
 		boolean resultado = false;
