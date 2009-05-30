@@ -346,7 +346,7 @@ public class SubastasDAO
 	{
 		boolean resultado = false;
 		try {
-			String columnas = "UPDATE DAD.SUBASTAS SET";
+			String columnas = "UPDATE DAD.SUBASTAS SET ";
 			StringBuffer values = new StringBuffer();
 
 			values.append("NOMBRE='"+s.getNombre()+"'");
