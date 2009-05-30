@@ -112,6 +112,14 @@
             <from-outcome>nuevaSubasta</from-outcome>
             <to-view-id>/NuevaSubasta.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>refrescar</from-outcome>
+            <to-view-id>/MisSubastas.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>modificarSubasta</from-outcome>
+            <to-view-id>/ModificarSubasta.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>ModificarSubasta</managed-bean-name>
@@ -144,6 +152,14 @@
         <navigation-case>
             <from-outcome>detallesSubasta</from-outcome>
             <to-view-id>/DetallesSubasta.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>detallesSubasta</from-outcome>
+            <to-view-id>/DetallesSubasta.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>nuevaSubasta</from-outcome>
+            <to-view-id>/NuevaSubasta.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
