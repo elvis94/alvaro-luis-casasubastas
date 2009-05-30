@@ -274,6 +274,22 @@ public class NuevaSubasta extends AbstractPageBean {
             throw new ValidatorException(new FacesMessage("Precio inválido"));
         }
     }
+
+    public String hlSubastasPublicas_action() {
+        // TODO: Replace with your code
+        return "subastasPublicas";
+    }
+
+    public String hlMisSubastas_action() {
+        // TODO: Replace with your code
+        return "misSubastas";
+    }
+
+    public String hlCerrarSesion_action() {
+        // TODO: Replace with your code
+        getSessionBean1().setDatosPersonalesSesion(null);
+        return "subastasPublicas";
+    }
     
 }
 

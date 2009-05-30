@@ -19,13 +19,12 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:hyperlink id="hlInicio" immediate="true" text="[Inicio]"/>
-                                <webuijsf:hyperlink id="hlVerSubastas" immediate="true" text="[Ver Subastas]"/>
-                                <webuijsf:hyperlink id="hlCerrarSesion" immediate="true" text="[Cerrar Sesión]"/>
+                                <webuijsf:hyperlink actionExpression="#{NuevaSubasta.hlSubastasPublicas_action}" id="hlSubastasPublicas" immediate="true" text="[Subastas Públicas]"/>
+                                <webuijsf:hyperlink actionExpression="#{NuevaSubasta.hlMisSubastas_action}" id="hlMisSubastas" immediate="true" text="[Mis Subastas]"/>
+                                <webuijsf:hyperlink actionExpression="#{NuevaSubasta.hlCerrarSesion_action}" id="hlCerrarSesion" immediate="true" text="[Cerrar Sesión]"/>
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>
-                        
                         <br/>
                         <div align="center">
                             <webuijsf:messageGroup id="messageGroup1" style="margin-left: auto; margin-right: auto"/>
