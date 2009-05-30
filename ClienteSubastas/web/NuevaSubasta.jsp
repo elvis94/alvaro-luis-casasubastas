@@ -25,9 +25,11 @@
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>
+                        
                         <br/>
-                        <br/>
-                        <webuijsf:messageGroup id="messageGroup1" style="margin-left: auto; margin-right: auto"/>
+                        <div align="center">
+                            <webuijsf:messageGroup id="messageGroup1" style="margin-left: auto; margin-right: auto"/>
+                        </div>
                         <br/>
                         <table border="0" cellpadding="1" cellspacing="10" style="margin-left: auto; margin-right: auto">
                             <tbody>
@@ -77,10 +79,10 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" style="height: 45px; text-align: center">
-                                        <webuijsf:button actionExpression="#{NuevaSubasta.bCrear_action}" binding="#{NuevaSubasta.bCrear}" id="bCrear"
-                                            primary="true" style="font-size: 11px; height: 23px; margin-right: 5px" text="Crear subasta"/>
-                                        <webuijsf:button actionExpression="#{NuevaSubasta.bBorrar_action}" binding="#{NuevaSubasta.bBorrar}" id="bBorrar"
-                                            immediate="true" style="font-size: 11px; height: 23px" text="Borrar los campos"/>
+                                        <webuijsf:button actionExpression="#{NuevaSubasta.bCrear_action}" id="bCrear" primary="true"
+                                            style="font-size: 11px; height: 23px; margin-right: 5px" text="Crear subasta"/>
+                                        <webuijsf:button actionExpression="#{NuevaSubasta.bBorrar_action}" id="bBorrar" immediate="true"
+                                            style="font-size: 11px; height: 23px" text="Borrar los campos"/>
                                     </td>
                                 </tr>
                                 <tr>

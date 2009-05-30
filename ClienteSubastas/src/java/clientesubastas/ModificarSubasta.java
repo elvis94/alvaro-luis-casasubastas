@@ -8,6 +8,7 @@ package clientesubastas;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.Calendar;
 import com.sun.webui.jsf.component.DropDown;
+import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextArea;
 import com.sun.webui.jsf.component.TextField;
 import com.sun.webui.jsf.model.SingleSelectOptionsList;
@@ -16,6 +17,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import services.Subasta;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -51,6 +53,16 @@ public class ModificarSubasta extends AbstractPageBean {
 
     // </editor-fold>
 
+    private Subasta subastaElegida = null;
+    private StaticText txtNombre = new StaticText();
+
+    public StaticText getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(StaticText st) {
+        this.txtNombre = st;
+    }
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -114,6 +126,10 @@ public class ModificarSubasta extends AbstractPageBean {
      */
     @Override
     public void prerender() {
+        if(subastaElegida != null)
+        {
+            txtNombre.setText(subastaElegida.getNombre());
+        }
     }
 
     /**
@@ -168,6 +184,20 @@ public class ModificarSubasta extends AbstractPageBean {
     public String bModificar_action() {
         
         return null;
+    }
+
+    /**
+     * @return the subastaElegida
+     */
+    public Subasta getSubastaElegida() {
+        return subastaElegida;
+    }
+
+    /**
+     * @param subastaElegida the subastaElegida to set
+     */
+    public void setSubastaElegida(Subasta subastaElegida) {
+        this.subastaElegida = subastaElegida;
     }
     
 }

@@ -26,7 +26,7 @@ public class ControlAcceso implements PhaseListener
 	public void afterPhase(PhaseEvent event)
 	{
 		// Comprobar si el usuario ha iniciado la sesión y actuar en consecuencia
-        /*FacesContext context = event.getFacesContext();
+        FacesContext context = event.getFacesContext();
 
         if((context!=null) && sesionIniciada(context))
         {
@@ -47,7 +47,7 @@ public class ControlAcceso implements PhaseListener
                 context.getApplication().getNavigationHandler().
                         handleNavigation(context, null, USER_LOGIN_OUTCOME);
             }
-        }*/
+        }
 	}
 
 	public void beforePhase(PhaseEvent event) { }
