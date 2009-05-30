@@ -16,6 +16,12 @@ import services.*;
  */
 public class ServicioWebSubastas {
 
+    // VARIABLE ESTÁTICA
+
+    static {
+        // INICIALIZAR LA VARIABLE ESTÁTICA
+    }
+
     public static List<Subasta> subastasPublicas()
     {
         try { // Call Web Service Operation
