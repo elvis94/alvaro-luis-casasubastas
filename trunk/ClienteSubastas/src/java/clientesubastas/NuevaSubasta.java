@@ -88,15 +88,7 @@ public class NuevaSubasta extends AbstractPageBean {
     public void setOutText(StaticText st) {
         this.outText = st;
     }
-    private Button bCrear = new Button();
-
-    public Button getBCrear() {
-        return bCrear;
-    }
-
-    public void setBCrear(Button b) {
-        this.bCrear = b;
-    }
+    
     private Button bBorrar = new Button();
 
     public Button getBBorrar() {
@@ -114,6 +106,15 @@ public class NuevaSubasta extends AbstractPageBean {
 
     public void setTxtDescripcion(TextArea ta) {
         this.txtDescripcion = ta;
+    }
+    private Button bCrear = new Button();
+
+    public Button getBCrear() {
+        return bCrear;
+    }
+
+    public void setBCrear(Button b) {
+        this.bCrear = b;
     }
 
     // </editor-fold>

@@ -35,7 +35,7 @@
                                         <webuijsf:label id="label1" text="Nombre del artículo:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:staticText id="txtNombre"/>
+                                        <webuijsf:staticText binding="#{ModificarSubasta.txtNombre}" id="txtNombre"/>
                                     </td>
                                 </tr>
                                 <tr>

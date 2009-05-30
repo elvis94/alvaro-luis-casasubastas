@@ -109,6 +109,20 @@ public class ServicioWebSubastas {
         return resultado;
     }
 
+    public static boolean borrarSubasta(String usuario, String password, int id)
+    {
+        boolean result = false;
+        try { // Call Web Service Operation
+            services.ServicioSubastasService service = new services.ServicioSubastasService();
+            services.ServicioSubastas port = service.getServicioSubastasPort();
+            // TODO process result here
+            result = port.borrarSubasta(usuario, password, id);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
+        return result;
+    }
+
     public static boolean crearSubasta(String nombre, String descripcion,
             String categoria, double precio, Date fechaInicio, String usuario,
             String password)

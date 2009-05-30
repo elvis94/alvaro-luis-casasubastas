@@ -45,9 +45,9 @@
                                     <webuijsf:tableColumn headerText="pujadorActual" id="tableColumn6" sort="pujadorActual">
                                         <webuijsf:staticText id="staticText5" text="#{currentRow.value['pujadorActual'].usuario}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn headerText="Acciones" align="center" id="tableColumn7" valign="middle">
-                                        <webuijsf:button id="borrar" text="Borrar" actionExpression="#{MisSubastas.borrar_action}" />
-                                        <webuijsf:button id="modificar" text="Modificar" actionExpression="#{MisSubastas.modificar_action}" />
+                                    <webuijsf:tableColumn align="center" headerText="Acciones" id="tableColumn7" valign="middle">
+                                        <webuijsf:button actionExpression="#{MisSubastas.borrar_action}" id="borrar" text="Borrar"/>
+                                        <webuijsf:button actionExpression="#{MisSubastas.modificar_action}" id="modificar" text="Modificar"/>
                                     </webuijsf:tableColumn>
                                 </webuijsf:tableRowGroup>
                             </webuijsf:table>

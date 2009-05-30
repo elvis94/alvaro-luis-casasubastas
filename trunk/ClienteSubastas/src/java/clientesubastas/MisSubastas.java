@@ -65,6 +65,8 @@ public class MisSubastas extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
+
+        refrescarListados();
         
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
@@ -80,6 +82,13 @@ public class MisSubastas extends AbstractPageBean {
         // Perform application initialization that must complete
         // *after* managed components are initialized
         // TODO - add your own initialization code here
+    }
+
+    private void refrescarListados()
+    {
+        DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
+        setListadoMisSubastas(ServicioWebSubastas.subastasMias(da.getUsuario(), da.getPassword()));
+        setListadoMisPujas(null);
     }
 
     /**
@@ -105,9 +114,9 @@ public class MisSubastas extends AbstractPageBean {
     public void prerender()
     {
         getRequestBean1().setMensajeAyuda("Utilice la tabla para navegar por sus subastas");
-        DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
-        setListadoMisSubastas(ServicioWebSubastas.subastasMias(da.getUsuario(), da.getPassword()));
-        setListadoMisPujas(null);
+        //DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
+        //setListadoMisSubastas(ServicioWebSubastas.subastasMias(da.getUsuario(), da.getPassword()));
+        //setListadoMisPujas(null);
     }
 
     /**
@@ -183,33 +192,28 @@ public class MisSubastas extends AbstractPageBean {
     public String hlCerrarSesion_action() {
         // TODO: Replace with your code
         getSessionBean1().setDatosPersonalesSesion(null);
-        System.out.println("SE HA LLEGADO A EJECUTAR");
         return "subastasPublicas";
     }
 
     public String hlSubastasPublicas_action() {
         // TODO: Replace with your code
-        System.out.println("SE HA LLEGADO A EJECUTAR");
         return "subastasPublicas";
     }
 
     public String hlNuevaSubasta_action() {
         // TODO: Replace with your code
-        System.out.println("SE HA LLEGADO A EJECUTAR");
         return "nuevaSubasta";
     }
 
     public String hlDetalles_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        System.out.println("SE HA LLEGADO A EJECUTAR");
         return "subastasPublicas";
     }
 
     public String borrar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        System.out.println("SE HA LLEGADO A EJECUTAR");
         RowKey rk = (RowKey) getValue("#{currentRow.tableRow}");
 
         if(rk != null) {
@@ -221,21 +225,32 @@ public class MisSubastas extends AbstractPageBean {
                 idx = Integer.parseInt(rk.getRowId());
                 l.remove(idx);
             }*/
-
-            
+            int fila = Integer.parseInt(rk.getRowId());
+            Subasta s = getListadoMisSubastas().get(fila);
+            // Borrar la subasta
+            DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
+            ServicioWebSubastas.borrarSubasta(da.getUsuario(), da.getPassword(), s.getId());
+            refrescarListados();
         }
-        Object o = getValue("#{currentRow}");
-        System.out.println(o.getClass());
 
-        return "subastasPublicas";
+        return "refrescar";
 
     }
 
     public String modificar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
-        System.out.println("SE HA LLEGADO A EJECUTAR");
-        return "subastasPublicas";
+        RowKey rk = (RowKey) getValue("#{currentRow.tableRow}");
+
+        if(rk != null) {
+            int fila = Integer.parseInt(rk.getRowId());
+            Subasta s = getListadoMisSubastas().get(fila);
+            // Pasar la subasta por parámetro
+            ModificarSubasta modifsub = (ModificarSubasta)getBean("ModificarSubasta");
+            modifsub.setSubastaElegida(s);
+        }
+
+        return "modificarSubasta";
     }
 
     public String hyperlink1_action() {

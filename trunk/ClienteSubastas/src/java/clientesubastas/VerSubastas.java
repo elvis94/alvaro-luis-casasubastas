@@ -109,6 +109,7 @@ public class VerSubastas extends AbstractPageBean {
         // Perform application initialization that must complete
         // *before* managed components are initialized
         // TODO - add your own initialiation code here
+        setListadoPublico(ServicioWebSubastas.subastasPublicas());
         
         // <editor-fold defaultstate="collapsed" desc="Managed Component Initialization">
         // Initialize automatically managed components
@@ -149,7 +150,7 @@ public class VerSubastas extends AbstractPageBean {
     public void prerender()
 	{
         getRequestBean1().setMensajeAyuda("Utilice la tabla para navegar por las subastas públicas");
-        setListadoPublico(ServicioWebSubastas.subastasPublicas());
+        //setListadoPublico(ServicioWebSubastas.subastasPublicas());
         if(getSessionBean1().getDatosPersonalesSesion() != null) {
             hlIniciarSesion.setVisible(false);
             hlRegistrarse.setVisible(false);
@@ -256,16 +257,9 @@ public class VerSubastas extends AbstractPageBean {
         return "nuevaSubasta";
     }
 
-    public String hyperlink1_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        System.out.println("SE HA LLEGADO A EJECUTAR");
-        return null;
-    }
-
     public String hlDetalles_action() {
         System.out.println("SE HA LLEGADO A EJECUTAR");
-        return "detalles";
+        return "detallesSubasta";
     }
     
 }
