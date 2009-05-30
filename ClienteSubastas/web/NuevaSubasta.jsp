@@ -65,6 +65,7 @@
                                     </td>
                                     <td>
                                         <webuijsf:textField binding="#{NuevaSubasta.txtPrecio}" id="txtPrecio" required="true" style="margin-left: 10px" validatorExpression="#{NuevaSubasta.txtPrecio_validate}"/>
+                                        <webuijsf:label id="label7" style="font-size: 12px; left: 4px; bottom: 2px" text="€"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -72,8 +73,7 @@
                                         <webuijsf:label for="txtFecha" id="label5" text="Fecha de vencimiento:"/>
                                     </td>
                                     <td>
-                                        <webuijsf:calendar autoValidate="true" binding="#{NuevaSubasta.txtFecha}"
-                                            dateFormatPattern="dd/MM/yyyy" id="txtFecha" required="true"/>
+                                        <webuijsf:calendar binding="#{NuevaSubasta.txtFecha}" dateFormatPattern="dd/MM/yyyy" id="txtFecha" required="true"/>
                                     </td>
                                 </tr>
                                 <tr>
