@@ -158,4 +158,18 @@ public class ServicioWebSubastas {
 
         return result;
     }
+
+    public static boolean actualizarSubasta(Subasta s)
+    {
+        boolean resultado=false;
+        try {
+            services.ServicioSubastasService service = new services.ServicioSubastasService();
+            services.ServicioSubastas port = service.getServicioSubastasPort();
+            resultado = port.actualizarSubasta(s);
+
+        } catch (Exception ex) {
+            resultado=false;
+        }
+        return resultado;
+    }
 }
