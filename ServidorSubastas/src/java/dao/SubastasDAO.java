@@ -11,7 +11,7 @@ import subastas.*;
 
 /**
  *
- * @author Louis
+ * @author 
  */
 public class SubastasDAO
 {
