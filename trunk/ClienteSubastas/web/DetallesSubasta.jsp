@@ -27,21 +27,85 @@
                         </div>
                         <hr/>
                         <br/>
-                        <webuijsf:staticText id="txtNombre" style="position: absolute; left: 72px; top: 216px" text="NOMBRE"/>
-                        <webuijsf:staticText id="txtID" style="left: 120px; top: 216px; position: absolute" text="(ID)"/>
-                        <webuijsf:staticText id="txtCategoria" style="left: 168px; top: 216px; position: absolute" text="CATEGORIA"/>
-                        <webuijsf:staticText id="txtFechaCreacion" style="left: 72px; top: 288px; position: absolute" text="FECHA CREACION"/>
-                        <webuijsf:staticText id="txtSubastador" style="left: 72px; top: 264px; position: absolute" text="SUBASTADOR"/>
-                        <webuijsf:staticText id="txtFechaCierre" style="left: 72px; top: 312px; position: absolute" text="FECHA CIERRE"/>
-                        <webuijsf:staticText id="txtPrecioSalida" style="left: 72px; top: 336px; position: absolute" text="PRECIO SALIDA"/>
-                        <webuijsf:staticText id="txtPujaActual" style="position: absolute; left: 384px; top: 264px" text="PUJA ACTUAL"/>
-                        <webuijsf:staticText id="txtPujadorActual" style="left: 480px; top: 264px; position: absolute" text="PUJADOR ACTUAL"/>
-                        <webuijsf:staticText id="txtFechaPujaActual" style="left: 384px; top: 288px; position: absolute" text="FECHA PUJA ACTUAL"/>
-                        <webuijsf:textField id="textField1" style="left: 384px; top: 312px; position: absolute"/>
-                        <webuijsf:button id="btPujar" primary="true"
-                            style="font-size: 14px; font-weight: bold; height: 24px; left: 527px; top: 312px; position: absolute; width: 72px" text="Pujar!"/>
-                        <webuijsf:staticText id="txtPrecioCompra" style="left: 384px; top: 360px; position: absolute" text="PRECIO COMPRA"/>
-                        <webuijsf:button id="button1" style="font-size: 14px; height: 24px; left: 383px; top: 384px; position: absolute" text="Comprar ahora"/>
+                        <table border="0" cellpadding="2" style="margin-left: auto; margin-right: auto;">
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">
+                                        <webuijsf:staticText id="txtNombre" style="font-family: Arial,Helvetica,sans-serif; font-size: 36px" text="NOMBRE"/>
+                                        <webuijsf:staticText id="txtID" text="(ID)"/>
+                                        <webuijsf:staticText id="txtCategoria" text="CATEGORIA"/>
+                                        <hr />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <table border="0" cellspacing="3">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:staticText id="txtFechaCreacion" text="FECHA CREACION"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:staticText id="txtSubastador" text="SUBASTADOR"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:staticText id="txtFechaCierre" text="FECHA CIERRE"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:staticText id="txtPrecioSalida" text="PRECIO SALIDA"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td valign="top">
+                                        <table border="0" cellspacing="3">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:staticText id="staticText1" style="color: #666666; font-weight: bold" text="Estado actual de la subasta:"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:staticText id="txtPujaActual" text="PUJA ACTUAL"/>
+                                                        <webuijsf:staticText id="txtPujadorActual" text="PUJADOR ACTUAL"/>
+                                                        <webuijsf:staticText id="txtFechaPujaActual" text="FECHA PUJA ACTUAL"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:textField id="txfNuevaPuja"/>
+                                                        <webuijsf:button id="btPujar" primary="true" style="font-size: 14px; font-weight: bold; height: 24px;" text="Pujar!"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:staticText id="txtPrecioCompra" text="PRECIO COMPRA"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:button id="btComprar" style="font-size: 14px; height: 24px;" text="Comprar ahora"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="height: 15px">
+                                        DESCRIPCIÓN
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <br/>
                     </webuijsf:form>
                 </webuijsf:body>
