@@ -186,4 +186,16 @@ public class ServicioWebSubastas {
 
         return resultado;
     }
+
+    public static List<Subasta> subastasLideradas(String usuario, String password)
+    {
+        try {
+            java.util.List<services.Subasta> result = port.obtenerSubastasLideradas(usuario, password);
+            return result;
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+            return null;
+        }
+
+    }
 }
