@@ -41,11 +41,19 @@ public class ServicioSubastas
 	 * Web service operation
 	 */
 	@WebMethod(operationName = "actualizarSubasta")
-	public boolean actualizarSubasta(@WebParam(name = "subasta")
+	public boolean actualizarSubasta(@WebParam(name = "usuario")
+	String usuario,@WebParam(name = "password")
+	String password,@WebParam(name = "subasta")
 	Subasta subasta)
 	{
-		//TODO write your implementation code here:
-		return subastasDAO.actualizarSubasta(subasta);
+        if(comprobarUsuario(usuario, password)) {
+            // Insertar el usuario
+            Usuario subastador = subastasDAO.obtenerUsuario(usuario);
+            subasta.setSubastador(subastador);
+            // Preparar el objeto de subasta
+			return subastasDAO.actualizarSubasta(subasta);
+        } else
+        return false;
 	}
 
 	private boolean comprobarUsuario(String usuario, String password)
@@ -170,7 +178,39 @@ public class ServicioSubastas
     String password, @WebParam(name = "idSubasta")
     int idSubasta, @WebParam(name = "puja")
     double puja) {
-        //TODO write your implementation code here:
+        if(comprobarUsuario(usuario, password)) {
+            // Insertar el usuario
+            Subasta subasta = subastasDAO.obtenerSubasta(idSubasta);
+            if(!usuario.equals(subasta.getSubastador().getUsuario())){
+                subasta.setPujaActual(puja);
+                subasta.setPujadorActual(subastasDAO.obtenerUsuario(usuario));
+                // Preparar el objeto de subasta
+                return subastasDAO.actualizarSubasta(subasta);
+            }
+            else return false;
+        } else
+        return false;
+    }
+
+    @WebMethod(operationName = "modificarSubasta")
+    public boolean modificarSubasta(@WebParam(name = "usuario")
+    String usuario, @WebParam(name = "password")
+    String password, @WebParam(name = "idSubasta")
+    int idSubasta, @WebParam(name = "descripcion")
+    String descripcion, @WebParam(name = "categoria")
+    String categoria) {
+        if(comprobarUsuario(usuario, password)) {
+            // Insertar el usuario
+            Subasta subasta = subastasDAO.obtenerSubasta(idSubasta);
+
+            if(usuario.equals(subasta.getSubastador().getUsuario())){
+                subasta.setDescripcion(descripcion);
+                subasta.setCategoria(categoria);
+                // Preparar el objeto de subasta
+                return subastasDAO.actualizarSubasta(subasta);
+            }
+            return false;
+        } else
         return false;
     }
 }
