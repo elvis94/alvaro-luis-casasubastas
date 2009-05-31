@@ -6,6 +6,7 @@
 package services;
 
 import dao.SubastasDAO;
+import java.util.Date;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -183,9 +184,28 @@ public class ServicioSubastas
     double puja) {
         if(comprobarUsuario(usuario, password)) {
             // Insertar el usuario
+
+            // No pujar si ya estaba comprada
             Subasta subasta = subastasDAO.obtenerSubasta(idSubasta);
-            if(!usuario.equals(subasta.getSubastador().getUsuario())){
+            if(subasta.getPujaActual() >= subasta.getPrecioCompra())
+                return false;
+
+            // No pujar si está caducada
+            Date fechaAhora = new Date(System.currentTimeMillis());
+            if(fechaAhora.after(subasta.getFechaCierre()) )
+                return false;
+
+            // No pujar en nuestra propia subasta
+            if(!usuario.equals(subasta.getSubastador().getUsuario()))
+            {
                 subasta.setPujaActual(puja);
+                subasta.setFechaPujaActual(fechaAhora);
+
+                // Prolongar un minuto si alguien puja en el último minuto
+                Date fechaAux = new Date(fechaAhora.getTime() + 60000);
+                if(fechaAux.after(subasta.getFechaCierre()))
+                    subasta.setFechaCierre(fechaAux);
+
                 subasta.setPujadorActual(subastasDAO.obtenerUsuario(usuario));
                 // Preparar el objeto de subasta
                 return subastasDAO.actualizarSubasta(subasta);
