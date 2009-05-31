@@ -259,6 +259,9 @@ public class VerSubastas extends AbstractPageBean {
 
     public String hlDetalles_action()
     {
+        if( getSessionBean1().getDatosPersonalesSesion() == null)
+            return "iniciarSesion";
+
         RowKey rk = (RowKey) getValue("#{currentRow.tableRow}");
 
         if(rk != null) {

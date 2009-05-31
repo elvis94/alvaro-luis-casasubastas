@@ -89,14 +89,15 @@ public class MisSubastas extends AbstractPageBean {
         DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
         setListadoMisSubastas(ServicioWebSubastas.subastasMias(da.getUsuario(), da.getPassword()));
 
-        List<Subasta> mispujas = ServicioWebSubastas.subastasPublicas();
+        /*List<Subasta> mispujas = ServicioWebSubastas.subastasPublicas();
         List<Subasta> resultado = new ArrayList<Subasta>();
         for(Subasta s : mispujas) {
             if(s.getPujadorActual() != null)
                 if( da.getUsuario().equals(s.getPujadorActual().getUsuario()) )
                     resultado.add(s);
         }
-        setListadoMisPujas(resultado);
+        setListadoMisPujas(resultado);*/
+        setListadoMisPujas(ServicioWebSubastas.subastasLideradas(da.getUsuario(), da.getPassword()));
     }
 
     /**

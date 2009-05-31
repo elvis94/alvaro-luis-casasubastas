@@ -97,6 +97,7 @@
                                                         <webuijsf:button actionExpression="#{DetallesSubasta.btPujar_action}"
                                                             binding="#{DetallesSubasta.btPujar}" id="btPujar" primary="true"
                                                             style="font-size: 14px; font-weight: bold; height: 24px;" text="Pujar!"/>
+                                                        <webuijsf:message for="txfNuevaPuja" id="message1" showDetail="false" showSummary="true"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
