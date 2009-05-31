@@ -112,7 +112,7 @@ public class ServicioSubastas
             Usuario subastador = subastasDAO.obtenerUsuario(usuario);
             subasta.setSubastador(subastador);
             // Preparar el objeto de subasta
-			return subastasDAO.insertarSubasta(subasta, usuario);
+			return subastasDAO.insertarSubasta(subasta);
         } else
 			return false;
     }
