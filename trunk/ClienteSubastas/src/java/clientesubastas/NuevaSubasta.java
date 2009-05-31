@@ -304,9 +304,15 @@ public class NuevaSubasta extends AbstractPageBean {
 
     public void txtCompra_validate(FacesContext context, UIComponent component, Object value) {
         String s = String.valueOf(value);
-        Double v1 = Double.parseDouble((String)txtPrecio.getLocalValue());;
-        if (s.length() < 1 ||
-                v1.compareTo(Double.parseDouble(s)) >= 0) {
+
+        try{
+
+            Double v1 = Double.parseDouble((String)txtPrecio.getLocalValue());
+            if (s.length() < 1 ||
+                    v1.compareTo(Double.parseDouble(s)) >= 0) {
+                throw new ValidatorException(new FacesMessage("Precio de compra directa inválido"));
+            }
+        }catch(Exception e){
             throw new ValidatorException(new FacesMessage("Precio de compra directa inválido"));
         }
     }

@@ -5,14 +5,18 @@
 
 package clientesubastas;
 
+import clientesubastas.acceso.*;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.Button;
 import com.sun.webui.jsf.component.StaticText;
 import com.sun.webui.jsf.component.TextArea;
 import com.sun.webui.jsf.component.TextField;
+import java.util.Date;
 import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import services.Subasta;
 
 /**
@@ -269,8 +273,11 @@ public class DetallesSubasta extends AbstractPageBean {
             getSessionBean1().setSubastaModificable(subastaElegida);
 
             // SI ES MI SUBASTA
-            // SI ESTÁ PASADA DE FECHA
-            if( (false) || (false) ) {
+            // SI ESTÁ PASADA DE FECHA (La fecha de cierre es anterior a la fecha actual)
+            DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
+            if( (subastaElegida.getSubastador().getUsuario().equals(da.getUsuario())) || 
+                    (UtilidadesFechas.gregorianToDate(subastaElegida.getFechaCierre()).
+                    before(new Date()))) {
                 txfNuevaPuja.setVisible(false);
                 btPujar.setVisible(false);
                 btComprar.setVisible(false);
@@ -369,6 +376,37 @@ public class DetallesSubasta extends AbstractPageBean {
     }
 
     public void txfNuevaPuja_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        try{
+            Double v1 = Double.parseDouble(s);
+
+            if (s.length() < 1 || v1.doubleValue() <= subastaElegida.getPujaActual()) {
+                throw new ValidatorException(new FacesMessage("Puja inválida"));
+            }
+        }catch(Exception e){
+            throw new ValidatorException(new FacesMessage("Número incorrecto"));
+        }
+    }
+
+    public String btPujar_action() {
+        subastaElegida=getSessionBean1().getSubastaModificable();
+        if(subastaElegida!=null)
+        {
+            DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
+            clientesubastas.servicios.ServicioWebSubastas.pujar(subastaElegida.getId(),
+                    Double.parseDouble((String)txfNuevaPuja.getText()),
+                    da.getUsuario(), da.getPassword());
+
+            return "subastasPublicas";
+        }
+        
+        return null;
+    }
+
+    public String btComprar_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        return null;
     }
     
 }
