@@ -31,6 +31,7 @@
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>
+                        
                         <br/>
                         <div align="center">
                             <webuijsf:messageGroup id="messageGroup1" style="margin-left: auto; margin-right: auto"/>
