@@ -6,7 +6,14 @@
 package clientesubastas;
 
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import com.sun.webui.jsf.component.Button;
+import com.sun.webui.jsf.component.StaticText;
+import com.sun.webui.jsf.component.TextArea;
+import com.sun.webui.jsf.component.TextField;
 import javax.faces.FacesException;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import services.Subasta;
 
 /**
  * <p>Page bean that corresponds to a similarly named JSP page.  This
@@ -17,12 +24,129 @@ import javax.faces.FacesException;
  *
  * @version DetallesSubasta.java
  * @version Created on 28-abr-2009, 1:20:19
- * @author Louis
  */
 
 public class DetallesSubasta extends AbstractPageBean {
     // <editor-fold defaultstate="collapsed" desc="Managed Component Definition">
 
+    private StaticText txtNombre = new StaticText();
+
+    public StaticText getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(StaticText st) {
+        this.txtNombre = st;
+    }
+    private StaticText txtID = new StaticText();
+
+    public StaticText getTxtID() {
+        return txtID;
+    }
+
+    public void setTxtID(StaticText st) {
+        this.txtID = st;
+    }
+    private StaticText txtCategoria = new StaticText();
+
+    public StaticText getTxtCategoria() {
+        return txtCategoria;
+    }
+
+    public void setTxtCategoria(StaticText st) {
+        this.txtCategoria = st;
+    }
+    private StaticText txtFechaCreacion = new StaticText();
+
+    public StaticText getTxtFechaCreacion() {
+        return txtFechaCreacion;
+    }
+
+    public void setTxtFechaCreacion(StaticText st) {
+        this.txtFechaCreacion = st;
+    }
+    private StaticText txtSubastador = new StaticText();
+
+    public StaticText getTxtSubastador() {
+        return txtSubastador;
+    }
+
+    public void setTxtSubastador(StaticText st) {
+        this.txtSubastador = st;
+    }
+    private StaticText txtFechaCierre = new StaticText();
+
+    public StaticText getTxtFechaCierre() {
+        return txtFechaCierre;
+    }
+
+    public void setTxtFechaCierre(StaticText st) {
+        this.txtFechaCierre = st;
+    }
+    private StaticText txtPrecioSalida = new StaticText();
+
+    public StaticText getTxtPrecioSalida() {
+        return txtPrecioSalida;
+    }
+
+    public void setTxtPrecioSalida(StaticText st) {
+        this.txtPrecioSalida = st;
+    }
+    private StaticText txtPujaActual = new StaticText();
+
+    public StaticText getTxtPujaActual() {
+        return txtPujaActual;
+    }
+
+    public void setTxtPujaActual(StaticText st) {
+        this.txtPujaActual = st;
+    }
+    private StaticText txtPujadorActual = new StaticText();
+
+    public StaticText getTxtPujadorActual() {
+        return txtPujadorActual;
+    }
+
+    public void setTxtPujadorActual(StaticText st) {
+        this.txtPujadorActual = st;
+    }
+    private StaticText txtFechaPujaActual = new StaticText();
+
+    public StaticText getTxtFechaPujaActual() {
+        return txtFechaPujaActual;
+    }
+
+    public void setTxtFechaPujaActual(StaticText st) {
+        this.txtFechaPujaActual = st;
+    }
+    private TextField txfNuevaPuja = new TextField();
+
+    public TextField getTxfNuevaPuja() {
+        return txfNuevaPuja;
+    }
+
+    public void setTxfNuevaPuja(TextField tf) {
+        this.txfNuevaPuja = tf;
+    }
+    private StaticText txtPrecioCompra = new StaticText();
+
+    public StaticText getTxtPrecioCompra() {
+        return txtPrecioCompra;
+    }
+
+    public void setTxtPrecioCompra(StaticText st) {
+        this.txtPrecioCompra = st;
+    }
+    private TextArea txaDescripcion = new TextArea();
+
+    public TextArea getTxaDescripcion() {
+        return txaDescripcion;
+    }
+
+    public void setTxaDescripcion(TextArea ta) {
+        this.txaDescripcion = ta;
+    }
+    
     /**
      * <p>Automatically managed component initialization.  <strong>WARNING:</strong>
      * This method is automatically generated, so any user-specified code inserted
@@ -33,6 +157,26 @@ public class DetallesSubasta extends AbstractPageBean {
 
     // </editor-fold>
 
+    private Subasta subastaElegida = null;
+    private Button btPujar = new Button();
+
+    public Button getBtPujar() {
+        return btPujar;
+    }
+
+    public void setBtPujar(Button b) {
+        this.btPujar = b;
+    }
+    private Button btComprar = new Button();
+
+    public Button getBtComprar() {
+        return btComprar;
+    }
+
+    public void setBtComprar(Button b) {
+        this.btComprar = b;
+    }
+    
     /**
      * <p>Construct a new Page bean instance.</p>
      */
@@ -95,8 +239,52 @@ public class DetallesSubasta extends AbstractPageBean {
      * this page.</p>
      */
     @Override
-    public void prerender() {
+    public void prerender()
+    {
         getRequestBean1().setMensajeAyuda("En esta página puede ver los detalles de la subasta seleccionada y pujar por ella");
+        if(subastaElegida != null)
+        {
+            txtNombre.setText(subastaElegida.getNombre());
+            txtID.setText("   ("+subastaElegida.getId()+")");
+            txtCategoria.setText("     ["+subastaElegida.getCategoria()+"]");
+            txtFechaCreacion.setText("Fecha creación - "+subastaElegida.getFechaSalida().toString());
+            txtSubastador.setText("Subastador - "+subastaElegida.getSubastador().getUsuario());
+            txtFechaCierre.setText("Fecha cierre - "+subastaElegida.getFechaCierre().toString());
+            txtPrecioSalida.setText("Precio salida - "+subastaElegida.getPrecioSalida()+" €");
+
+            if(subastaElegida.getPujadorActual() != null)
+            {
+                txtPujaActual.setText(subastaElegida.getPujaActual()+" €");
+                txtPujadorActual.setText("  "+subastaElegida.getPujadorActual().getUsuario());
+                txtFechaPujaActual.setText("  ("+subastaElegida.getFechaPujaActual().toString()+")");
+            }
+            else
+            {
+                txtPujaActual.setText("Aún no se ha pujado por este objeto");
+            }
+            txtPrecioCompra.setText(subastaElegida.getPrecioCompra()+" €");
+
+            txaDescripcion.setText(subastaElegida.getDescripcion());
+
+            getSessionBean1().setSubastaModificable(subastaElegida);
+
+            // SI ES MI SUBASTA
+            // SI ESTÁ PASADA DE FECHA
+            if( (false) || (false) ) {
+                txfNuevaPuja.setVisible(false);
+                btPujar.setVisible(false);
+                btComprar.setVisible(false);
+            }
+        }
+        else
+        {
+            // DESACTIVAR BOTONES
+            txfNuevaPuja.setVisible(false);
+            btPujar.setVisible(false);
+            btComprar.setVisible(false);
+        }
+
+
     }
 
     /**
@@ -162,7 +350,25 @@ public class DetallesSubasta extends AbstractPageBean {
     public String imghlCerrarSesion_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        getSessionBean1().setDatosPersonalesSesion(null);
         return "cerrarSesion";
+    }
+
+    /**
+     * @return the subastaElegida
+     */
+    public Subasta getSubastaElegida() {
+        return subastaElegida;
+    }
+
+    /**
+     * @param subastaElegida the subastaElegida to set
+     */
+    public void setSubastaElegida(Subasta subastaElegida) {
+        this.subastaElegida = subastaElegida;
+    }
+
+    public void txfNuevaPuja_validate(FacesContext context, UIComponent component, Object value) {
     }
     
 }

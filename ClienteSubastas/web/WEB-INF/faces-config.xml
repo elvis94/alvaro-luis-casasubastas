@@ -120,6 +120,10 @@
             <from-outcome>modificarSubasta</from-outcome>
             <to-view-id>/ModificarSubasta.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>detallesSubasta</from-outcome>
+            <to-view-id>/DetallesSubasta.jsp</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>ModificarSubasta</managed-bean-name>

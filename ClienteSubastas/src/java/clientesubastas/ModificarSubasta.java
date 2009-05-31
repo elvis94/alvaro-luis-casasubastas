@@ -27,7 +27,6 @@ import services.Subasta;
  *
  * @version ModificarSubasta.java
  * @version Created on 28-abr-2009, 1:19:32
- * @author Louis
  */
 
 public class ModificarSubasta extends AbstractPageBean {

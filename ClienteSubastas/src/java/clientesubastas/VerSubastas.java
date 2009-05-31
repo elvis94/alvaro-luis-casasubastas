@@ -6,6 +6,7 @@
 package clientesubastas;
 
 import clientesubastas.servicios.ServicioWebSubastas;
+import com.sun.data.provider.RowKey;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.Hyperlink;
 import java.util.List;
@@ -21,7 +22,6 @@ import services.Subasta;
  *
  * @version VerSubastas.java
  * @version Created on 28-abr-2009, 1:16:34
- * @author Louis
  */
 
 public class VerSubastas extends AbstractPageBean {
@@ -257,8 +257,22 @@ public class VerSubastas extends AbstractPageBean {
         return "nuevaSubasta";
     }
 
-    public String hlDetalles_action() {
-        System.out.println("SE HA LLEGADO A EJECUTAR");
+    public String hlDetalles_action()
+    {
+        RowKey rk = (RowKey) getValue("#{currentRow.tableRow}");
+
+        if(rk != null) {
+            int fila = Integer.parseInt(rk.getRowId());
+            Subasta s = getListadoPublico().get(fila);
+            // Pasar la subasta por parámetro
+            DetallesSubasta detsub = (DetallesSubasta)getBean("DetallesSubasta");
+            detsub.setSubastaElegida(s);
+
+            System.out.println("SUBASTA ENCONTRADA: "+s.getNombre());
+
+            return "detallesSubasta";
+        }
+
         return "detallesSubasta";
     }
     

@@ -19,10 +19,14 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlSubPublicas_action}" id="imghlSubPublicas" imageURL="/resources/icon_home.gif"/>
-                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlMisSubastas_action}" id="imghlMisSubastas" imageURL="/resources/icon_auction.gif"/>
-                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlNuevaSubasta_action}" id="imghlNuevaSubasta" imageURL="/resources/icon_sell.gif"/>
-                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlCerrarSesion_action}" id="imghlCerrarSesion" imageURL="/resources/cerrar.PNG"/>
+                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlSubPublicas_action}" id="imghlSubPublicas"
+                                    imageURL="/resources/icon_home.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlMisSubastas_action}" id="imghlMisSubastas"
+                                    imageURL="/resources/icon_auction.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlNuevaSubasta_action}" id="imghlNuevaSubasta"
+                                    imageURL="/resources/icon_sell.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlCerrarSesion_action}" id="imghlCerrarSesion"
+                                    imageURL="/resources/cerrar.PNG" immediate="true"/>
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>
@@ -31,10 +35,10 @@
                             <tbody>
                                 <tr>
                                     <td colspan="2">
-                                        <webuijsf:staticText id="txtNombre" style="font-family: Arial,Helvetica,sans-serif; font-size: 36px" text="NOMBRE"/>
-                                        <webuijsf:staticText id="txtID" text="(ID)"/>
-                                        <webuijsf:staticText id="txtCategoria" text="CATEGORIA"/>
-                                        <hr />
+                                        <webuijsf:staticText binding="#{DetallesSubasta.txtNombre}" id="txtNombre" style="font-family: Arial,Helvetica,sans-serif; font-size: 36px"/>
+                                        <webuijsf:staticText binding="#{DetallesSubasta.txtID}" id="txtID" style="font-size: 18px"/>
+                                        <webuijsf:staticText binding="#{DetallesSubasta.txtCategoria}" id="txtCategoria" style="font-family: 'Times New Roman',Times,serif; font-size: 24px"/>
+                                        <hr/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -43,22 +47,28 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:staticText id="txtFechaCreacion" text="FECHA CREACION"/>
+                                                        <webuijsf:staticText id="staticText3"
+                                                            style="color: rgb(102, 102, 102); font-size: 14px; font-weight: bold" text="Detalles de la subasta:"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:staticText id="txtSubastador" text="SUBASTADOR"/>
+                                                        <webuijsf:staticText binding="#{DetallesSubasta.txtFechaCreacion}" id="txtFechaCreacion"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:staticText id="txtFechaCierre" text="FECHA CIERRE"/>
+                                                        <webuijsf:staticText binding="#{DetallesSubasta.txtSubastador}" id="txtSubastador"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:staticText id="txtPrecioSalida" text="PRECIO SALIDA"/>
+                                                        <webuijsf:staticText binding="#{DetallesSubasta.txtFechaCierre}" id="txtFechaCierre" style="color: #660066; font-weight: bold"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <webuijsf:staticText binding="#{DetallesSubasta.txtPrecioSalida}" id="txtPrecioSalida"/>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -69,30 +79,34 @@
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:staticText id="staticText1" style="color: #666666; font-weight: bold" text="Estado actual de la subasta:"/>
+                                                        <webuijsf:staticText id="staticText1"
+                                                            style="color: rgb(102, 102, 102); font-size: 14px; font-weight: bold" text="Estado actual de la subasta:"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:staticText id="txtPujaActual" text="PUJA ACTUAL"/>
-                                                        <webuijsf:staticText id="txtPujadorActual" text="PUJADOR ACTUAL"/>
-                                                        <webuijsf:staticText id="txtFechaPujaActual" text="FECHA PUJA ACTUAL"/>
+                                                        <webuijsf:staticText binding="#{DetallesSubasta.txtPujaActual}" id="txtPujaActual" style="font-size: 14px"/>
+                                                        <webuijsf:staticText binding="#{DetallesSubasta.txtPujadorActual}" id="txtPujadorActual" style="font-weight: bold"/>
+                                                        <webuijsf:staticText binding="#{DetallesSubasta.txtFechaPujaActual}" id="txtFechaPujaActual"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:textField id="txfNuevaPuja"/>
-                                                        <webuijsf:button id="btPujar" primary="true" style="font-size: 14px; font-weight: bold; height: 24px;" text="Pujar!"/>
+                                                        <webuijsf:textField binding="#{DetallesSubasta.txfNuevaPuja}" id="txfNuevaPuja" required="true"
+                                                            style="height: 24px" validatorExpression="#{DetallesSubasta.txfNuevaPuja_validate}"/>
+                                                        <webuijsf:button binding="#{DetallesSubasta.btPujar}" id="btPujar" primary="true"
+                                                            style="font-size: 14px; font-weight: bold; height: 24px;" text="Pujar!"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:staticText id="txtPrecioCompra" text="PRECIO COMPRA"/>
+                                                        <webuijsf:staticText binding="#{DetallesSubasta.txtPrecioCompra}" id="txtPrecioCompra" style="font-size: 14px"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:button id="btComprar" style="font-size: 14px; height: 24px;" text="Comprar ahora"/>
+                                                        <webuijsf:button binding="#{DetallesSubasta.btComprar}" id="btComprar" immediate="true"
+                                                            style="font-size: 14px; height: 24px;" text="Comprar ahora"/>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -100,8 +114,14 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" style="height: 15px">
-                                        DESCRIPCIÓN
+                                    <td colspan="2">
+                                        <hr/>
+                                        <webuijsf:staticText id="staticText2" style="color: rgb(102, 102, 102); font-size: 14px; font-weight: bold" text="Descripción del objeto:"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <webuijsf:textArea binding="#{DetallesSubasta.txaDescripcion}" columns="100" id="txaDescripcion" readOnly="true" rows="5"/>
                                     </td>
                                 </tr>
                             </tbody>
