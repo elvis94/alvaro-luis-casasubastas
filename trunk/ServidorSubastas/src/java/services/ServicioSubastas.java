@@ -166,7 +166,10 @@ public class ServicioSubastas
     String usuario, @WebParam(name = "password")
     String password) {
         //TODO write your implementation code here:
-        return null;
+        if(comprobarUsuario(usuario, password))
+			return subastasDAO.obtenerSubastasLideradas(usuario);
+		else
+			return null;
     }
 
     /**
