@@ -7,7 +7,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
 
-	
+	<lifecycle>
+        <phase-listener>
+            clientesubastas.acceso.ControlAcceso
+        </phase-listener>
+    </lifecycle>
 
     <managed-bean>
         <managed-bean-name>SessionBean1</managed-bean-name>
@@ -55,22 +59,6 @@
             <from-outcome>home</from-outcome>
             <to-view-id>/VerSubastas.jsp</to-view-id>
             <redirect/>
-        </navigation-case>
-    </navigation-rule>
-
-    <navigation-rule>
-        <from-view-id>/Portal.jsp</from-view-id>
-        <navigation-case>
-            <from-outcome>registrar</from-outcome>
-            <to-view-id>/NuevoCliente.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>iniciarSesion</from-outcome>
-            <to-view-id>/MisSubastas.jsp</to-view-id>
-        </navigation-case>
-        <navigation-case>
-            <from-outcome>subastasPublicas</from-outcome>
-            <to-view-id>/VerSubastas.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
