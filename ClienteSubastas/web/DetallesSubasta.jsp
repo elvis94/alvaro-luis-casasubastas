@@ -94,7 +94,8 @@
                                                     <td>
                                                         <webuijsf:textField binding="#{DetallesSubasta.txfNuevaPuja}" id="txfNuevaPuja" required="true"
                                                             style="height: 24px" validatorExpression="#{DetallesSubasta.txfNuevaPuja_validate}"/>
-                                                        <webuijsf:button binding="#{DetallesSubasta.btPujar}" id="btPujar" primary="true"
+                                                        <webuijsf:button actionExpression="#{DetallesSubasta.btPujar_action}"
+                                                            binding="#{DetallesSubasta.btPujar}" id="btPujar" primary="true"
                                                             style="font-size: 14px; font-weight: bold; height: 24px;" text="Pujar!"/>
                                                     </td>
                                                 </tr>
@@ -105,7 +106,8 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <webuijsf:button binding="#{DetallesSubasta.btComprar}" id="btComprar" immediate="true"
+                                                        <webuijsf:button actionExpression="#{DetallesSubasta.btComprar_action}"
+                                                            binding="#{DetallesSubasta.btComprar}" id="btComprar" immediate="true"
                                                             style="font-size: 14px; height: 24px;" text="Comprar ahora"/>
                                                     </td>
                                                 </tr>
