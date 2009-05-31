@@ -203,7 +203,7 @@ public class SubastasDAO
 	{
 		ArrayList<Subasta> subs = new ArrayList<Subasta>();
 		try {
-            String consulta = "SELECT * FROM DAD.SUBASTAS WHERE subastador='"+u+"'";
+            String consulta = "SELECT * FROM DAD.SUBASTAS WHERE subastador='"+u+"' ORDER BY fecha_cierre";
 
             PreparedStatement ps = conexion.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();

@@ -149,4 +149,28 @@ public class ServicioSubastas
         if(Usuario==null || Usuario.isEmpty()) return false;
         else return subastasDAO.isUsuario(Usuario);
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "obtenerSubastasLideradas")
+    public subastas.Subasta[] obtenerSubastasLideradas(@WebParam(name = "usuario")
+    String usuario, @WebParam(name = "password")
+    String password) {
+        //TODO write your implementation code here:
+        return null;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "pujar")
+    public boolean pujar(@WebParam(name = "usuario")
+    String usuario, @WebParam(name = "password")
+    String password, @WebParam(name = "idSubasta")
+    int idSubasta, @WebParam(name = "puja")
+    double puja) {
+        //TODO write your implementation code here:
+        return false;
+    }
 }
