@@ -11,6 +11,7 @@
             <webuijsf:html id="html1">
                 <webuijsf:head id="head1" title="Nuevo cliente">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
+                    <webuijsf:link rel="shortcut icon" url="/resources/favicon.ico"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="formularioRegistro">
@@ -19,8 +20,10 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:hyperlink actionExpression="#{NuevoCliente.hlSubastasPublicas_action}" id="hlSubastasPublicas" immediate="true" text="[Subastas Públicas]"/>
-                                <webuijsf:hyperlink actionExpression="#{NuevoCliente.hlIniciarSesion_action}" id="hlIniciarSesion" immediate="true" text="[Iniciar Sesión]"/>
+                                <webuijsf:imageHyperlink actionExpression="#{NuevoCliente.imghlSubPublicas_action}" id="imghlSubPublicas"
+                                    imageURL="/resources/icon_auction.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{NuevoCliente.imghlIniciarSesion_action}" id="imghlIniciarSesion"
+                                    imageURL="/resources/inicio.PNG" immediate="true"/>
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>

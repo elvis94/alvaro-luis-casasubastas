@@ -11,6 +11,7 @@
             <webuijsf:html id="html1">
                 <webuijsf:head id="head1" title="Iniciar sesión">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
+                    <webuijsf:link rel="shortcut icon" url="/resources/favicon.ico"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
@@ -19,8 +20,10 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:hyperlink actionExpression="#{IniciarSesion.hlSubastasPublicas_action}" id="hlSubastasPublicas" immediate="true" text="[Subastas Públicas]"/>
-                                <webuijsf:hyperlink actionExpression="#{IniciarSesion.hlRegistrarse_action}" id="hlRegistrarse" immediate="true" text="[Registrarse]"/>
+                                <webuijsf:imageHyperlink actionExpression="#{IniciarSesion.imghlSubPublicas_action}" id="imghlSubPublicas"
+                                    imageURL="/resources/icon_auction.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{IniciarSesion.imghlRegistrarse_action}" id="imghlRegistrarse"
+                                    imageURL="/resources/icon_reg.gif" immediate="true"/>
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>

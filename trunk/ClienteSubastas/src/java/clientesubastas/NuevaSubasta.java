@@ -316,6 +316,22 @@ public class NuevaSubasta extends AbstractPageBean {
             throw new ValidatorException(new FacesMessage("Precio de compra directa inválido"));
         }
     }
+
+    public String imghlMisSubastas_action() {
+        // TODO: Replace with your code
+        return "misSubastas";
+    }
+
+    public String imghlSubPublicas_action() {
+        // TODO: Replace with your code
+        return "subastasPublicas";
+    }
+
+    public String imghlCerrarSesion_action() {
+        // TODO: Replace with your code
+        getSessionBean1().setDatosPersonalesSesion(null);
+        return "subastasPublicas";
+    }
     
 }
 

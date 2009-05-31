@@ -9,6 +9,7 @@ import clientesubastas.servicios.ServicioWebSubastas;
 import com.sun.data.provider.RowKey;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.Hyperlink;
+import com.sun.webui.jsf.component.ImageHyperlink;
 import java.util.List;
 import javax.faces.FacesException;
 import services.Subasta;
@@ -39,50 +40,50 @@ public class VerSubastas extends AbstractPageBean {
     // </editor-fold>
 
 	private List<Subasta> listadoPublico;
-    private Hyperlink hlIniciarSesion = new Hyperlink();
+    private ImageHyperlink imghlIniciarSesion = new ImageHyperlink();
 
-    public Hyperlink getHlIniciarSesion() {
-        return hlIniciarSesion;
+    public ImageHyperlink getImghlIniciarSesion() {
+        return imghlIniciarSesion;
     }
 
-    public void setHlIniciarSesion(Hyperlink h) {
-        this.hlIniciarSesion = h;
+    public void setImghlIniciarSesion(ImageHyperlink ih) {
+        this.imghlIniciarSesion = ih;
     }
-    private Hyperlink hlRegistrarse = new Hyperlink();
+    private ImageHyperlink imghlRegistrarse = new ImageHyperlink();
 
-    public Hyperlink getHlRegistrarse() {
-        return hlRegistrarse;
-    }
-
-    public void setHlRegistrarse(Hyperlink h) {
-        this.hlRegistrarse = h;
-    }
-    private Hyperlink hlMisSubastas = new Hyperlink();
-
-    public Hyperlink getHlMisSubastas() {
-        return hlMisSubastas;
+    public ImageHyperlink getImghlRegistrarse() {
+        return imghlRegistrarse;
     }
 
-    public void setHlMisSubastas(Hyperlink h) {
-        this.hlMisSubastas = h;
+    public void setImghlRegistrarse(ImageHyperlink ih) {
+        this.imghlRegistrarse = ih;
     }
-    private Hyperlink hlNuevaSubasta = new Hyperlink();
+    private ImageHyperlink imghlMisSubastas = new ImageHyperlink();
 
-    public Hyperlink getHlNuevaSubasta() {
-        return hlNuevaSubasta;
-    }
-
-    public void setHlNuevaSubasta(Hyperlink h) {
-        this.hlNuevaSubasta = h;
-    }
-    private Hyperlink hlCerrarSesion = new Hyperlink();
-
-    public Hyperlink getHlCerrarSesion() {
-        return hlCerrarSesion;
+    public ImageHyperlink getImghlMisSubastas() {
+        return imghlMisSubastas;
     }
 
-    public void setHlCerrarSesion(Hyperlink h) {
-        this.hlCerrarSesion = h;
+    public void setImghlMisSubastas(ImageHyperlink ih) {
+        this.imghlMisSubastas = ih;
+    }
+    private ImageHyperlink imghlNuevaSubasta = new ImageHyperlink();
+
+    public ImageHyperlink getImghlNuevaSubasta() {
+        return imghlNuevaSubasta;
+    }
+
+    public void setImghlNuevaSubasta(ImageHyperlink ih) {
+        this.imghlNuevaSubasta = ih;
+    }
+    private ImageHyperlink imghlCerrarSesion = new ImageHyperlink();
+
+    public ImageHyperlink getImghlCerrarSesion() {
+        return imghlCerrarSesion;
+    }
+
+    public void setImghlCerrarSesion(ImageHyperlink ih) {
+        this.imghlCerrarSesion = ih;
     }
     /**
      * <p>Construct a new Page bean instance.</p>
@@ -151,14 +152,16 @@ public class VerSubastas extends AbstractPageBean {
 	{
         getRequestBean1().setMensajeAyuda("Utilice la tabla para navegar por las subastas públicas");
         //setListadoPublico(ServicioWebSubastas.subastasPublicas());
-        if(getSessionBean1().getDatosPersonalesSesion() != null) {
-            hlIniciarSesion.setVisible(false);
-            hlRegistrarse.setVisible(false);
+        if(getSessionBean1().getDatosPersonalesSesion() != null)
+        {
+            imghlIniciarSesion.setVisible(false);
+            imghlRegistrarse.setVisible(false);
         }
-        else {
-            hlMisSubastas.setVisible(false);
-            hlNuevaSubasta.setVisible(false);
-            hlCerrarSesion.setVisible(false);
+        else
+        {
+            imghlMisSubastas.setVisible(false);
+            imghlNuevaSubasta.setVisible(false);
+            imghlCerrarSesion.setVisible(false);
         }
     }
 
@@ -220,42 +223,7 @@ public class VerSubastas extends AbstractPageBean {
 		this.listadoPublico = listadoPublico;
 	}
 
-	public String hlIniciarSesion_action()
-	{
-		// TODO: Process the action. Return value is a navigation
-		// case name where null will return to the same page.
-		return "iniciarSesion";
-	}
-
-	public String hlRegistrarse_action()
-	{
-		// TODO: Process the action. Return value is a navigation
-		// case name where null will return to the same page.
-		return "registro";
-	}
-
-    public String hlCerrarSesion_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        getSessionBean1().setDatosPersonalesSesion(null);
-        
-        hlIniciarSesion.setVisible(true);
-        hlRegistrarse.setVisible(true);
-
-        return null;
-    }
-
-    public String hlMisSubastas_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "misSubastas";
-    }
-
-    public String hlNuevaSubasta_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "nuevaSubasta";
-    }
+	
 
     public String hlDetalles_action()
     {
@@ -277,6 +245,36 @@ public class VerSubastas extends AbstractPageBean {
         }
 
         return "detallesSubasta";
+    }
+
+    public String imghlIniciarSesion_action() {
+        // TODO: Replace with your code
+        return "iniciarSesion";
+    }
+
+    public String imghlRegistrarse_action() {
+        // TODO: Replace with your code
+        return "registro";
+    }
+
+    public String imghlMisSubastas_action() {
+        // TODO: Replace with your code
+        return "misSubastas";
+    }
+
+    public String imghlNuevaSubasta_action() {
+        // TODO: Replace with your code
+        return "nuevaSubasta";
+    }
+
+    public String imghlCerrarSesion_action() {
+        // TODO: Replace with your code
+        getSessionBean1().setDatosPersonalesSesion(null);
+
+        imghlIniciarSesion.setVisible(true);
+        imghlRegistrarse.setVisible(true);
+
+        return null;
     }
     
 }
