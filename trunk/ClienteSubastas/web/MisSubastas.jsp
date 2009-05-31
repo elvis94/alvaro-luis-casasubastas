@@ -28,21 +28,24 @@
                         <br/>
                         <div align="center">
                             <webuijsf:table augmentTitle="false" clearSortButton="true" id="table1" paginateButton="true" paginationControls="true"
-                                sortPanelToggleButton="true" title="Mis subastas" width="762">
-                                <webuijsf:tableRowGroup id="tableRowGroup1" rows="6" sourceData="#{MisSubastas.listadoMisSubastas}" sourceVar="currentRow">
-                                    <webuijsf:tableColumn headerText="nombre" id="tableColumn1" sort="nombre">
+                                sortPanelToggleButton="true" title="Mis subastas" width="800">
+                                <webuijsf:tableRowGroup id="tableRowGroup1" rows="5" sourceData="#{MisSubastas.listadoMisSubastas}" sourceVar="currentRow">
+                                    <webuijsf:tableColumn headerText="Nombre" id="tableColumn1" sort="nombre">
                                         <webuijsf:hyperlink actionExpression="#{MisSubastas.hlDetalles_action}" id="hlDetalles" text="#{currentRow.value['nombre']}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn headerText="categoria" id="tableColumn2" sort="categoria">
-                                        <webuijsf:staticText id="staticText1" text="#{currentRow.value['categoria']}"/>
+                                    <webuijsf:tableColumn headerText="Categoría" id="tableColumn9" sort="categoria">
+                                        <webuijsf:staticText id="staticText7" text="#{currentRow.value['categoria']}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn headerText="fechaCierre" id="tableColumn4" sort="fechaCierre">
+                                    <webuijsf:tableColumn headerText="Fecha de cierre" id="tableColumn4" sort="fechaCierre">
                                         <webuijsf:staticText id="staticText3" text="#{currentRow.value['fechaCierre']}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn headerText="pujaActual" id="tableColumn5" sort="pujaActual">
+                                    <webuijsf:tableColumn headerText="Precio de compra" id="tableColumn3" sort="precioCompra">
+                                        <webuijsf:staticText id="staticText2" text="#{currentRow.value['precioCompra']}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="Última puja" id="tableColumn5" sort="pujaActual">
                                         <webuijsf:staticText id="staticText4" text="#{currentRow.value['pujaActual']}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn headerText="pujadorActual" id="tableColumn6" sort="pujadorActual">
+                                    <webuijsf:tableColumn headerText="Pujador actual" id="tableColumn6" sort="pujadorActual">
                                         <webuijsf:staticText id="staticText5" text="#{currentRow.value['pujadorActual'].usuario}"/>
                                     </webuijsf:tableColumn>
                                     <webuijsf:tableColumn align="center" headerText="Acciones" id="tableColumn7" valign="middle">
@@ -54,18 +57,21 @@
                         </div>
                         <br/>
                         <div align="center">
-                            <webuijsf:table augmentTitle="false" id="table2" paginateButton="true" paginationControls="true" title="Subastas que lidero" width="508">
-                                <webuijsf:tableRowGroup id="tableRowGroup1" rows="6" sourceData="#{MisSubastas.listadoMisSubastas}" sourceVar="currentRow">
-                                    <webuijsf:tableColumn headerText="nombre" id="tableColumn1" sort="nombre">
-                                        <webuijsf:hyperlink actionExpression="#{MisSubastas.hyperlink1_action}" id="hyperlink1" text="#{currentRow.value['nombre']}"/>
+                            <webuijsf:table augmentTitle="false" id="table2" paginateButton="true" paginationControls="true" title="Subastas que lidero" width="800">
+                                <webuijsf:tableRowGroup id="tableRowGroup1" rows="5" sourceData="#{MisSubastas.listadoMisPujas}" sourceVar="currentRow">
+                                    <webuijsf:tableColumn headerText="Nombre" id="tableColumn1" sort="nombre">
+                                        <webuijsf:hyperlink actionExpression="#{MisSubastas.hlDetalles2_action}" id="hlDetalles2" text="#{currentRow.value['nombre']}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn headerText="categoria" id="tableColumn2" sort="categoria">
+                                    <webuijsf:tableColumn headerText="Categoría" id="tableColumn2" sort="categoria">
                                         <webuijsf:staticText id="staticText1" text="#{currentRow.value['categoria']}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn headerText="fechaCierre" id="tableColumn4" sort="fechaCierre">
+                                    <webuijsf:tableColumn headerText="Subastador" id="tableColumn8" sort="subastador">
+                                        <webuijsf:staticText id="staticText6" text="#{currentRow.value['subastador'].usuario}"/>
+                                    </webuijsf:tableColumn>
+                                    <webuijsf:tableColumn headerText="Fecha de cierre" id="tableColumn4" sort="fechaCierre">
                                         <webuijsf:staticText id="staticText3" text="#{currentRow.value['fechaCierre']}"/>
                                     </webuijsf:tableColumn>
-                                    <webuijsf:tableColumn headerText="pujaActual" id="tableColumn5" sort="pujaActual">
+                                    <webuijsf:tableColumn headerText="Última puja" id="tableColumn5" sort="pujaActual">
                                         <webuijsf:staticText id="staticText4" text="#{currentRow.value['pujaActual']}"/>
                                     </webuijsf:tableColumn>
                                     <webuijsf:tableColumn headerText="pujadorActual" id="tableColumn6" sort="pujadorActual">

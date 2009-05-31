@@ -9,6 +9,7 @@ import clientesubastas.acceso.DatosAcceso;
 import clientesubastas.servicios.ServicioWebSubastas;
 import com.sun.data.provider.RowKey;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.FacesException;
 import services.Subasta;
@@ -22,7 +23,6 @@ import services.Subasta;
  *
  * @version MisSubastas.java
  * @version Created on 28-abr-2009, 1:15:58
- * @author Louis
  */
 
 public class MisSubastas extends AbstractPageBean {
@@ -88,7 +88,15 @@ public class MisSubastas extends AbstractPageBean {
     {
         DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
         setListadoMisSubastas(ServicioWebSubastas.subastasMias(da.getUsuario(), da.getPassword()));
-        setListadoMisPujas(null);
+
+        List<Subasta> mispujas = ServicioWebSubastas.subastasPublicas();
+        List<Subasta> resultado = new ArrayList<Subasta>();
+        for(Subasta s : mispujas) {
+            if(s.getPujadorActual() != null)
+                if( da.getUsuario().equals(s.getPujadorActual().getUsuario()) )
+                    resultado.add(s);
+        }
+        setListadoMisPujas(resultado);
     }
 
     /**
@@ -205,11 +213,7 @@ public class MisSubastas extends AbstractPageBean {
         return "nuevaSubasta";
     }
 
-    public String hlDetalles_action() {
-        // TODO: Process the action. Return value is a navigation
-        // case name where null will return to the same page.
-        return "subastasPublicas";
-    }
+    
 
     public String borrar_action() {
         // TODO: Process the action. Return value is a navigation
@@ -253,9 +257,43 @@ public class MisSubastas extends AbstractPageBean {
         return "modificarSubasta";
     }
 
-    public String hyperlink1_action() {
+    public String hlDetalles_action() {
+        // TODO: Process the action. Return value is a navigation
+        // case name where null will return to the same page.
+        RowKey rk = (RowKey) getValue("#{currentRow.tableRow}");
+
+        if(rk != null) {
+            int fila = Integer.parseInt(rk.getRowId());
+            Subasta s = getListadoMisSubastas().get(fila);
+            // Pasar la subasta por parámetro
+            DetallesSubasta detsub = (DetallesSubasta)getBean("DetallesSubasta");
+            detsub.setSubastaElegida(s);
+
+            System.out.println("SUBASTA ENCONTRADA: "+s.getNombre());
+
+            return "detallesSubasta";
+        }
+
+        return "detallesSubasta";
+    }
+
+    public String hlDetalles2_action() {
         // TODO: Replace with your code
-        return null;
+        RowKey rk = (RowKey) getValue("#{currentRow.tableRow}");
+
+        if(rk != null) {
+            int fila = Integer.parseInt(rk.getRowId());
+            Subasta s = getListadoMisPujas().get(fila);
+            // Pasar la subasta por parámetro
+            DetallesSubasta detsub = (DetallesSubasta)getBean("DetallesSubasta");
+            detsub.setSubastaElegida(s);
+
+            System.out.println("SUBASTA ENCONTRADA: "+s.getNombre());
+
+            return "detallesSubasta";
+        }
+
+        return "detallesSubasta";
     }
     
 }
