@@ -286,9 +286,9 @@ public class DetallesSubasta extends AbstractPageBean {
         else
         {
             // DESACTIVAR BOTONES
-            txfNuevaPuja.setVisible(false);
+            /*txfNuevaPuja.setVisible(false);
             btPujar.setVisible(false);
-            btComprar.setVisible(false);
+            btComprar.setVisible(false);*/
         }
 
 
@@ -376,14 +376,17 @@ public class DetallesSubasta extends AbstractPageBean {
     }
 
     public void txfNuevaPuja_validate(FacesContext context, UIComponent component, Object value) {
+        subastaElegida=getSessionBean1().getSubastaModificable();
         String s = String.valueOf(value);
         try{
             Double v1 = Double.parseDouble(s);
 
-            if (s.length() < 1 || v1.doubleValue() <= subastaElegida.getPujaActual()) {
-                throw new ValidatorException(new FacesMessage("Puja inválida"));
+            double pujaminima = (subastaElegida.getPujaActual()*1.05);
+
+            if (s.length() < 1 || v1.doubleValue() <= pujaminima) {
+                throw new ValidatorException(new FacesMessage("Puja inválida: mínima puja "+pujaminima));
             }
-        }catch(Exception e){
+        }catch(NumberFormatException e){
             throw new ValidatorException(new FacesMessage("Número incorrecto"));
         }
     }
@@ -399,13 +402,25 @@ public class DetallesSubasta extends AbstractPageBean {
 
             return "subastasPublicas";
         }
-        
+
+        setSubastaElegida(subastaElegida);
         return null;
     }
 
     public String btComprar_action() {
         // TODO: Process the action. Return value is a navigation
         // case name where null will return to the same page.
+        subastaElegida=getSessionBean1().getSubastaModificable();
+        if(subastaElegida!=null)
+        {
+            DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
+            clientesubastas.servicios.ServicioWebSubastas.pujar(subastaElegida.getId(),
+                    subastaElegida.getPrecioCompra()+0.01,da.getUsuario(), da.getPassword());
+
+            return "subastasPublicas";
+        }
+
+        setSubastaElegida(subastaElegida);
         return null;
     }
     
