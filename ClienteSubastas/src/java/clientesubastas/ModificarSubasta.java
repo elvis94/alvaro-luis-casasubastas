@@ -5,6 +5,7 @@
 
 package clientesubastas;
 
+import clientesubastas.acceso.DatosAcceso;
 import com.sun.rave.web.ui.appbase.AbstractPageBean;
 import com.sun.webui.jsf.component.DropDown;
 import com.sun.webui.jsf.component.HiddenField;
@@ -225,9 +226,11 @@ public class ModificarSubasta extends AbstractPageBean {
         subastaElegida=getSessionBean1().getSubastaModificable();
         if(subastaElegida!=null)
         {
-            subastaElegida.setDescripcion((String)txtDescripcion.getText());
-            subastaElegida.setCategoria((String)txtCategoria.getValue());
-            clientesubastas.servicios.ServicioWebSubastas.actualizarSubasta(subastaElegida);
+            DatosAcceso da = getSessionBean1().getDatosPersonalesSesion();
+            clientesubastas.servicios.ServicioWebSubastas.modificarSubasta(
+                    subastaElegida.getId(), (String)txtDescripcion.getText(),
+                    (String)txtCategoria.getValue(), da.getUsuario(), da.getPassword());
+
             getSessionBean1().setSubastaModificable(null);
             subastaElegida=null;
             return "misSubastas";

@@ -116,6 +116,15 @@ public class NuevaSubasta extends AbstractPageBean {
     public void setBCrear(Button b) {
         this.bCrear = b;
     }
+    private TextField txtCompra = new TextField();
+
+    public TextField getTxtCompra() {
+        return txtCompra;
+    }
+
+    public void setTxtCompra(TextField tf) {
+        this.txtCompra = tf;
+    }
 
     // </editor-fold>
 
@@ -238,6 +247,7 @@ public class NuevaSubasta extends AbstractPageBean {
                 (String)txtDescripcion.getText(),
                 (String)txtCategoria.getValue(),
                 Double.parseDouble((String)txtPrecio.getText()),
+                Double.parseDouble((String)txtCompra.getText()),
                 txtFecha.getSelectedDate(),
                 da.getUsuario(), da.getPassword());
         return "misSubastas";
@@ -248,6 +258,7 @@ public class NuevaSubasta extends AbstractPageBean {
         txtDescripcion.resetValue();
         txtCategoria.resetValue();
         txtPrecio.resetValue();
+        txtCompra.resetValue();
         txtFecha.resetValue();
         txtFecha.setValue(txtFecha.getMinDate());
         txtFecha.setSelectedDate(txtFecha.getMinDate());
@@ -289,6 +300,15 @@ public class NuevaSubasta extends AbstractPageBean {
         // TODO: Replace with your code
         getSessionBean1().setDatosPersonalesSesion(null);
         return "subastasPublicas";
+    }
+
+    public void txtCompra_validate(FacesContext context, UIComponent component, Object value) {
+        String s = String.valueOf(value);
+        Double v1 = Double.parseDouble((String)txtPrecio.getLocalValue());;
+        if (s.length() < 1 ||
+                v1.compareTo(Double.parseDouble(s)) >= 0) {
+            throw new ValidatorException(new FacesMessage("Precio de compra directa inválido"));
+        }
     }
     
 }

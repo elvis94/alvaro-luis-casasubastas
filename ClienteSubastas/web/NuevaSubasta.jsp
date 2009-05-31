@@ -70,6 +70,15 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        <webuijsf:label for="txtCompra" id="label9" text="Compra directa por:"/>
+                                    </td>
+                                    <td>
+                                        <webuijsf:textField binding="#{NuevaSubasta.txtCompra}" id="txtCompra" required="true" style="margin-left: 10px" validatorExpression="#{NuevaSubasta.txtCompra_validate}"/>
+                                        <webuijsf:label id="label10" style="font-size: 12px; left: 4px; bottom: 2px" text="€"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         <webuijsf:label for="txtFecha" id="label5" text="Fecha de vencimiento:"/>
                                     </td>
                                     <td>

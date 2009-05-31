@@ -115,14 +115,15 @@ public class ServicioWebSubastas {
     }
 
     public static boolean crearSubasta(String nombre, String descripcion,
-            String categoria, double precio, Date fechaInicio, String usuario,
-            String password)
+            String categoria, double precio, double precioCompra, Date fechaInicio,
+            String usuario, String password)
     {
         Subasta s=new Subasta();
         s.setNombre(nombre);
         s.setDescripcion(descripcion);
         s.setCategoria(categoria);
         s.setPrecioSalida(precio);
+        s.setPrecioCompra(precioCompra);
         s.setFechaPujaActual(null);
         s.setPujaActual(0);
         s.setPujadorActual(null);
@@ -146,15 +147,43 @@ public class ServicioWebSubastas {
         return result;
     }
 
-    public static boolean actualizarSubasta(Subasta s)
+    public static boolean actualizarSubasta(Subasta s, String usuario, String password)
     {
         boolean resultado=false;
         try {
-            resultado = port.actualizarSubasta(s);
+            resultado = port.actualizarSubasta(usuario, password, s);
 
         } catch (Exception ex) {
             resultado=false;
         }
+        return resultado;
+    }
+
+    public static boolean modificarSubasta(int idSubasta, String descripcion, String categoria,
+            String usuario, String password)
+    {
+        boolean resultado=false;
+
+        try { // Call Web Service Operation
+            resultado = port.modificarSubasta(usuario, password, idSubasta, descripcion, categoria);
+        } catch (Exception ex) {
+            return false;
+        }
+        return resultado;
+    }
+
+    public static boolean pujar(int idSubasta, double nuevaPuja,
+            String usuario, String password)
+    {
+        boolean resultado=false;
+
+
+        try { // Call Web Service Operation
+            resultado = port.pujar(usuario, password, idSubasta, nuevaPuja);
+        } catch (Exception ex) {
+            return false;
+        }
+
         return resultado;
     }
 }
