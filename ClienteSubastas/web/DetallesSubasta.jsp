@@ -9,8 +9,9 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1">
+                <webuijsf:head id="head1" title="Detalles Subasta">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
+                    <webuijsf:link rel="shortcut icon" url="/resources/favicon.ico"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
@@ -19,9 +20,9 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlSubPublicas_action}" id="imghlSubPublicas"
-                                    imageURL="/resources/icon_home.gif" immediate="true"/>
                                 <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlMisSubastas_action}" id="imghlMisSubastas"
+                                    imageURL="/resources/icon_home.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlSubPublicas_action}" id="imghlSubPublicas"
                                     imageURL="/resources/icon_auction.gif" immediate="true"/>
                                 <webuijsf:imageHyperlink actionExpression="#{DetallesSubasta.imghlNuevaSubasta_action}" id="imghlNuevaSubasta"
                                     imageURL="/resources/icon_sell.gif" immediate="true"/>

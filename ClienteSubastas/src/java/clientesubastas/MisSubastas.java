@@ -296,6 +296,21 @@ public class MisSubastas extends AbstractPageBean {
 
         return "detallesSubasta";
     }
+
+    public String imghlSubPublicas_action() {
+        // TODO: Replace with your code
+        return "subastasPublicas";
+    }
+
+    public String imghlNuevaSubasta_action() {
+        // TODO: Replace with your code
+        return "nuevaSubasta";
+    }
+
+    public String imghlCerrarSesion_action() {
+        getSessionBean1().setDatosPersonalesSesion(null);
+        return "subastasPublicas";
+    }
     
 }
 

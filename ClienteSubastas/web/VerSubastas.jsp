@@ -9,8 +9,9 @@
     <f:view>
         <webuijsf:page id="page1">
             <webuijsf:html id="html1">
-                <webuijsf:head id="head1" title="Subastas públicas">
+                <webuijsf:head id="head1" title="Subastas online">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
+                    <webuijsf:link rel="shortcut icon" url="/resources/favicon.ico"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid;">
                     <webuijsf:form id="form1">
@@ -19,16 +20,16 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlIniciarSesion_action}" binding="#{VerSubastas.hlIniciarSesion}"
-                                    id="hlIniciarSesion" text="[Iniciar Sesión]"/>
-                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlRegistrarse_action}" binding="#{VerSubastas.hlRegistrarse}"
-                                    id="hlRegistrarse" text="[Registrarse]"/>
-                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlMisSubastas_action}" binding="#{VerSubastas.hlMisSubastas}"
-                                    id="hlMisSubastas" text="[Mis Subastas]"/>
-                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlNuevaSubasta_action}" binding="#{VerSubastas.hlNuevaSubasta}"
-                                    id="hlNuevaSubasta" text="[Nueva Subasta]"/>
-                                <webuijsf:hyperlink actionExpression="#{VerSubastas.hlCerrarSesion_action}" binding="#{VerSubastas.hlCerrarSesion}"
-                                    id="hlCerrarSesion" text="[Cerrar Sesión]"/>
+                                <webuijsf:imageHyperlink actionExpression="#{VerSubastas.imghlIniciarSesion_action}" binding="#{VerSubastas.imghlIniciarSesion}"
+                                    id="imghlIniciarSesion" imageURL="/resources/inicio.PNG" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{VerSubastas.imghlRegistrarse_action}" binding="#{VerSubastas.imghlRegistrarse}"
+                                    id="imghlRegistrarse" imageURL="/resources/icon_reg.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{VerSubastas.imghlMisSubastas_action}" binding="#{VerSubastas.imghlMisSubastas}"
+                                    id="imghlMisSubastas" imageURL="/resources/icon_home.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{VerSubastas.imghlNuevaSubasta_action}" binding="#{VerSubastas.imghlNuevaSubasta}"
+                                    id="imghlNuevaSubasta" imageURL="/resources/icon_sell.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{VerSubastas.imghlCerrarSesion_action}" binding="#{VerSubastas.imghlCerrarSesion}"
+                                    id="imghlCerrarSesion" imageURL="/resources/cerrar.PNG" immediate="true"/>
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>

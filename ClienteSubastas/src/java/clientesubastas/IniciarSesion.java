@@ -214,6 +214,16 @@ public class IniciarSesion extends AbstractPageBean {
             return "sesionIniciada";
         }
     }
+
+    public String imghlSubPublicas_action() {
+        // TODO: Replace with your code
+        return "subastasPublicas";
+    }
+
+    public String imghlRegistrarse_action() {
+        // TODO: Replace with your code
+        return "registro";
+    }
     
 }
 

@@ -46,8 +46,8 @@ public class SessionBean1 extends AbstractSessionBean {
     public SessionBean1() {
         datosPersonalesSesion = null;
         // borrar
-        datosPersonalesSesion = new DatosAcceso("Juas",
-                HerramientaCifrado.cifrar("contraseña"));
+        /*datosPersonalesSesion = new DatosAcceso("Juas",
+                HerramientaCifrado.cifrar("contraseña"));*/
     }
 
     /**

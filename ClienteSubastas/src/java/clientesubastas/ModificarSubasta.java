@@ -272,6 +272,27 @@ public class ModificarSubasta extends AbstractPageBean {
         getSessionBean1().setDatosPersonalesSesion(null);
         return "subastasPublicas";
     }
+
+    public String imghlMisSubastas_action() {
+        // TODO: Replace with your code
+        return "misSubastas";
+    }
+
+    public String imghlSubPublicas_action() {
+        // TODO: Replace with your code
+        return "subastasPublicas";
+    }
+
+    public String imghlNuevaSubasta_action() {
+        // TODO: Replace with your code
+        return "nuevaSubasta";
+    }
+
+    public String imghlCerrarSesion_action() {
+        // TODO: Replace with your code
+        getSessionBean1().setDatosPersonalesSesion(null);
+        return "subastasPublicas";
+    }
     
 }
 

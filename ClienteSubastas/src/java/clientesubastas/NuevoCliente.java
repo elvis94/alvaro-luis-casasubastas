@@ -369,5 +369,15 @@ public class NuevoCliente extends AbstractPageBean {
         txtNombre.resetValue();
         txtApellidos.resetValue();
     }
+
+    public String imghlSubPublicas_action() {
+        // TODO: Replace with your code
+        return "subastasPublicas";
+    }
+
+    public String imghlIniciarSesion_action() {
+        // TODO: Replace with your code
+        return "iniciarSesion";
+    }
 }
 

@@ -11,6 +11,7 @@
             <webuijsf:html id="html1">
                 <webuijsf:head id="head1" title="Mis Subastas">
                     <webuijsf:link id="link1" url="/resources/stylesheet.css"/>
+                    <webuijsf:link rel="shortcut icon" url="/resources/favicon.ico"/>
                 </webuijsf:head>
                 <webuijsf:body id="body1" style="-rave-layout: grid">
                     <webuijsf:form id="form1">
@@ -19,9 +20,12 @@
                         </div>
                         <div align="center" style="font-size: 18px">
                             <webuijsf:panelGroup id="groupPanel1" separator=" " style="width: 100%">
-                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlSubastasPublicas_action}" id="hlSubastasPublicas" text="[Subastas Públicas]"/>
-                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlNuevaSubasta_action}" id="hlNuevaSubasta" text="[Nueva Subasta]"/>
-                                <webuijsf:hyperlink actionExpression="#{MisSubastas.hlCerrarSesion_action}" id="hlCerrarSesion" text="[Cerrar Sesión]"/>
+                                <webuijsf:imageHyperlink actionExpression="#{MisSubastas.imghlSubPublicas_action}" id="imghlSubPublicas"
+                                    imageURL="/resources/icon_auction.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{MisSubastas.imghlNuevaSubasta_action}" id="imghlNuevaSubasta"
+                                    imageURL="/resources/icon_sell.gif" immediate="true"/>
+                                <webuijsf:imageHyperlink actionExpression="#{MisSubastas.imghlCerrarSesion_action}" id="imghlCerrarSesion"
+                                    imageURL="/resources/cerrar.PNG" immediate="true"/>
                             </webuijsf:panelGroup>
                         </div>
                         <hr/>
