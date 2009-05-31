@@ -237,6 +237,44 @@ public class SubastasDAO
 		return (Subasta[])subs.toArray(new Subasta[]{});
 	}
 
+    public Subasta[] obtenerSubastasLideradas(String u)
+	{
+		ArrayList<Subasta> subs = new ArrayList<Subasta>();
+		try {
+            String consulta = "SELECT * FROM DAD.SUBASTAS WHERE pujador_actual='"+u+"' ORDER BY fecha_cierre";
+
+            PreparedStatement ps = conexion.prepareStatement(consulta);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+				Subasta sub = new Subasta();
+				sub.setId(rs.getInt("id"));
+				sub.setNombre(rs.getString("nombre"));
+				sub.setSubastador(obtenerUsuario(rs.getString("subastador")));
+				sub.setDescripcion(rs.getString("descripcion"));
+				sub.setCategoria(rs.getString("categoria"));
+				sub.setPrecioSalida(rs.getDouble("precio_salida"));
+				sub.setPujaActual(rs.getDouble("puja_actual"));
+				sub.setPrecioCompra(rs.getDouble("precio_compra"));
+
+				sub.setFechaSalida(new java.util.Date(rs.getDate("fecha_salida").getTime()));
+				sub.setFechaCierre(new java.util.Date(rs.getDate("fecha_cierre").getTime()));
+
+				Date d = rs.getDate("fecha_puja_actual");
+				if(d != null)
+					sub.setFechaPujaActual(new java.util.Date(d.getTime()));
+
+				sub.setPujadorActual(obtenerUsuario(rs.getString("pujador_actual")));
+
+				subs.add(sub);
+            }
+
+            ps.close();
+        } catch (SQLException ex) { }
+
+		return (Subasta[])subs.toArray(new Subasta[]{});
+	}
+
 	public Subasta obtenerSubasta(int id)
 	{
 		Subasta sub = null;
